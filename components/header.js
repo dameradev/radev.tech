@@ -5,7 +5,7 @@ export default function Header() {
     <header className=" bg-primary text-white fixed w-full z-10 inset-0 h-fit">
       <div className='container mx-auto flex items-center justify-between py-6'>
 
-      <div className='text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight'>
+      <div className='text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight ml-4 md:ml-0'>
         <Link href="/">
           <a className="hover:underline">T&T</a>
         </Link>

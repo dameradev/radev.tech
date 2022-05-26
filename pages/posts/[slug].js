@@ -17,48 +17,46 @@ import prism from "prismjs";
 import { useEffect } from 'react'
 
 const PostStyled = styled.article`
-/* background:  ; */
- pre {
-      min-width: 100%;
-
-      button {
-        background: var(--primary);
-      }
+  pre {
+    min-width: 100%;
+    button {
+      background: var(--primary);
     }
+  }
 
-    .file-name {
-      margin-top: 2rem;
-      font-style: italic;
-      text-align: right;
-    }
+  .file-name {
+    margin-top: 2rem;
+    font-style: italic;
+    text-align: right;
+  }
 
-    span.error {
-      color: red;
-    }
+  span.error {
+    color: red;
+  }
 
-    figcaption {
-      font-style: italic;
-    }
+  figcaption {
+    font-style: italic;
+  }
 
-    figure.kg-card {
+  figure.kg-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+  }
+
+  .error-container {
+    margin: 1rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+    p {
+      margin-bottom: 1rem;
+
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 2rem;
+      justify-content: space-between;
     }
-
-    .error-container {
-      margin: 1rem 0;
-      padding: 1rem 0;
-      border-top: 1px solid #efefef;
-      border-bottom: 1px solid #efefef;
-      p {
-        margin-bottom: 1rem;
-
-        display: flex;
-        justify-content: space-between;
-      }
-    }
+  }
 `
 
 export default function Post({ post, morePosts, preview }) {
@@ -67,7 +65,7 @@ export default function Post({ post, morePosts, preview }) {
     prism.highlightAll();
   }, []);
 
-  
+
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
@@ -96,7 +94,14 @@ export default function Post({ post, morePosts, preview }) {
               <PostBody content={post.content} />
             </PostStyled>
             <SectionSeparator />
-            {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+            {morePosts.length > 0 && (
+              <>
+                {/* <h2 className="mt-12 mb-12 text-5xl md:text-6xl leading-tight md:hidden">
+                  More Content
+                </h2> */}
+                <MoreStories posts={morePosts} />
+              </>)
+            }
           </>
         )}
       </Container>
