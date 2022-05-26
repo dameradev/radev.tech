@@ -3,22 +3,22 @@ import Date from '../components/date'
 import CoverImage from '../components/cover-image'
 import PostTitle from '../components/post-title'
 
-export default function PostHeader({ title, coverImage, date, author }) {
+export default function PostHeader({ title, coverImage, date, authors }) {
+  console.log(coverImage)
   return (
     <>
       <PostTitle>{title}</PostTitle>
-      <div className="hidden md:block md:mb-12">
-        <Avatar name={author.name} picture={author.picture.url} />
+      <div className=" flex flex-col gap-4 ">
+        <Avatar name={authors[0].name} picture={authors[0].picture.url} />
+        <Date dateString={date} />
       </div>
-      <div className="mb-8 -mx-5 md:mb-16 sm:mx-0">
+      <div className="mx-5 sm:mx-0 flex justify-center w-full ">
         <CoverImage title={title} url={coverImage.url} />
       </div>
       <div className="max-w-2xl mx-auto">
-        <div className="block mb-6 md:hidden">
-          <Avatar name={author.name} picture={author.picture.url} />
-        </div>
-        <div className="mb-6 text-lg">
-          <Date dateString={date} />
+        
+        <div className="text-lg">
+          
         </div>
       </div>
     </>

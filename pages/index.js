@@ -17,13 +17,13 @@ export default function Index({ posts, preview }) {
           <title>Next.js Blog Example with {CMS_NAME}</title>
         </Head>
         <Container>
-          <Intro />
+          
           {heroPost && (
             <HeroPost
               title={heroPost.title}
               coverImage={heroPost.coverImage}
               date={heroPost.date}
-              author={heroPost.author}
+              author={heroPost.authors[0]}
               slug={heroPost.slug}
               excerpt={heroPost.excerpt}
             />

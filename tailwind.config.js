@@ -1,37 +1,111 @@
+const baseFontSize = 10;
+
 module.exports = {
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+   
   theme: {
     extend: {
       colors: {
-        'accent-1': '#FAFAFA',
-        'accent-2': '#EAEAEA',
-        'accent-7': '#333',
-        success: '#0070f3',
-        cyan: '#79FFE1',
+        red: "#FF4949",
+        black: "#2E2E2E",
+        yellow: "#ffc600",
+        white: "#fff",
+        grey: "#efefef",
+        primary: "#1E4B5F",
+        secondary: "#FFA700",
       },
-      spacing: {
-        28: '7rem',
-      },
-      letterSpacing: {
-        tighter: '-.04em',
-      },
-      lineHeight: {
-        tight: 1.2,
-      },
+      spacing: () => ({
+        ...Array.from({ length: 96 }, (_, index) => index * 0.5)
+          .filter((i) => i)
+          .reduce(
+            (acc, i) => ({ ...acc, [i]: `${i / (baseFontSize / 4)}rem` 		 }),
+            {}
+          ),
+      }),
       fontSize: {
-        '5xl': '2.5rem',
-        '6xl': '2.75rem',
-        '7xl': '4.5rem',
-        '8xl': '6.25rem',
-      },
-      boxShadow: {
-        small: '0 5px 10px rgba(0, 0, 0, 0.12)',
-        medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
+        xs: [
+          `${(16 * 0.75) / baseFontSize}rem`, /* 12px */
+          {
+            lineHeight: `${(16 * 1) / baseFontSize}rem` /* 16px */,
+          },
+        ],
+        sm: [
+          `${(16 * 0.875) / baseFontSize}rem`, /* 14px */
+          {
+            lineHeight: `${(16 * 1.25) / baseFontSize}rem` /* 20px */,
+          },
+        ],
+        base: [
+          `${(16 * 1) / baseFontSize}rem`, /* 16px */
+          {
+            lineHeight: `${(16 * 1.5) / baseFontSize}rem` /* 24px */,
+          },
+        ],
+        lg: [
+          `${(16 * 1.125) / baseFontSize}rem`, /* 18px */
+          {
+            lineHeight: `${(16 * 1.75) / baseFontSize}rem` /* 28px */,
+          },
+        ],
+        xl: [
+          `${(16 * 1.25) / baseFontSize}rem`, /* 20px */
+          {
+            lineHeight: `${(16 * 1.75) / baseFontSize}rem` /* 28px */,
+          },
+        ],
+        "2xl": [
+          `${(16 * 1.5) / baseFontSize}rem`, /* 24px */
+          {
+            ineHeight: `${(16 * 2) / baseFontSize}rem` /* 32px */,
+          },
+        ],
+        "3xl": [
+          `${(16 * 1.875) / baseFontSize}rem`, /* 30px */
+          {
+            lineHeight: `${(16 * 2.25) / baseFontSize}rem` /* 36px */,
+          },
+        ],
+        "4xl": [
+          `${(16 * 2.25) / baseFontSize}rem`, /* 36px */
+          {
+            lineHeight: `${(16 * 2.5) / baseFontSize}rem` /* 40px */,
+          },
+        ],
+        "5xl": [
+          `${(16 * 3) / baseFontSize}rem`, /* 48px */
+          {
+            lineHeight: (16 * 1) / baseFontSize,
+          },
+        ],
+        "6xl": [
+          `${(16 * 3.75) / baseFontSize}rem`, /* 60px */
+          {
+            lineHeight: (16 * 1) / baseFontSize,
+          },
+        ],
+        "7xl": [
+          `${(16 * 4.5) / baseFontSize}rem`, /* 72px */
+          {
+            lineHeight: (16 * 1) / baseFontSize,
+          },
+        ],
+        "8xl": [
+          `${(16 * 6) / baseFontSize}rem`, /* 96px */
+          {
+            lineHeight: (16 * 1) / baseFontSize,
+          },
+        ],
+        "9xl": [
+          `${(16 * 8) / baseFontSize}rem`, /* 128px */
+          {
+            lineHeight: (16 * 1) / baseFontSize,
+          },
+        ],
       },
     },
   },
-  plugins: [],
+  plugins: [
+    'tailwindcss',
+    'postcss-preset-env',
+  ],
 }

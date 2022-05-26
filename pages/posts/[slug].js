@@ -11,10 +11,63 @@ import { getAllPostsWithSlug, getPostAndMorePosts } from 'lib/graphcms'
 import PostTitle from 'components/post-title'
 import Head from 'next/head'
 import { CMS_NAME } from 'lib/constants'
+import styled from 'styled-components'
+import "prismjs/themes/prism-tomorrow.css";
+import prism from "prismjs";
+import { useEffect } from 'react'
+
+const PostStyled = styled.article`
+/* background:  ; */
+ pre {
+      min-width: 100%;
+
+      button {
+        background: var(--primary);
+      }
+    }
+
+    .file-name {
+      margin-top: 2rem;
+      font-style: italic;
+      text-align: right;
+    }
+
+    span.error {
+      color: red;
+    }
+
+    figcaption {
+      font-style: italic;
+    }
+
+    figure.kg-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 2rem;
+    }
+
+    .error-container {
+      margin: 1rem 0;
+      padding: 1rem 0;
+      border-top: 1px solid #efefef;
+      border-bottom: 1px solid #efefef;
+      p {
+        margin-bottom: 1rem;
+
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+`
 
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter()
+  useEffect(() => {
+    prism.highlightAll();
+  }, []);
 
+  
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
@@ -27,7 +80,7 @@ export default function Post({ post, morePosts, preview }) {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article>
+            <PostStyled>
               <Head>
                 <title>
                   {post.title} | Next.js Blog Example with {CMS_NAME}
@@ -38,10 +91,10 @@ export default function Post({ post, morePosts, preview }) {
                 title={post.title}
                 coverImage={post.coverImage}
                 date={post.date}
-                author={post.author}
+                authors={post.authors}
               />
               <PostBody content={post.content} />
-            </article>
+            </PostStyled>
             <SectionSeparator />
             {morePosts.length > 0 && <MoreStories posts={morePosts} />}
           </>

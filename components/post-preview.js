@@ -8,9 +8,10 @@ export default function PostPreview({
   coverImage,
   date,
   excerpt,
-  author,
+  authors,
   slug,
 }) {
+  console.log(authors)
   return (
     <div>
       <div className="mb-5">
@@ -25,7 +26,7 @@ export default function PostPreview({
         <Date dateString={date} />
       </div>
       <p className="mb-4 text-lg leading-relaxed">{excerpt}</p>
-      <Avatar name={author.name} picture={author.picture.url} />
+      <Avatar name={authors[0].name} picture={authors[0].picture.url} />
     </div>
   )
 }
