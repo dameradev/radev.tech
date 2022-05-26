@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Disallow: /
+
+# Host
+Host: https://blog-graphcms-weld.vercel.app
+
+# Sitemaps
+Sitemap: https://blog-graphcms-weld.vercel.app/sitemap.xml
