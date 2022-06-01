@@ -24,6 +24,9 @@ const PostStyled = styled.article`
     img {
       align-self: center !important;
     }
+    a {
+      color: #FFA700;
+    }
   }
 
   pre {

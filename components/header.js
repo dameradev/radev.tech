@@ -1,17 +1,21 @@
 import Link from 'next/link'
+import ThemeSwitch from './ThemeSwitch'
 
 export default function Header() {
   return (
-    <header className=" bg-primary text-white fixed w-full z-10 inset-0 h-fit">
+    <header className=" bg-skin-header shadow-md fixed w-full z-10 inset-0 h-fit">
       <div className='container mx-auto flex items-center justify-between py-6'>
 
       <div className='text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight ml-4 md:ml-0'>
         <Link href="/">
           <a className="hover:underline">T&T</a>
-        </Link>
+          </Link>
+          
+          
       </div>
 
-      <nav>
+        <nav className='flex items-center gap-10'>
+        <ThemeSwitch />
         <ul className="flex justify-center">
           <li className="mr-4">
             <Link href="/">
