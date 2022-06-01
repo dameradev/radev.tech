@@ -5,6 +5,15 @@ module.exports = {
    
   theme: {
     extend: {
+      
+      spacing: () => ({
+        ...Array.from({ length: 96 }, (_, index) => index * 0.5)
+          .filter((i) => i)
+          .reduce(
+            (acc, i) => ({ ...acc, [i]: `${i / (baseFontSize / 4)}rem` 		 }),
+            {}
+          ),
+      }),
       colors: {
         red: "#FF4949",
         black: "#2E2E2E",
@@ -14,14 +23,6 @@ module.exports = {
         primary: "#1E4B5F",
         secondary: "#FFA700",
       },
-      spacing: () => ({
-        ...Array.from({ length: 96 }, (_, index) => index * 0.5)
-          .filter((i) => i)
-          .reduce(
-            (acc, i) => ({ ...acc, [i]: `${i / (baseFontSize / 4)}rem` 		 }),
-            {}
-          ),
-      }),
       fontSize: {
         xs: [
           `${(16 * 0.75) / baseFontSize}rem`, /* 12px */

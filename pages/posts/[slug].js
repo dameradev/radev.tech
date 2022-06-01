@@ -17,6 +17,15 @@ import prism from "prismjs";
 import { useEffect } from 'react'
 
 const PostStyled = styled.article`
+
+  .post-content {
+    display: flex;
+    flex-direction:column;
+    img {
+      align-self: center !important;
+    }
+  }
+
   pre {
     min-width: 100%;
     button {

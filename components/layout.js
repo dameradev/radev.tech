@@ -10,11 +10,11 @@ export default function Layout({ preview, children }) {
       <Meta />
       <Header />
       <div className='h-32' />
-      <div className="min-h-screen  grid grid-cols-5 relative">
+      <div className="min-h-screen container mx-auto  grid grid-cols-5 relative">
 
         <main className='col-span-4'>{children}</main>
         <div className='pr-4 relative '>
-          <div className='sticky top-22'>
+          <div className='sticky top-24'>
             <div className='text-gray-600'>
 
 
