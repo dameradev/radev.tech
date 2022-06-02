@@ -21,7 +21,7 @@ const themes = {
     "fg-muted": "var(--color-text-muted)",
     primary: "var(--color-primary)",
     secondary: "var(--color-secondary)",
-    header: withOpacity("--color-header"),
+    header: "var(--color-header)",//withOpacity("--color-header"),
     "header-fg": withOpacity("--color-header-text"),
   },
 }

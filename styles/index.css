@@ -27,7 +27,7 @@ body {
     --color-background-medium: #d1d5db;
 
     --color-text: #1f2937;
-    --color-header: 255, 255, 245;
+    --color-header: #171921;
     --color-header-text: 225, 245, 245;
     --color-text-muted: #4b5563;
 
@@ -36,16 +36,18 @@ body {
     --color-anchor-hover: #a78bfa;
 
     --color-primary: #fff;
-    --color-secondary: #ffc600;
+    --color-secondary: #F24E41;
+
+    
   }
 
   .dark {
-    --color-background: #002f3c;
+    --color-background: #171921;
     --color-background-muted: #52525b;
     --color-background-medium: #e5e7eb;
 
     --color-text: #f9fafb;
-    --color-header: 1, 24, 39;
+    --color-header: #171921;
     --color-header-text: 245, 245, 245;
     --color-text-muted: #d1d5db;
 
@@ -54,6 +56,6 @@ body {
     --color-anchor-hover: #ec4899;
 
     --color-primary: #1e3a8a;
-    --color-secondary: #ffc600;
+    --color-secondary: #F24E41;
   }
 }

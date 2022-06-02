@@ -2,6 +2,17 @@ import Avatar from '../components/avatar'
 import Date from '../components/date'
 import CoverImage from '../components/cover-image'
 import Link from 'next/link'
+import styled from 'styled-components'
+
+const ReadMoreLink = styled.a`
+  padding: 1rem 2rem;
+  background: transparent linear-gradient(90deg, #F24E41 0%, #F09A2D 100%, #F09D2C 100%) 0% 0% no-repeat padding-box;
+  width: fit-content;
+  border-radius: 30px;
+  text-transform: uppercase;
+  color: #fff;
+`
+
 
 export default function HeroPost({
   title,
@@ -11,28 +22,29 @@ export default function HeroPost({
   author,
   slug,
 }) {
-  console.log(coverImage)
+  console.log(excerpt)
   return (
-    <section className='grid grid-cols-1 md:grid-cols-2  justify-center gap-8 items-start'>
-      <div className="mb-8 md:mb-16 flex justify-center w-full ">
+    <section className='mt-10 grid grid-cols-1 md:grid-cols-2 justify-center gap-8 items-start'>
+      <div className=" flex justify-center w-full  ">
         <CoverImage slug={slug} title={title} url={coverImage.url} />
       </div>
-      <div className="order-first md:order-last md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8  ">
-        <h3 className="mb-4 text-4xl leading-tight  lg:text-5xl col-span-2">
+      <div className="min-h-full order-first md:order-last grid grid-cols-1  md:gap-x-16 lg:gap-x-8   ">
+        <h3 className="mb-4 text-3xl font-bold leading-tight  lg:text-4xl ">
           <Link href={`/posts/${slug}`}>
             <a className="hover:underline">{title}</a>
           </Link>
         </h3>
-        <div className='flex w-full justify-between col-span-2 items-center py-4'>
+        <p className="mb-4 text-md leading-relaxed  ">{excerpt}</p>
+        <Link href={`/posts/${slug}`}><ReadMoreLink className="text-xs h-min">Read more</ReadMoreLink></Link>
+        <div className='self-end'>
 
-          <div className="text-lg md:mb-0">
+          {/* <div className="text-lg md:mb-0">
             <Date dateString={date} />
-          </div>
-        
+          </div> */}
+
           {/* <p className="mb-4 text-lg leading-relaxed">{excerpt}</p> */}
-          <Avatar name={author.name} picture={author.picture.url} />
+          <Avatar name={author.name} picture={author.picture.url} dateString={date} />
         </div>
-        <p className="mb-4 text-lg leading-relaxed col-span-2">{excerpt}</p>
       </div>
     </section>
   )

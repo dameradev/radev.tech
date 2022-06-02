@@ -3,7 +3,7 @@ import ThemeSwitch from './ThemeSwitch'
 
 export default function Header() {
   return (
-    <header className=" bg-skin-header shadow-md fixed w-full z-10 inset-0 h-fit">
+    <header className=" bg-skin-header text-white shadow-md fixed w-full z-10 inset-0 h-fit">
       <div className='container mx-auto flex items-center justify-between py-6'>
 
       <div className='text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight ml-4 md:ml-0'>

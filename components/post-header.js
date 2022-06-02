@@ -9,7 +9,7 @@ export default function PostHeader({ title, coverImage, date, authors }) {
     <>
       <PostTitle>{title}</PostTitle>
       <div className=" flex flex-col gap-4 mb-4">
-        <Avatar name={authors[0].name} picture={authors[0].picture.url} />
+        <Avatar name={authors[0].name} picture={authors[0].picture.url} dateString={date} />
         <Date dateString={date} />
       </div>
       <div className="md:mx-5 sm:mx-0 flex justify-center w-full ">
