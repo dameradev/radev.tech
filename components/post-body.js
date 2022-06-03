@@ -1,11 +1,10 @@
 
 
 export default function PostBody({ content }) {
-  console.log(content)
   return (
     
     <div
-      className={`post-content max-w-7xl mx-auto post `}
+      className={`post-content max-w-5xl mx-auto post text-xl `}
       dangerouslySetInnerHTML={{ __html: content.html }}
     />
   )

@@ -23,6 +23,7 @@ const themes = {
     secondary: "var(--color-secondary)",
     header: "var(--color-header)",//withOpacity("--color-header"),
     "header-fg": withOpacity("--color-header-text"),
+    gray: "var(--color-gray)",//withOpacity("--color-header"),
   },
 }
 

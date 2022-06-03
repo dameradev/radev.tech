@@ -7,11 +7,10 @@ export default function PostHeader({ title, coverImage, date, authors }) {
   console.log(coverImage)
   return (
     <>
-      <PostTitle>{title}</PostTitle>
       <div className=" flex flex-col gap-4 mb-4">
         <Avatar name={authors[0].name} picture={authors[0].picture.url} dateString={date} />
-        <Date dateString={date} />
       </div>
+      <PostTitle>{title}</PostTitle>
       <div className="md:mx-5 sm:mx-0 flex justify-center w-full ">
         <CoverImage title={title} url={coverImage.url} />
       </div>

@@ -2,6 +2,25 @@ import Avatar from '../components/avatar'
 import Date from '../components/date'
 import CoverImage from './cover-image'
 import Link from 'next/link'
+import styled from 'styled-components'
+
+const PostInfoStyled = styled.p`
+
+  
+    position: relative;
+    &:before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      background: var(--color-secondary);
+      border-radius: 100%;
+      position: absolute;
+      top: 5px;
+      left: -10px;
+  
+  }
+`
+
 
 export default function PostPreview({
   title,
@@ -11,7 +30,6 @@ export default function PostPreview({
   authors,
   slug,
 }) {
-  console.log(authors)
   return (
     <div>
       <div className="mb-5">
@@ -19,7 +37,7 @@ export default function PostPreview({
       </div>
       <div className="mb-4 text-xs uppercase flex gap-x-4">
         <Date dateString={date} />
-        { authors[0].name}
+        <PostInfoStyled>{authors[0].name}</PostInfoStyled>
       </div>
       <h3 className="mb-3 text-3xl leading-snug">
         <Link href={`/posts/${slug}`}>

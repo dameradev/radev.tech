@@ -18,7 +18,7 @@ export default function Avatar({ name, picture, dateString }) {
       </div>
       <div>
 
-        <p className="text-xl font-bold">{name}</p>
+        <p className="text-sm font-bold uppercase">{name}</p>
 
         <time dateTime={dateString}>{format(date, 'LLLL	d, yyyy')}</time>
       </div>

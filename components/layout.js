@@ -17,7 +17,7 @@ export default function Layout({ preview, children }) {
         <main>{children}</main>
        
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

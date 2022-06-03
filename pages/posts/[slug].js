@@ -23,9 +23,14 @@ const PostStyled = styled.article`
     flex-direction:column;
     img {
       align-self: center !important;
+      margin: 2rem 0;
+      background: #fff;
     }
     a {
       color: #FFA700;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
