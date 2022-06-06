@@ -178,7 +178,7 @@ export default function Post({ post, morePosts, preview }) {
 
 
         <SectionSeparator className="col-span-8" />
-        {morePosts.length > 0 && (
+        {morePosts?.length > 0 && (
           <div className='col-span-8'>
             {/* <h2 className="mt-12 mb-12 text-5xl md:text-6xl leading-tight md:hidden">
                   More Content
