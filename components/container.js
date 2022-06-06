@@ -1,3 +1,3 @@
-export default function Container({ children }) {
-  return <div className="container mx-auto  px-20">{children}</div>
+export default function Container({ children, className }) {
+  return <div className={`container mx-auto px-10 ${className}`}>{children}</div>
 }
