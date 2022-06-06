@@ -4,20 +4,28 @@ import CoverImage from './cover-image'
 import Link from 'next/link'
 import styled from 'styled-components'
 
-const PostInfoStyled = styled.p`
 
-  
-    position: relative;
-    &:before {
-      content: "";
-      width: 5px;
-      height: 5px;
-      background: var(--color-secondary);
-      border-radius: 100%;
-      position: absolute;
-      top: 5px;
-      left: -10px;
-  
+const PostStyled = styled.div`
+  max-height: min-content;
+  .excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+  }
+`
+
+const PostInfoStyled = styled.p`
+  position: relative;
+  &:before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    background: var(--color-secondary);
+    border-radius: 100%;
+    position: absolute;
+    top: 5px;
+    left: -10px;
   }
 `
 
@@ -31,7 +39,7 @@ export default function PostPreview({
   slug,
 }) {
   return (
-    <div>
+    <PostStyled>
       <div className="mb-5">
         <CoverImage slug={slug} title={title} url={coverImage.url} />
       </div>
@@ -44,8 +52,8 @@ export default function PostPreview({
           <a className="hover:underline">{title}</a>
         </Link>
       </h3>
-      <p className="mb-4 text-sms leading-relaxed">{excerpt}</p>
+      <p className="excerpt mb-4 text-sms leading-relaxed">{excerpt}</p>
       {/* <Avatar name={authors[0].name} picture={authors[0].picture.url} dateString={date} /> */}
-    </div>
+    </PostStyled>
   )
 }

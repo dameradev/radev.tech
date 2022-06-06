@@ -4,7 +4,7 @@ export default function MoreStories({ posts }) {
   return (
     <section>
       
-      <div className="grid grid-cols-1 mb-14 sm:grid-cols-2  md:gap-x-6 lg:gap-x-12 gap-y-20 md:gap-y-32 md:mb-32 mt-14 border-r-[1px] pr-10">
+      <div className="grid grid-cols-1 mb-14 sm:grid-cols-2  md:gap-x-6 lg:gap-x-12 gap-y-10  mt-14 border-r-[1px] pr-10">
         {posts.map((post) => (
           <PostPreview
             key={post.slug}

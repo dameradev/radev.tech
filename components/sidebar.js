@@ -2,8 +2,8 @@ import React from 'react';
 
 import { FaTwitter, FaGithub } from 'react-icons/fa';
 
-const Sidebar = () => {
-  console.log(FaTwitter)
+const Sidebar = ({ tags }) => {
+
   return (
     <div className='pl-4 relative col-span-2 w-full mt-16 '>
       <div className='sticky top-34'>
@@ -13,15 +13,14 @@ const Sidebar = () => {
           <p className='font-bold '>Browse tags</p>
 
           <ul className='flex flex-wrap gap-2 py-6 text-xs'>
-            <li className='border-2 px-2 py-1 rounded-3xl border-gray-400'>
-              HEADLESS
-            </li>
-            <li className='border-2 px-2 py-1 rounded-3xl border-gray-400'>
-              HEADLESS
-            </li>
-            <li className='border-2 px-2 py-1 rounded-3xl border-gray-400'>
-              HEADLESS
-            </li>
+            {
+              tags.map(tag => (
+                <li className='border-2 px-2 py-1 rounded-3xl border-gray-400 capitalize'>
+                  {tag.name}
+                </li>
+              ))
+            }
+
           </ul>
         </div>
 

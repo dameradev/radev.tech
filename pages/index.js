@@ -3,12 +3,12 @@ import MoreStories from '../components/more-stories'
 import HeroPost from '../components/hero-post'
 import Intro from '../components/intro'
 import Layout from '../components/layout'
-import { getAllPostsForHome } from '../lib/graphcms'
+import { getAllPostsForHome, getAllTags } from '../lib/graphcms'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import Sidebar from 'components/sidebar'
 
-export default function Index({ posts, preview }) {
+export default function Index({ posts, tags, preview }) {
   const heroPost = posts[0]
   const morePosts = posts.slice(1)
   return (
@@ -34,35 +34,22 @@ export default function Index({ posts, preview }) {
             <li className="rounded-full border-[1px] px-6 py-2 text-xs text-secondary border-secondary">
               ALL TAGS
             </li>
-            <li className="rounded-full border-[1px] px-6 py-2 text-xs">
-              TAGS
-            </li>
-            <li className="rounded-full border-[1px] px-6 py-2 text-xs">
-              CATEGORIES
-            </li>
-            <li className="rounded-full border-[1px] px-6 py-2 text-xs">
-              TAGS
-            </li>
-            <li className="rounded-full border-[1px] px-6 py-2 text-xs">
-              TAGS
-            </li>
-            <li className="rounded-full border-[1px] px-6 py-2 text-xs">
-            ALL CATEGORIES
-            </li>
-            <li className="rounded-full border-[1px] px-6 py-2 text-xs">
-            ALL CATEGORIES
-            </li>
-            
+            {tags.map(tag => (
+              <li className="rounded-full border-[1px] px-6 py-2 text-xs  uppercase">
+                {tag.name}
+              </li>
+            ))}
+
           </ul>
-        
-        <hr className="mt-10" />
-        
+
+          <hr className="mt-10" />
+
           <div className='grid grid-cols-8 '>
             <div className='col-span-6 pr-6'>
               {morePosts.length > 0 && <MoreStories posts={morePosts} />}
             </div>
-            
-            <Sidebar />
+
+            <Sidebar tags={tags} />
           </div>
 
         </Container>
@@ -73,7 +60,8 @@ export default function Index({ posts, preview }) {
 
 export async function getStaticProps({ preview = false }) {
   const posts = (await getAllPostsForHome(preview)) || []
+  const tags = (await getAllTags(preview)) || []
   return {
-    props: { posts, preview },
+    props: { posts, tags, preview },
   }
 }

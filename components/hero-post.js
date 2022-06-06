@@ -22,20 +22,20 @@ export default function HeroPost({
   author,
   slug,
 }) {
-  console.log(excerpt)
+  
   return (
-    <section className='mt-10 grid grid-cols-1 md:grid-cols-2 justify-center gap-8 items-start'>
-      <div className=" flex justify-center w-full  ">
+    <section className='mt-10 grid grid-cols-1 md:grid-cols-2 justify-center gap-x-8 items-center '>
+      <div className="">
         <CoverImage slug={slug} title={title} url={coverImage.url} />
       </div>
-      <div className="min-h-full order-first md:order-last grid grid-cols-1  md:gap-x-16 lg:gap-x-8   ">
+      <div className="min-h-full order-first md:order-last grid grid-cols-1  md:gap-x-16 lg:gap-x-8 gap-y-4  ">
         <h3 className="mb-4 text-3xl font-bold leading-tight  lg:text-4xl ">
           <Link href={`/posts/${slug}`}>
             <a className="hover:underline">{title}</a>
           </Link>
         </h3>
         <p className="mb-4 text-md leading-relaxed  ">{excerpt}</p>
-        <Link href={`/posts/${slug}`}><ReadMoreLink className="text-xs h-min">Read more</ReadMoreLink></Link>
+        <Link href={`/posts/${slug}`}><ReadMoreLink className="text-xs h-min cursor-pointer">Read more</ReadMoreLink></Link>
         <div className='self-end'>
 
           {/* <div className="text-lg md:mb-0">

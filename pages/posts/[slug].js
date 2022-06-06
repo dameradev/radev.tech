@@ -38,6 +38,7 @@ const PostStyled = styled.article`
     margin: 1rem 0;
   }
 
+
   pre {
     min-width: 100%;
     button {
