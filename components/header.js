@@ -4,7 +4,7 @@ import Image from "next/image"
 
 export default function Header() {
   return (
-    <header className=" bg-skin-header text-white shadow-md fixed w-full z-10 inset-0 h-fit  px-28">
+    <header className=" bg-skin-header text-white shadow-md fixed w-full z-10 inset-0 h-fit  md:px-28">
       <div className='container mx-auto flex items-center justify-between py-6'>
 
         <div className='text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight ml-4 md:ml-0'>

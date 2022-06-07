@@ -14,7 +14,7 @@ import { CMS_NAME } from 'lib/constants'
 import styled from 'styled-components'
 import "prismjs/themes/prism-tomorrow.css";
 import prism from "prismjs";
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState, createRef } from 'react'
 import Sidebar from 'components/sidebar'
 
 
@@ -96,13 +96,44 @@ const PostStyled = styled.article`
     }
   }
 `
+const TableOfContents = styled.div`
+  li {
+    
+    position: relative;
 
+    &:not(:first-of-type) {
+      margin: 1rem 0;
+    }
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 7px;
+      left: -18px;
+      width: 10px;
+      height: 10px;
+      border: 1px solid var(--color-text);
+      border-radius: 50%;
+
+      &.active {
+        background: var(--color-secondary);
+        border: none;
+      }
+    }
+  }
+`
+// const isInViewport = (elem) => {
+//   const bounding = elem.getBoundingClientRect();
+//   return (
+//     bounding.top >= 0 &&
+//     bounding.left >= 0 &&
+//     bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+//     bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+//   );
+// };
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter()
 
-  // console.log(post.content.split('h3'))
-  // console.log(typeof post.content)
-  // console.log( post.content.html.split('h3'))
   useEffect(() => {
     prism.highlightAll();
   }, []);
@@ -110,20 +141,36 @@ export default function Post({ post, morePosts, preview }) {
   const [nestedHeadings, setNestedHeadings] = useState([]);
 
   useEffect(() => {
+
     const headingElements = Array.from(
-      document.querySelector('.post-content').querySelectorAll("h3")
+      document.querySelector('.post-content').querySelectorAll("h2")
     );
 
-    // const newNestedHeadings = getNestedHeadings(headingElements);
     headingElements.map((heading, index) => {
       heading.id = `heading-${index}`;
       heading.className = "heading";
     })
-    setNestedHeadings(headingElements);
+
+    setNestedHeadings(headingElements)
+    //   headingElements.map((heading, index) => {
+
+    //     if (isInViewport(heading)) {
+    //       const updatedNestedHeadings = [...headingElements];
+
+    //       updatedNestedHeadings[index]?.classList.add("active");
+
+    //       console.log(updatedNestedHeadings)
+    //       if (!nestedHeadings[index]?.classList.contains('active')) {
+    //         setNestedHeadings(updatedNestedHeadings);
+    //       }
+    //     } else {
+    //       nestedHeadings[index]?.classList.remove("active");
+    //     }
+    //   })
+
+    // });
+
   }, []);
-
-
-
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -133,28 +180,27 @@ export default function Post({ post, morePosts, preview }) {
     <Layout preview={preview}>
       <Container className="grid grid-cols-8 relative">
         {/* <Header /> */}
-        <div className='relative col-span-2'>
+        <TableOfContents className='relative col-span-2 hidden lg:block'>
 
-          <div className='pt-14 flex flex-col  sticky top-30 table-contents'>
+          <div className='pt-14 flex flex-col  sticky top-30 table-contents pr-2'>
             <p className='text-xl mb-4 font-bold'>Jump to</p>
             <ul >
 
               {nestedHeadings.map((heading, index) => (
                 <li>
-
                   <a href={`#${heading.id}`}>{heading.innerText}</a>
                 </li>
 
               ))}
             </ul>
           </div>
-        </div>
+        </TableOfContents>
 
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
 
-          <PostStyled className="col-span-4">
+          <PostStyled className="col-span-8 md:col-span-6 lg:col-span-4">
             <Head>
               <title>
                 {post.title} | Next.js Blog Example with {CMS_NAME}
@@ -173,7 +219,7 @@ export default function Post({ post, morePosts, preview }) {
 
 
         )}
-        <Sidebar tags={[{ name: "React" }]} />
+        <Sidebar className="col-span-8" tags={[{ name: "React" }]} />
 
 
 
@@ -183,7 +229,7 @@ export default function Post({ post, morePosts, preview }) {
             {/* <h2 className="mt-12 mb-12 text-5xl md:text-6xl leading-tight md:hidden">
                   More Content
                 </h2> */}
-            <MoreStories className="border-none pr-0 md:grid-cols-3"  posts={morePosts} />
+            <MoreStories className="border-none pr-0 md:grid-cols-3" posts={morePosts} />
           </div>)
         }
 

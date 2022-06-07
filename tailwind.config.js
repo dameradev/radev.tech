@@ -29,18 +29,32 @@ const themes = {
 
 module.exports = {
   content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-   
+
   theme: {
     extend: {
-      
+
       spacing: () => ({
         ...Array.from({ length: 96 }, (_, index) => index * 0.5)
           .filter((i) => i)
           .reduce(
-            (acc, i) => ({ ...acc, [i]: `${i / (baseFontSize / 4)}rem` 		 }),
+            (acc, i) => ({ ...acc, [i]: `${i / (baseFontSize / 4)}rem` }),
             {}
           ),
       }),
+      container: {
+        center: true,
+
+        // or have default horizontal padding
+        padding: '2rem',
+  
+        screens: {
+          sm: '600px',
+          md: '728px',
+          lg: '984px',
+          xl: '1240px',
+          '2xl': '1496px',
+        },
+      },
       typography: theme => ({
         DEFAULT: {
           css: {
