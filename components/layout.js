@@ -12,11 +12,11 @@ export default function Layout({ preview, children }) {
       <Header />
       {/* <ThemeSwitch /> */}
       <div className='h-32' />
-      <div className="min-h-screen ">
+      
 
-        <main>{children}</main>
+      <main>{children}</main>
        
-      </div>
+      
       {/* <Footer /> */}
     </>
   )
