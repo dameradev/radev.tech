@@ -30,7 +30,7 @@ export default function Index({ posts, tags, preview }) {
               excerpt={heroPost.excerpt}
             />
           )}
-          <ul className="flex gap-4 mt-20">
+          <ul className="flex gap-4 mt-20 flex-wrap">
             <li className="rounded-full border-[1px] px-6 py-2 text-xs text-secondary border-secondary">
               ALL TAGS
             </li>

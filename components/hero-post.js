@@ -24,11 +24,11 @@ export default function HeroPost({
 }) {
   
   return (
-    <section className='mt-10 grid grid-cols-1 md:grid-cols-2 justify-center gap-x-8 items-center '>
-      <div className="">
+    <section className='mt-10 grid grid-cols-1 lg:grid-cols-2 justify-center gap-x-8 items-center '>
+      <div className="mt-4 lg:mt-0">
         <CoverImage slug={slug} title={title} url={coverImage.url} />
       </div>
-      <div className="min-h-full order-first md:order-last grid grid-cols-1  md:gap-x-16 lg:gap-x-8 gap-y-4  ">
+      <div className="min-h-full order-first lg:order-last grid grid-cols-1  md:gap-x-16 lg:gap-x-8 gap-y-4   ">
         <h3 className="mb-4 text-3xl font-bold leading-tight  lg:text-4xl ">
           <Link href={`/posts/${slug}`}>
             <a className="hover:underline">{title}</a>

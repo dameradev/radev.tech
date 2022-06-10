@@ -5,13 +5,31 @@ import { MoonIcon, SunIcon } from "@heroicons/react/outline"
 import { getTheme, setDarkMode, setLightMode } from "../lib/fns"
 // : React.FC<EmptyProps> 
 const ThemeSwitch= () => {
-  const [isDark, toggleDark] = useState(false)
+  const [isDark, toggleDark] = useState(true)
 
   
+  // useEffect(() => {
+  //   const theme = getTheme();
+  //   const isSetDark = theme === "dark";
+
+  //   console.log("isSetDark", isSetDark)
+  //   if (isSetDark) {
+  //     setDarkMode()
+  //   } else {
+  //     setLightMode()
+  //   }
+  // }, [isDark]);
+  // const changeTheme = () => {
+  //   toggleDark(!isDark)
+  // }
+
+
+
   useEffect(() => {
-    // toggleDark(getTheme() === "dark")
-    setDarkMode()
-  }, []);
+    toggleDark(getTheme() === "dark")
+    // setDarkMode()
+  },[]);
+  
   const changeTheme = () => {
     toggleDark(!isDark)
     if (isDark) {
@@ -20,7 +38,8 @@ const ThemeSwitch= () => {
       setLightMode()
     }
   }
-  return (
+
+  return  (
     <Switch
       checked={!isDark}
       onChange={changeTheme}

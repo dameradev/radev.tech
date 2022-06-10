@@ -8,7 +8,7 @@ import PostHeader from 'components/post-header'
 import SectionSeparator from 'components/section-separator'
 import Layout from 'components/layout'
 import { getAllPostsWithSlug, getPostAndMorePosts } from 'lib/graphcms'
-import PostTitle from 'components/post-title'
+import PostTitle from 'components/PostTitle'
 import Head from 'next/head'
 import { CMS_NAME } from 'lib/constants'
 import styled from 'styled-components'
@@ -46,12 +46,16 @@ const PostStyled = styled.article`
     }
   }
 
-  /* .table-contents {
-    height: 100vh;
-  } */
 
   p {
     margin: 1rem 0;
+  }
+
+  ul {
+    list-style: disc;
+    li {
+      margin: 1rem 0;
+    }
   }
 
 
@@ -122,15 +126,6 @@ const TableOfContents = styled.div`
     }
   }
 `
-// const isInViewport = (elem) => {
-//   const bounding = elem.getBoundingClientRect();
-//   return (
-//     bounding.top >= 0 &&
-//     bounding.left >= 0 &&
-//     bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-//     bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
-//   );
-// };
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter()
 
@@ -182,7 +177,7 @@ export default function Post({ post, morePosts, preview }) {
         {/* <Header /> */}
         <TableOfContents className='relative col-span-2 hidden lg:block'>
 
-          <div className='pt-14 flex flex-col  sticky top-30 table-contents pr-2'>
+          <div className='pt-14 flex flex-col  sticky top-30 table-contents pr-4'>
             <p className='text-xl mb-4 font-bold'>Jump to</p>
             <ul >
 
@@ -200,22 +195,31 @@ export default function Post({ post, morePosts, preview }) {
           <PostTitle>Loading…</PostTitle>
         ) : (
 
-          <PostStyled className="col-span-8 md:col-span-6 lg:col-span-4">
-            <Head>
-              <title>
-                {post.title} | Next.js Blog Example with {CMS_NAME}
-              </title>
-              {/* <meta property="og:image" content={post.ogImage.url} /> */}
-            </Head>
-            <PostHeader
-              title={post.title}
-              coverImage={post.coverImage}
-              date={post.date}
-              authors={post.authors}
-            />
-            <PostBody content={post.content} />
+          <div className="col-span-8 md:col-span-6 lg:col-span-4">
+            <PostStyled >
+              <Head>
+                <title>
+                  {post.title} | Next.js Blog Example with {CMS_NAME}
+                </title>
+                {/* <meta property="og:image" content={post.ogImage.url} /> */}
+              </Head>
+              <PostHeader
+                title={post.title}
+                coverImage={post.coverImage}
+                date={post.date}
+                authors={post.authors}
+              />
+              <PostBody content={post.content} />
 
-          </PostStyled>
+            </PostStyled>
+            <div className='mx-10'>
+              <textarea placeholder='Leave a comment' className='w-full bg-skin-base text-skin-fg  border-[1px] font-bold py-2 px-4 rounded-xl cursor-not-allowed'>
+                
+              </textarea>
+              <button className='text-white bg-secondary text-xs font-medium border-2 border-skin-secondary mt-4 px-6 py-2 rounded-full uppercase'>send</button>
+            </div>
+
+          </div>
 
 
         )}
@@ -226,10 +230,8 @@ export default function Post({ post, morePosts, preview }) {
         <SectionSeparator className="col-span-8" />
         {morePosts?.length > 0 && (
           <div className='col-span-8'>
-            {/* <h2 className="mt-12 mb-12 text-5xl md:text-6xl leading-tight md:hidden">
-                  More Content
-                </h2> */}
-            <MoreStories className="border-none pr-0 md:grid-cols-3" posts={morePosts} />
+
+            <MoreStories className="border-none pr-0 sm:pr-0 md:grid-cols-2 lg:grid-cols-3" posts={morePosts} />
           </div>)
         }
 
