@@ -6,48 +6,12 @@ import { getTheme, setDarkMode, setLightMode } from "../lib/fns"
 import { ThemeContext } from 'lib/themeContext'
 // : React.FC<EmptyProps> 
 const ThemeSwitch = () => {
-  const [isDark, toggleDark] = useState(true)
-
-
-  // useEffect(() => {
-  //   const theme = getTheme();
-  //   const isSetDark = theme === "dark";
-
-  //   console.log("isSetDark", isSetDark)
-  //   if (isSetDark) {
-  //     setDarkMode()
-  //   } else {
-  //     setLightMode()
-  //   }
-  // }, [isDark]);
-  // const changeTheme = () => {
-  //   toggleDark(!isDark)
-  // }
-
-
   const { toggle, toggleFunction } = React.useContext(ThemeContext);
 
-
-  // useEffect(() => {
-  //   toggleDark(getTheme() === "dark")
-  //   // setDarkMode()
-  // },[]);
-
-  // const changeTheme = () => {
-  //   toggleDark(!isDark)
-  //   if (isDark) {
-  //     setDarkMode()
-  //   } else {
-  //     setLightMode()
-  //   }
-  // }
-
-  console.log(toggle,'toggle')
   return (
     <Switch
       checked={!toggle}
       onChange={() => {
-        console.log('test')
         toggleFunction()
       }}
       className="bg-skin-fg z-10 relative flex justify-between items-center flex-shrink-0 h-8 w-16 px-1 border-2 border-transparent rounded-full cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-skin-focus focus-visible:ring-opacity-75"

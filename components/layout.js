@@ -11,7 +11,7 @@ export default function Layout({ preview, children }) {
       <Meta />
       <Header />
       {/* <ThemeSwitch /> */}
-      <div className='h-32' />
+      <div className='h-24' />
       
 
       <main>{children}</main>

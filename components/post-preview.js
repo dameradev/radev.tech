@@ -41,11 +41,11 @@ export default function PostPreview({
   return (
     <PostStyled>
       <div className="mb-5">
-        <CoverImage slug={slug} title={title} url={coverImage.url} />
+      {coverImage?.url && <CoverImage slug={slug} title={title} url={coverImage?.url} />}
       </div>
       <div className="mb-4 text-xs uppercase flex gap-x-4">
         <Date dateString={date} />
-        <PostInfoStyled>{authors[0].name}</PostInfoStyled>
+        <PostInfoStyled>{authors[0]?.name}</PostInfoStyled>
       </div>
       <h3 className="mb-3 text-3xl leading-snug">
         <Link href={`/posts/${slug}`}>
