@@ -1,29 +1,87 @@
-import React from 'react';
+import Container from '../components/container'
+import MoreStories from '../components/more-stories'
+import HeroPost from '../components/hero-post'
+import Intro from '../components/intro'
+import Layout from '../components/layout'
+import { getAllPostsForHome, getAllTags } from '../lib/graphcms'
+import Head from 'next/head'
+import { CMS_NAME } from '../lib/constants'
+import Sidebar from 'components/sidebar'
+import { getDate, getPosts, getFeaturedImage, getTags, getSlugs, getPostsByTag, getTag } from 'lib/wordpress'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-import { getPost, getPostsByTag, getSlugs, getTag } from 'lib/wordpress'
-import MoreStories from 'components/more-stories';
-import Layout from 'components/layout';
-const Tags = ({ posts }) => {
-  console.log(posts)
+export default function Index({ posts, tags, preview, wpPosts, }) {
+  const heroPost = wpPosts[0]
+  const morePosts = posts.slice(1)
+  console.log(heroPost['_embedded']?.author)
+
+
+  const router = useRouter();
+  console.log(router.query)
+
   return (
-    <Layout>
-      <MoreStories posts={posts} />
-    </Layout>
-  );
-};
+    <>
+      <Layout preview={preview}>
+        <Head>
+          <title>Next.js Blog Example with {CMS_NAME}</title>
+        </Head>
+        <Container>
 
-export default Tags;
 
+          {heroPost && (
+            <HeroPost
+              title={heroPost.title.rendered}
+              coverImage={getFeaturedImage(heroPost)?.source_url}
+
+              date={heroPost.date}
+              // author={heroPost.authors[0]}
+              slug={heroPost.slug}
+              excerpt={heroPost.excerpt.rendered}
+            />
+          )}
+          <ul className="flex gap-4 mt-20 flex-wrap">
+            <li className="rounded-full border-[1px] px-6 py-2 text-xs ">
+              <Link href='/'>
+                ALL TAGS
+              </Link>
+            </li>
+            {tags.map(tag => (
+              <li className={`rounded-full border-[1px] px-6 py-2 text-xs  uppercase  ${router.query.slug === tag.slug ? "text-secondary border-secondary" : ""}`}>
+                <Link href={tag.slug}>
+                  {tag.name}
+                </Link>
+              </li>
+            ))}
+
+          </ul>
+
+          <hr className="mt-10" />
+
+          <div className='grid grid-cols-8 '>
+            <div className='col-span-6 pr-6'>
+              {wpPosts.length > 0 && <MoreStories posts={wpPosts} />}
+            </div>
+
+            <Sidebar tags={tags} />
+          </div>
+
+        </Container>
+      </Layout>
+    </>
+  )
+}
 
 
 
 //hey Next, these are the possible slugs
 export async function getStaticPaths() {
   const paths = await getSlugs('tags');
-  
+
+
+  paths.push({ params: { slug: "" } })
 
   console.log(paths)
-
   return {
     paths,
     //this option below renders in the server (at request time) pages that were not rendered at build time
@@ -36,20 +94,24 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const tag = await getTag(params.slug);
   // console.log(params)
+
   const posts = await getPostsByTag(tag.id);
 
+  const wpPosts = await getPosts();
   console.log(posts)
   // console.log(tag)
   // console.log(tag._links)
 
 
   // fetch all posts
-  
-  
 
+
+  const tags = await getTags();
   return {
     props: {
-      posts
+      tags,
+      posts,
+      wpPosts: posts
     },
     revalidate: 10, // In seconds
   };
