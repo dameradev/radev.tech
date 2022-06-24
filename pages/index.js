@@ -7,10 +7,16 @@ import { getAllPostsForHome, getAllTags } from '../lib/graphcms'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import Sidebar from 'components/sidebar'
+import { getDate, getPosts, getFeaturedImage, getTags } from 'lib/wordpress'
+import Link from 'next/link'
 
-export default function Index({ posts, tags, preview }) {
-  const heroPost = posts[0]
+export default function Index({ posts, tags, preview, wpPosts, }) {
+  const heroPost = wpPosts[0]
   const morePosts = posts.slice(1)
+  console.log(heroPost['_embedded']?.author)
+
+
+
   return (
     <>
       <Layout preview={preview}>
@@ -19,15 +25,16 @@ export default function Index({ posts, tags, preview }) {
         </Head>
         <Container>
 
+
           {heroPost && (
             <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
+              title={heroPost.title.rendered}
+              coverImage={getFeaturedImage(heroPost)?.source_url}
 
               date={heroPost.date}
-              author={heroPost.authors[0]}
+              // author={heroPost.authors[0]}
               slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
+              excerpt={heroPost.excerpt.rendered}
             />
           )}
           <ul className="flex gap-4 mt-20 flex-wrap">
@@ -36,7 +43,9 @@ export default function Index({ posts, tags, preview }) {
             </li>
             {tags.map(tag => (
               <li className="rounded-full border-[1px] px-6 py-2 text-xs  uppercase">
-                {tag.name}
+                <Link href={tag.slug}>
+                  {tag.name}
+                </Link>
               </li>
             ))}
 
@@ -46,7 +55,7 @@ export default function Index({ posts, tags, preview }) {
 
           <div className='grid grid-cols-8 '>
             <div className='col-span-6 pr-6'>
-              {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+              {wpPosts.length > 0 && <MoreStories posts={wpPosts} />}
             </div>
 
             <Sidebar tags={tags} />
@@ -60,8 +69,12 @@ export default function Index({ posts, tags, preview }) {
 
 export async function getStaticProps({ preview = false }) {
   const posts = (await getAllPostsForHome(preview)) || []
-  const tags = (await getAllTags(preview)) || []
+  const tags = await getTags();
+
+  const wpPosts = await getPosts();
+
+  console.log(wpPosts.length)
   return {
-    props: { posts, tags, preview },
+    props: { posts, tags, preview, wpPosts },
   }
 }

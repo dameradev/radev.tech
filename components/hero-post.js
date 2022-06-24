@@ -22,11 +22,11 @@ export default function HeroPost({
   author,
   slug,
 }) {
-  
+
   return (
     <section className='mt-10 grid grid-cols-1 lg:grid-cols-2 justify-center gap-x-8 items-center '>
       <div className="mt-4 lg:mt-0">
-        <CoverImage slug={slug} title={title} url={coverImage.url} />
+        {coverImage && <CoverImage slug={slug} title={title} url={coverImage} />}
       </div>
       <div className="min-h-full order-first lg:order-last grid grid-cols-1  md:gap-x-16 lg:gap-x-8 gap-y-4   ">
         <div className='flex flex-col gap-6'>
@@ -35,7 +35,11 @@ export default function HeroPost({
               <a className="hover:underline">{title}</a>
             </Link>
           </h3>
-          <p className="mb-4 text-md leading-relaxed  ">{excerpt}</p>
+          <div className="mb-4 text-md leading-relaxed  "
+            dangerouslySetInnerHTML={{
+              __html: excerpt,
+            }}
+          ></div>
           <Link href={`/posts/${slug}`}><ReadMoreLink className="text-xs h-min cursor-pointer">Read more</ReadMoreLink></Link>
         </div>
         <div className='self-end'>

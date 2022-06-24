@@ -8,12 +8,13 @@ export default function MoreStories({ posts, className }) {
         {posts.map((post) => (
           <PostPreview
             key={post.slug}
-            title={post.title}
+            post={post}
+            title={post.title.rendered}
             coverImage={post.coverImage}
             date={post.date}
             authors={post.authors}
             slug={post.slug}
-            excerpt={post.excerpt}
+            excerpt={post.excerpt.rendered}
           />
         ))}
       </div>

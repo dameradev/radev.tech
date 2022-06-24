@@ -16,6 +16,7 @@ import "prismjs/themes/prism-tomorrow.css";
 import prism from "prismjs";
 import { useEffect, useRef, useState, createRef } from 'react'
 import Sidebar from 'components/sidebar'
+import { getPost, getSlugs } from 'lib/wordpress'
 
 
 const PostStyled = styled.article`
@@ -171,10 +172,11 @@ export default function Post({ post, morePosts, preview }) {
     return <ErrorPage statusCode={404} />
   }
 
+  console.log(post)
   return (
     <Layout preview={preview}>
       <Container className="grid grid-cols-8 relative">
-        {/* <Header /> */}
+        <Header />
         <TableOfContents className='relative col-span-2 hidden lg:block'>
 
           <div className='pt-14 flex flex-col  sticky top-30 table-contents pr-4'>
@@ -191,16 +193,16 @@ export default function Post({ post, morePosts, preview }) {
           </div>
         </TableOfContents>
 
-        {router.isFallback ? (
+        {/* {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
-        ) : (
+        ) : ( */}
 
           <div className="col-span-8 md:col-span-6 lg:col-span-4">
             <PostStyled >
               <Head>
                 <title>
-                  {post.title} | Next.js Blog Example with {CMS_NAME}
-                </title>
+                  {post.title.rendered} | Next.js Blog Example with 
+                </title> 
                 {/* <meta property="og:image" content={post.ogImage.url} /> */}
               </Head>
               <PostHeader
@@ -209,54 +211,59 @@ export default function Post({ post, morePosts, preview }) {
                 date={post.date}
                 authors={post.authors}
               />
-              <PostBody content={post.content} />
+              <PostBody content={post.content.rendered} />
 
             </PostStyled>
-            <div className='mx-10'>
+            {/* <div className='mx-10'>
               <textarea placeholder='Leave a comment' className='w-full bg-skin-base text-skin-fg  border-[1px] font-bold py-2 px-4 rounded-xl cursor-not-allowed'>
-                
+
               </textarea>
               <button className='text-white bg-secondary text-xs font-medium border-2 border-skin-secondary mt-4 px-6 py-2 rounded-full uppercase'>send</button>
-            </div>
+            </div> */}
 
           </div>
 
 
-        )}
+        {/* )} */}
+
+
         <Sidebar className="col-span-8" tags={[{ name: "React" }]} />
 
 
 
         <SectionSeparator className="col-span-8" />
-        {morePosts?.length > 0 && (
+        {/* {morePosts?.length > 0 && (
           <div className='col-span-8'>
 
             <MoreStories className="border-none pr-0 sm:pr-0 md:grid-cols-2 lg:grid-cols-3" posts={morePosts} />
           </div>)
-        }
+        } */}
 
       </Container>
     </Layout>
   )
 }
+//hey Next, these are the possible slugs
+export async function getStaticPaths() {
+  const paths = await getSlugs('posts');
 
-export async function getStaticProps({ params, preview = false }) {
-  const data = await getPostAndMorePosts(params.slug, preview)
+
   return {
-    props: {
-      preview,
-      post: data.post,
-      morePosts: data.morePosts || [],
-    },
-  }
+    paths,
+    //this option below renders in the server (at request time) pages that were not rendered at build time
+    //e.g when a new blogpost is added to the app
+    fallback: 'blocking',
+  };
 }
 
-export async function getStaticPaths() {
-  const posts = await getAllPostsWithSlug()
+//access the router, get the id, and get the data for that post
+export async function getStaticProps({ params }) {
+  const post = await getPost(params.slug);
+
   return {
-    paths: posts.map(({ slug }) => ({
-      params: { slug },
-    })),
-    fallback: true,
-  }
+    props: {
+      post,
+    },
+    revalidate: 10, // In seconds
+  };
 }
