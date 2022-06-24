@@ -79,7 +79,7 @@ export async function getStaticPaths() {
   const paths = await getSlugs('tags');
 
 
-  paths.push({ params: { slug: "" } })
+  // paths.push({ params: { slug: "" } })
 
   console.log(paths)
   return {
