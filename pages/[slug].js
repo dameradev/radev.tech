@@ -81,7 +81,6 @@ export async function getStaticPaths() {
 
   // paths.push({ params: { slug: "" } })
 
-  console.log(paths)
   return {
     paths,
     //this option below renders in the server (at request time) pages that were not rendered at build time
@@ -96,14 +95,6 @@ export async function getStaticProps({ params }) {
   // console.log(params)
 
   const posts = await getPostsByTag(tag.id);
-
-  const wpPosts = await getPosts();
-  console.log(posts)
-  // console.log(tag)
-  // console.log(tag._links)
-
-
-  // fetch all posts
 
 
   const tags = await getTags();

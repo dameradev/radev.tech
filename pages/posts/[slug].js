@@ -56,6 +56,11 @@ const PostStyled = styled.article`
     list-style: disc;
     li {
       margin: 1rem 0;
+      ul {
+        margin-left: 4rem;
+        margin-bottom: 2rem;
+        list-style: circle;
+      }
     }
   }
 
