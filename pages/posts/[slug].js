@@ -16,7 +16,7 @@ import "prismjs/themes/prism-tomorrow.css";
 import prism from "prismjs";
 import { useEffect, useRef, useState, createRef } from 'react'
 import Sidebar from 'components/sidebar'
-import { getPost, getSlugs } from 'lib/wordpress'
+import { getPost, getSlugs, getTags } from 'lib/wordpress'
 import { device } from 'styles/deviceSIzes'
 
 
@@ -138,7 +138,7 @@ const TableOfContents = styled.div`
     }
   }
 `
-export default function Post({ post, morePosts, preview }) {
+export default function Post({ post, morePosts, preview, tags }) {
   const router = useRouter()
 
   
@@ -239,7 +239,7 @@ export default function Post({ post, morePosts, preview }) {
         {/* )} */}
 
 
-        <Sidebar className="col-span-8" tags={[{ name: "React" }]} />
+        <Sidebar className="col-span-8" tags={tags} />
 
 
 
@@ -275,6 +275,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       post,
+      tags: await getTags()
     },
     revalidate: 10, // In seconds
   };
