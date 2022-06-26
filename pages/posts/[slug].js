@@ -184,7 +184,6 @@ export default function Post({ post, morePosts, preview, tags }) {
     return <ErrorPage statusCode={404} />
   }
 
-  console.log(post)
   return (
     <Layout preview={preview}>
       <Container className="grid grid-cols-8 relative">
