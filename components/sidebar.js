@@ -7,7 +7,7 @@ const Sidebar = ({ tags, className }) => {
 
   return (
     <div className={`px-4 md:px-0 ${className} md:pl-4 lg:pl-10 relative md:col-span-2 w-full text-center md:text-left`}>
-      <div className='sticky top-30 md:pt-14'>
+      <div className='sticky top-30 '>
         <div className=''>
 
 
@@ -37,7 +37,7 @@ const Sidebar = ({ tags, className }) => {
           </form>
 
         </div>
-        <div>
+        {/* <div>
           <p className='font-bold text-xl'>Let's connect</p>
           <ul className='flex justify-center md:justify-start gap-3 mt-4'>
             <li className='cursor-pointer'>
@@ -51,7 +51,7 @@ const Sidebar = ({ tags, className }) => {
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
 
 

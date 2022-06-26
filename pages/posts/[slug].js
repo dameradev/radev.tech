@@ -18,6 +18,7 @@ import { useEffect, useRef, useState, createRef } from 'react'
 import Sidebar from 'components/sidebar'
 import { getPost, getSlugs, getTags } from 'lib/wordpress'
 import { device } from 'styles/deviceSIzes'
+import TableOfContents from 'components/TableOfContents'
 
 
 const PostStyled = styled.article`
@@ -113,32 +114,7 @@ const PostStyled = styled.article`
     }
   }
 `
-const TableOfContents = styled.div`
-  li {
-    
-    position: relative;
 
-    &:not(:first-of-type) {
-      margin: 1rem 0;
-    }
-    &:before {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 7px;
-      left: -18px;
-      width: 10px;
-      height: 10px;
-      border: 1px solid var(--color-text);
-      border-radius: 50%;
-
-      &.active {
-        background: var(--color-secondary);
-        border: none;
-      }
-    }
-  }
-`
 export default function Post({ post, morePosts, preview, tags }) {
   const router = useRouter()
 
@@ -189,22 +165,8 @@ export default function Post({ post, morePosts, preview, tags }) {
     <Layout preview={preview}>
       <Container className="grid grid-cols-8 relative p-0">
         <Header />
-        <TableOfContents className='relative col-span-2 hidden lg:block'>
-
-          <div className='pt-14 flex flex-col  sticky top-30 table-contents pr-4'>
-            <p className='text-xl mb-4 font-bold'>Jump to</p>
-            <ul >
-
-              {nestedHeadings.map((heading, index) => (
-                <li>
-                  <a href={`#${heading.id}`}>{heading.innerText}</a>
-                </li>
-
-              ))}
-            </ul>
-          </div>
-        </TableOfContents>
-
+        <TableOfContents className="relative col-span-2 hidden lg:block" nestedHeadings={nestedHeadings} />
+    
         {/* {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : ( */}
@@ -222,7 +184,8 @@ export default function Post({ post, morePosts, preview, tags }) {
                 coverImage={post.coverImage}
                 date={post.date}
                 authors={post.authors}
-              />
+            />
+            <TableOfContents className="list-none lg:hidden" nestedHeadings={nestedHeadings} />
               <PostBody content={post.content.rendered} />
 
             </PostStyled>
