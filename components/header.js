@@ -10,7 +10,7 @@ export default function Header() {
 
   return (
     <header className=" bg-skin-header  shadow-md fixed w-full z-10 inset-0 h-fit  md:px-28">
-      <div className='container mx-auto flex items-center justify-between py-6'>
+      <div className='container mx-auto flex items-center justify-between py-6 z-20'>
 
         <div className='text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight ml-4 md:ml-0'>
           <Link href="/">
@@ -46,8 +46,8 @@ export default function Header() {
 
         <div>
           <MenuIcon className="w-8 cursor-pointer text-skin-secondary " onClick={() => setIsNavOpen(!isNavOpen)} />
-          <div className={`mt-10 w-full h-[100vh] absolute bg-skin-base  top-20 transition-all ${isNavOpen ? 'left-0': 'left-[100%]' } `}>
-            <nav className='flex  flex-col items-center gap-8 relative top-0 '>
+          <div className={`mt-10 w-full h-[100vh] absolute bg-skin-base z-10 top-10 left-0 transition-all ${isNavOpen ? 'translate-x-0': 'translate-x-[100%]' } `}>
+            <nav className='flex  flex-col items-center gap-8 relative top-0 mt-10 '>
               <ul className="flex flex-col items-center gap-6 text-lg justify-center uppercase">
                 <li className="">
                   <Link href="/">
