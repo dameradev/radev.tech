@@ -23,7 +23,7 @@ export default function Header() {
 
         </div>
 
-        <nav className='hidden md:flex items-center gap-8'>
+        <nav className='hidden md:flex items-center gap-8 text-white'>
           <ul className="flex justify-center uppercase">
             <li className="mr-4">
               <Link href="/">
@@ -44,7 +44,7 @@ export default function Header() {
           <ThemeSwitch />
         </nav>
 
-        <div>
+        <div className="sm:hidden">
           <MenuIcon className="w-8 cursor-pointer text-skin-secondary " onClick={() => setIsNavOpen(!isNavOpen)} />
           <div className={`mt-10 w-full h-[100vh] absolute bg-skin-base z-10 top-10 left-0 transition-all ${isNavOpen ? 'translate-x-0': 'translate-x-[100%]' } `}>
             <nav className='flex  flex-col items-center gap-8 relative top-0 mt-10 '>

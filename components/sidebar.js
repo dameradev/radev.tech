@@ -6,7 +6,7 @@ import { FaTwitter, FaGithub } from 'react-icons/fa';
 const Sidebar = ({ tags, className }) => {
 
   return (
-    <div className={` ${className} md:pl-4 relative md:col-span-2 w-full text-center md:text-left`}>
+    <div className={`px-4 md:px-0 ${className} md:pl-4 lg:pl-10 relative md:col-span-2 w-full text-center md:text-left`}>
       <div className='sticky top-30 md:pt-14'>
         <div className=''>
 

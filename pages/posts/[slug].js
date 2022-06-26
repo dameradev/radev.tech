@@ -21,7 +21,7 @@ import { device } from 'styles/deviceSIzes'
 
 
 const PostStyled = styled.article`
-
+  padding:0 2rem;
   .post-content {
     display: flex;
     flex-direction:column;
@@ -56,14 +56,15 @@ const PostStyled = styled.article`
   ul {
     list-style: disc;
     
-    
+    padding-left: 2rem;
     li {
       margin: 1rem 0;
       @media ${device.tablet} {
         margin-left: 1rem;
+        
       }
       ul {
-        margin-left: 4rem;
+        margin-left: 2rem;
         margin-bottom: 2rem;
         list-style: circle;
       }
@@ -186,7 +187,7 @@ export default function Post({ post, morePosts, preview, tags }) {
 
   return (
     <Layout preview={preview}>
-      <Container className="grid grid-cols-8 relative">
+      <Container className="grid grid-cols-8 relative p-0">
         <Header />
         <TableOfContents className='relative col-span-2 hidden lg:block'>
 
