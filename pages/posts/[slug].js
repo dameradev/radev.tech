@@ -17,6 +17,7 @@ import prism from "prismjs";
 import { useEffect, useRef, useState, createRef } from 'react'
 import Sidebar from 'components/sidebar'
 import { getPost, getSlugs } from 'lib/wordpress'
+import { device } from 'styles/deviceSIzes'
 
 
 const PostStyled = styled.article`
@@ -54,8 +55,13 @@ const PostStyled = styled.article`
 
   ul {
     list-style: disc;
+    
+    
     li {
       margin: 1rem 0;
+      @media ${device.tablet} {
+        margin-left: 1rem;
+      }
       ul {
         margin-left: 4rem;
         margin-bottom: 2rem;
@@ -135,6 +141,7 @@ const TableOfContents = styled.div`
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter()
 
+  
   useEffect(() => {
     prism.highlightAll();
   }, []);

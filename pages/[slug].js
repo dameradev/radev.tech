@@ -13,7 +13,7 @@ import { useRouter } from 'next/router'
 
 export default function Index({ posts, tags, preview, wpPosts, }) {
   const heroPost = wpPosts[0]
-  const morePosts = posts.slice(1)
+  const morePosts = wpPosts.slice(1)
   console.log(heroPost['_embedded']?.author)
 
 
@@ -58,9 +58,9 @@ export default function Index({ posts, tags, preview, wpPosts, }) {
 
           <hr className="mt-10" />
 
-          <div className='grid grid-cols-8 '>
-            <div className='col-span-6 pr-6'>
-              {wpPosts.length > 0 && <MoreStories posts={wpPosts} />}
+          <div className='sm:grid grid-cols-8 '>
+            <div className='col-span-6 sm:pr-6'>
+              {wpPosts.length > 0 && <MoreStories posts={morePosts} />}
             </div>
 
             <Sidebar tags={tags} />

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 import { FaTwitter, FaGithub } from 'react-icons/fa';
@@ -5,7 +6,7 @@ import { FaTwitter, FaGithub } from 'react-icons/fa';
 const Sidebar = ({ tags, className }) => {
 
   return (
-    <div className={`pl-4 ${className} relative md:col-span-2 w-full text-center md:text-left`}>
+    <div className={` ${className} md:pl-4 relative md:col-span-2 w-full text-center md:text-left`}>
       <div className='sticky top-30 md:pt-14'>
         <div className=''>
 
@@ -15,8 +16,11 @@ const Sidebar = ({ tags, className }) => {
           <ul className='flex flex-wrap gap-2 py-6 text-md justify-center md:justify-start'>
             {
               tags.map(tag => (
-                <li className='border-2 px-2 py-1 rounded-full border-gray-400 capitalize'>
-                  {tag.name}
+                <li className='border-2 px-2 py-1 rounded-full border-gray-400 uppercase text-sm'>
+                  <Link href={tag.slug}>
+                    {tag.name}
+                  </Link>
+                  
                 </li>
               ))
             }
