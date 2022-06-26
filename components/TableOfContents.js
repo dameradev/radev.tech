@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 
 const TableOfContentsStyles = styled.div`
-ul {
-  list-style: none;
-}
+  ul {
+    list-style: none !important;
+  }
   li {
     margin-left: 0;
     position: relative;

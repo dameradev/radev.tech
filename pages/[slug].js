@@ -40,7 +40,7 @@ export default function Index({ posts, tags, preview, wpPosts, }) {
               excerpt={heroPost.excerpt.rendered}
             />
           )}
-          <ul className="flex gap-4 mt-20 flex-wrap">
+          <ul className="flex gap-4 mt-10 lg:mt-20 flex-wrap">
             <li className="rounded-full border-[1px] px-6 py-2 text-xs ">
               <Link href='/'>
                 ALL TAGS
