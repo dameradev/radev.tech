@@ -1,10 +1,27 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { FaTwitter, FaGithub } from 'react-icons/fa';
 
 const Sidebar = ({ tags, className }) => {
 
+  const [email, setEmail] = useState('');
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log('insed')
+    const res = await fetch(`/api/subscribe`, {
+      body: JSON.stringify({
+        email
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST'
+    });
+    console.log(res)
+  }
   return (
     <div className={`md:mt-10 px-4 md:px-0 ${className}  lg:pl-10 relative md:col-span-2 w-full text-center md:text-left`}>
       <div className='sticky top-30 '>
@@ -20,7 +37,7 @@ const Sidebar = ({ tags, className }) => {
                   <Link href={tag.slug}>
                     {tag.name}
                   </Link>
-                  
+
                 </li>
               ))
             }
@@ -30,10 +47,10 @@ const Sidebar = ({ tags, className }) => {
 
         <div className='right-0 py-10  border-gray-300'>
 
-          <p className='font-bold text-xl'>Subscribe for news</p>
-          <form className='pt-4 flex flex-col '>
-            <input className='pl-6 p-3 border-[1px] bg-transparent rounded-full text-sm' type="email" placeholder="EMAIL ADDRESS" />
-            <button className='text-white bg-secondary text-xs font-medium border-2 border-skin-secondary mt-4 py-3 rounded-full uppercase' type="submit">Subscribe</button>
+          <p className='font-bold text-xl'>Subscribe for new</p>
+          <form method='post' className='pt-4 flex flex-col ' onSubmit={(e) => handleSubmit(e)} >
+            <input className='pl-6 p-3 border-[1px] bg-transparent rounded-full text-sm' type="email" placeholder="EMAIL ADDRESS" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <button type="submit" className='text-white bg-secondary text-xs font-medium border-2 border-skin-secondary mt-4 py-3 rounded-full uppercase' >Subscribe</button>
           </form>
 
         </div>
