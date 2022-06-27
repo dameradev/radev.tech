@@ -14,6 +14,7 @@ export default function Index({ posts, tags, preview, wpPosts, }) {
   const heroPost = wpPosts[0]
   const morePosts = wpPosts.slice(1)
   console.log(heroPost['_embedded']?.author)
+  
 
 
 
@@ -42,7 +43,7 @@ export default function Index({ posts, tags, preview, wpPosts, }) {
               ALL TAGS
             </li>
             {tags.map(tag => (
-              <li className="rounded-full border-[1px] px-6 py-2 text-xs  uppercase">
+              <li key={tag.name} className="rounded-full border-[1px] px-6 py-2 text-xs  uppercase">
                 <Link href={tag.slug}>
                   {tag.name}
                 </Link>
@@ -53,8 +54,8 @@ export default function Index({ posts, tags, preview, wpPosts, }) {
 
           <hr className="mt-10" />
 
-          <div className='sm:grid grid-cols-8 '>
-            <div className='col-span-6 sm:pr-6'>
+          <div className='md:grid grid-cols-8 '>
+            <div className='col-span-6 md:pr-6'>
               {wpPosts.length > 0 && <MoreStories posts={morePosts} />}
             </div>
 
@@ -73,7 +74,6 @@ export async function getStaticProps({ preview = false }) {
 
   const wpPosts = await getPosts();
 
-  console.log(wpPosts.length)
   return {
     props: { posts, tags, preview, wpPosts },
   }

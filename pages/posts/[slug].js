@@ -16,7 +16,7 @@ import "prismjs/themes/prism-tomorrow.css";
 import prism from "prismjs";
 import { useEffect, useRef, useState, createRef } from 'react'
 import Sidebar from 'components/sidebar'
-import { getPost, getSlugs, getTags } from 'lib/wordpress'
+import { getDate, getPost, getSlugs, getTags, postComment } from 'lib/wordpress'
 import { device } from 'styles/deviceSIzes'
 import TableOfContents from 'components/TableOfContents'
 
@@ -118,7 +118,10 @@ const PostStyled = styled.article`
 export default function Post({ post, morePosts, preview, tags }) {
   const router = useRouter()
 
-  
+  const [comment, setComment] = useState('');
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+
   useEffect(() => {
     prism.highlightAll();
   }, []);
@@ -137,66 +140,94 @@ export default function Post({ post, morePosts, preview, tags }) {
     })
 
     setNestedHeadings(headingElements)
-    //   headingElements.map((heading, index) => {
-
-    //     if (isInViewport(heading)) {
-    //       const updatedNestedHeadings = [...headingElements];
-
-    //       updatedNestedHeadings[index]?.classList.add("active");
-
-    //       console.log(updatedNestedHeadings)
-    //       if (!nestedHeadings[index]?.classList.contains('active')) {
-    //         setNestedHeadings(updatedNestedHeadings);
-    //       }
-    //     } else {
-    //       nestedHeadings[index]?.classList.remove("active");
-    //     }
-    //   })
-
-    // });
-
   }, []);
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await postComment(post.id, comment, name, email)
+    console.log(res)
+  }
+  console.log(post['_embedded']?.replies)
   return (
     <Layout preview={preview}>
       <Container className="grid grid-cols-8 relative p-0">
         <Header />
         <TableOfContents className="relative col-span-2 hidden lg:block" nestedHeadings={nestedHeadings} />
-    
+
         {/* {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : ( */}
 
-          <div className="col-span-8 md:col-span-6 lg:col-span-4">
-            <PostStyled >
-              <Head>
-                <title>
-                  {post.title.rendered} | Next.js Blog Example with 
-                </title> 
-                {/* <meta property="og:image" content={post.ogImage.url} /> */}
-              </Head>
-              <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-                authors={post.authors}
+        <div className="col-span-8 md:col-span-6 lg:col-span-4">
+          <PostStyled >
+            <Head>
+              <title>
+                {post.title.rendered} | Next.js Blog Example with
+              </title>
+              {/* <meta property="og:image" content={post.ogImage.url} /> */}
+            </Head>
+            <PostHeader
+              title={post.title}
+              coverImage={post.coverImage}
+              date={post.date}
+              authors={post.authors}
             />
             <TableOfContents className="list-none lg:hidden" nestedHeadings={nestedHeadings} />
-              <PostBody content={post.content.rendered} />
+            <PostBody content={post.content.rendered} />
 
-            </PostStyled>
-            {/* <div className='mx-10'>
-              <textarea placeholder='Leave a comment' className='w-full bg-skin-base text-skin-fg  border-[1px] font-bold py-2 px-4 rounded-xl cursor-not-allowed'>
+          </PostStyled>
+          <form className='mx-5 mr-8' onSubmit={(e) => handleSubmit(e)}>
+            <div className='flex mb-4 gap-4'>
+              <input
 
-              </textarea>
-              <button className='text-white bg-secondary text-xs font-medium border-2 border-skin-secondary mt-4 px-6 py-2 rounded-full uppercase'>send</button>
-            </div> */}
+                placeholder='Email'
+                className='w-full bg-skin-base text-skin-fg  border-[1px] border-slate-300 font-bold py-2 px-4 rounded-xl'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                placeholder='Name'
+                className='w-full bg-skin-base text-skin-fg  border-[1px] border-slate-300 font-bold py-2 px-4 rounded-xl'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <textarea
+              placeholder='Leave a comment'
+              className='w-full bg-skin-base text-skin-fg  border-[1px] border-slate-300 font-bold py-2 px-4 rounded-xl'
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            />
+            <button
+              className='text-white bg-secondary text-xs font-medium border-2 border-skin-secondary mt-4 px-6 py-2 rounded-full uppercase'
+              type='submit'
+            >
+              send
+            </button>
+          </form>
+          {post['_embedded']?.replies[0].map((comment, index) => {
+            return (
+              <div className="mr-6 mt-6 border-b-[1px] border-slate-200 pb-4 max-w-full">
+                <div className="flex justify-between">
+                  <div class="flex">
 
-          </div>
+                    <img className="w-12 rounded-full mr-4" src={comment.author_avatar_urls[96]} />
+                    <p className="font-bold mt-2 ">{comment.author_name} says:</p>
+                  </div>
+                  <p className='italic text-xs justify-end'>{getDate(comment.date)}</p>
+                </div>
+                <div className="col-span-8 md:col-span-6 lg:col-span-4 pl-17" key={index} dangerouslySetInnerHTML={{ __html: comment.content?.rendered }} />
+
+
+              </div>
+            )
+          })}
+        </div>
+
 
 
         {/* )} */}
