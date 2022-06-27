@@ -20,6 +20,9 @@ import { getDate, getPost, getSlugs, getTags, postComment } from 'lib/wordpress'
 import { device } from 'styles/deviceSIzes'
 import TableOfContents from 'components/TableOfContents'
 import Comment from 'components/comment'
+import { data } from 'autoprefixer'
+
+import { XCircleIcon, CheckCircleIcon } from "@heroicons/react/outline"
 
 
 const PostStyled = styled.article`
@@ -122,6 +125,8 @@ export default function Post({ post, morePosts, preview, tags }) {
   const [comment, setComment] = useState('');
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   useEffect(() => {
     prism.highlightAll();
@@ -151,8 +156,21 @@ export default function Post({ post, morePosts, preview, tags }) {
     e.preventDefault();
     const res = await postComment(post.id, comment, name, email)
     console.log(res)
+    if (res.data?.status === 400) {
+      if (res.data.params?.author_email) {
+        setError(res.data.params.author_email)
+      } else {
+        setError(res.message)
+      }
+    } else {
+      setComment('');
+      setEmail('');
+      setName('');
+      setError('');
+      setSuccess('Your comment has been submitted, it will show after approval!')
+    }
   }
-  console.log(post['_embedded']?.replies)
+
   return (
     <Layout preview={preview}>
       <Container className="grid grid-cols-8 relative p-0">
@@ -181,7 +199,20 @@ export default function Post({ post, morePosts, preview, tags }) {
             <PostBody content={post.content.rendered} />
 
           </PostStyled>
-          <form className='mx-5 mr-8' onSubmit={(e) => handleSubmit(e)}>
+          <form className='mx-5 md:mr-10' onSubmit={(e) => handleSubmit(e)}>
+            {error &&
+              <p className='flex text-red-600 mb-4 bg-red-100 w-fit p-4'>
+                <XCircleIcon className="w-6 mr-2" />
+                {error}
+              </p>
+            }
+            {success &&
+              <p className='flex text-green-600 mb-4 bg-green-100 w-fit p-4'>
+                <CheckCircleIcon className="w-6 mr-2" />
+                {success}
+              </p>
+            }
+            {console.log(error)}
             <div className='flex mb-4 gap-4'>
               <input
 
@@ -212,10 +243,9 @@ export default function Post({ post, morePosts, preview, tags }) {
           </form>
           {post['_embedded']?.replies?.[0]?.map((comment, index) => {
             const repliesToComment = post['_embedded']?.replies[0].filter(reply => reply.parent === comment.id)
-            // console.log(repliesToComment, )
             return comment.parent === 0 && (
               <>
-                <Comment comment={comment} hasReplies={repliesToComment.length} />
+                <Comment key={index} comment={comment} hasReplies={repliesToComment.length} />
                 {repliesToComment.map((reply, index) => {
                   return <Comment className="ml-4" reply comment={reply} />
                 })}
