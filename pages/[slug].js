@@ -11,6 +11,9 @@ import { getDate, getPosts, getFeaturedImage, getTags, getSlugs, getPostsByTag, 
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
+import FadeIn from 'react-fade-in/lib/FadeIn'
+
+
 export default function Index({ posts, tags, preview, wpPosts, }) {
   const heroPost = wpPosts[0]
   const morePosts = wpPosts.slice(1)
@@ -26,47 +29,49 @@ export default function Index({ posts, tags, preview, wpPosts, }) {
         <Head>
           <title>Next.js Blog Example with {CMS_NAME}</title>
         </Head>
-        <Container>
+        <FadeIn>
+          <Container>
 
 
-          {heroPost && (
-            <HeroPost
-              title={heroPost.title.rendered}
-              coverImage={getFeaturedImage(heroPost)?.source_url}
+            {heroPost && (
+              <HeroPost
+                title={heroPost.title.rendered}
+                coverImage={getFeaturedImage(heroPost)?.source_url}
 
-              date={heroPost.date}
-              // author={heroPost.authors[0]}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt.rendered}
-            />
-          )}
-          <ul className="flex gap-4 mt-10 lg:mt-20 flex-wrap">
-            <li className="rounded-full border-[1px] px-6 py-2 text-xs ">
-              <Link href='/'>
-                ALL TAGS
-              </Link>
-            </li>
-            {tags.map(tag => (
-              <li className={`rounded-full border-[1px] px-6 py-2 text-xs  uppercase  ${router.query.slug === tag.slug ? "text-secondary border-secondary" : ""}`}>
-                <Link href={tag.slug}>
-                  {tag.name}
+                date={heroPost.date}
+                // author={heroPost.authors[0]}
+                slug={heroPost.slug}
+                excerpt={heroPost.excerpt.rendered}
+              />
+            )}
+            <ul className="flex gap-4 mt-10 lg:mt-20 flex-wrap">
+              <li className="rounded-full border-[1px] px-6 py-2 text-xs ">
+                <Link href='/'>
+                  ALL TAGS
                 </Link>
               </li>
-            ))}
+              {tags.map(tag => (
+                <li className={`rounded-full border-[1px] px-6 py-2 text-xs  uppercase  ${router.query.slug === tag.slug ? "text-secondary border-secondary" : ""}`}>
+                  <Link href={tag.slug}>
+                    {tag.name}
+                  </Link>
+                </li>
+              ))}
 
-          </ul>
+            </ul>
 
-          <hr className="mt-10" />
+            <hr className="mt-10" />
 
-          <div className='sm:grid grid-cols-8 '>
-            <div className='col-span-6 sm:pr-6'>
-              {wpPosts.length > 0 && <MoreStories posts={morePosts} />}
+            <div className='sm:grid grid-cols-8 '>
+              <div className='col-span-6 sm:pr-6'>
+                {wpPosts.length > 0 && <MoreStories posts={morePosts} />}
+              </div>
+
+              <Sidebar tags={tags} />
             </div>
 
-            <Sidebar tags={tags} />
-          </div>
-
-        </Container>
+          </Container>
+        </FadeIn>
       </Layout>
     </>
   )
