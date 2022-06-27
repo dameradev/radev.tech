@@ -25,7 +25,7 @@ export default function HeroPost({
 
   return (
     <section className='mt-5 lg:mt-10 grid grid-cols-1 lg:grid-cols-2 justify-center gap-x-8 items-center '>
-      <div className="mt-4 lg:mt-0">
+      <div className="mt-4 lg:mt-0 hover:opacity-80">
         {coverImage && <CoverImage slug={slug} title={title} url={coverImage} />}
       </div>
       <div className="min-h-full order-first lg:order-last grid grid-cols-1  md:gap-x-16 lg:gap-x-8 gap-y-4   ">

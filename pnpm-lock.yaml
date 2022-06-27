@@ -12,6 +12,7 @@ specifiers:
   prismjs: ^1.28.0
   react: ^18.1.0
   react-dom: ^18.1.0
+  react-fade-in: ^2.0.1
   react-icons: ^4.4.0
   styled-components: ^5.3.5
   tailwindcss: ^3.0.24
@@ -26,6 +27,7 @@ dependencies:
   prismjs: 1.28.0
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
+  react-fade-in: 2.0.1_react@18.1.0
   react-icons: 4.4.0_react@18.1.0
   styled-components: 5.3.5_react-dom@18.1.0+react@18.1.0
 
@@ -904,6 +906,14 @@ packages:
       loose-envify: 1.4.0
       react: 18.1.0
       scheduler: 0.22.0
+    dev: false
+
+  /react-fade-in/2.0.1_react@18.1.0:
+    resolution: {integrity: sha512-oqS/WT4znaXEHmL+yo0IDUDY7uC9K4RP35j1SdRUEBspR09B2iIC0i8oJ28tPOr6Ez/L2aktF9p89j+DbsTVNw==}
+    peerDependencies:
+      react: ^16.8 || 17
+    dependencies:
+      react: 18.1.0
     dev: false
 
   /react-icons/4.4.0_react@18.1.0:

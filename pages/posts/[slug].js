@@ -22,6 +22,8 @@ import TableOfContents from 'components/TableOfContents'
 import Comment from 'components/comment'
 import { data } from 'autoprefixer'
 
+import FadeIn from 'react-fade-in/lib/FadeIn'
+
 import { XCircleIcon, CheckCircleIcon } from "@heroicons/react/outline"
 
 
@@ -173,105 +175,106 @@ export default function Post({ post, morePosts, preview, tags }) {
 
   return (
     <Layout preview={preview}>
-      <Container className="grid grid-cols-8 relative p-0">
-        <Header />
-        <TableOfContents className="relative col-span-2 hidden lg:block" nestedHeadings={nestedHeadings} />
+      <FadeIn>
+        <Container className="grid grid-cols-8 relative p-0">
 
-        {/* {router.isFallback ? (
+          <TableOfContents className="relative col-span-2 hidden lg:block" nestedHeadings={nestedHeadings} />
+
+          {/* {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : ( */}
 
-        <div className="col-span-8 md:col-span-6 lg:col-span-4">
-          <PostStyled >
-            <Head>
-              <title>
-                {post.title.rendered} | Next.js Blog Example with
-              </title>
-              {/* <meta property="og:image" content={post.ogImage.url} /> */}
-            </Head>
-            <PostHeader
-              title={post.title}
-              coverImage={post.coverImage}
-              date={post.date}
-              authors={post.authors}
-            />
-            <TableOfContents className="list-none lg:hidden" nestedHeadings={nestedHeadings} />
-            <PostBody content={post.content.rendered} />
-
-          </PostStyled>
-          <form className='mx-5 md:mr-10' onSubmit={(e) => handleSubmit(e)}>
-            {error &&
-              <p className='flex text-red-600 mb-4 bg-red-100 w-fit p-4'>
-                <XCircleIcon className="w-6 mr-2" />
-                {error}
-              </p>
-            }
-            {success &&
-              <p className='flex text-green-600 mb-4 bg-green-100 w-fit p-4'>
-                <CheckCircleIcon className="w-6 mr-2" />
-                {success}
-              </p>
-            }
-            {console.log(error)}
-            <div className='flex mb-4 gap-4'>
-              <input
-
-                placeholder='Email'
-                className='w-full bg-skin-base text-skin-fg  border-[1px] border-slate-300 font-bold py-2 px-4 rounded-xl'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+          <div className="col-span-8 md:col-span-6 lg:col-span-4">
+            <PostStyled >
+              <Head>
+                <title>
+                  {post.title.rendered} | Next.js Blog Example with
+                </title>
+                {/* <meta property="og:image" content={post.ogImage.url} /> */}
+              </Head>
+              <PostHeader
+                title={post.title}
+                coverImage={post.coverImage}
+                date={post.date}
+                authors={post.authors}
               />
-              <input
-                placeholder='Name'
+              <TableOfContents className="list-none lg:hidden" nestedHeadings={nestedHeadings} />
+              <PostBody content={post.content.rendered} />
+
+            </PostStyled>
+            <form className='mx-5 md:mr-10' onSubmit={(e) => handleSubmit(e)}>
+              {error &&
+                <p className='flex text-red-600 mb-4 bg-red-100 w-fit p-4'>
+                  <XCircleIcon className="w-6 mr-2" />
+                  {error}
+                </p>
+              }
+              {success &&
+                <p className='flex text-green-600 mb-4 bg-green-100 w-fit p-4'>
+                  <CheckCircleIcon className="w-6 mr-2" />
+                  {success}
+                </p>
+              }
+              <div className='flex mb-4 gap-4'>
+                <input
+
+                  placeholder='Email'
+                  className='w-full bg-skin-base text-skin-fg  border-[1px] border-slate-300 font-bold py-2 px-4 rounded-xl'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                  placeholder='Name'
+                  className='w-full bg-skin-base text-skin-fg  border-[1px] border-slate-300 font-bold py-2 px-4 rounded-xl'
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <textarea
+                placeholder='Leave a comment'
                 className='w-full bg-skin-base text-skin-fg  border-[1px] border-slate-300 font-bold py-2 px-4 rounded-xl'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
               />
-            </div>
-            <textarea
-              placeholder='Leave a comment'
-              className='w-full bg-skin-base text-skin-fg  border-[1px] border-slate-300 font-bold py-2 px-4 rounded-xl'
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            />
-            <button
-              className='text-white bg-secondary text-xs font-medium border-2 border-skin-secondary mt-4 px-6 py-2 rounded-full uppercase'
-              type='submit'
-            >
-              send
-            </button>
-          </form>
-          {post['_embedded']?.replies?.[0]?.map((comment, index) => {
-            const repliesToComment = post['_embedded']?.replies[0].filter(reply => reply.parent === comment.id)
-            return comment.parent === 0 && (
-              <>
-                <Comment key={index} comment={comment} hasReplies={repliesToComment.length} />
-                {repliesToComment.map((reply, index) => {
-                  return <Comment className="ml-4" reply comment={reply} />
-                })}
-              </>
-            )
-          })}
-        </div>
+              <button
+                className='text-white bg-secondary text-xs font-medium border-2 border-skin-secondary mt-4 px-6 py-2 rounded-full uppercase'
+                type='submit'
+              >
+                send
+              </button>
+            </form>
+            {post['_embedded']?.replies?.[0]?.map((comment, index) => {
+              const repliesToComment = post['_embedded']?.replies[0].filter(reply => reply.parent === comment.id)
+              return comment.parent === 0 && (
+                <>
+                  <Comment key={index} comment={comment} hasReplies={repliesToComment.length} />
+                  {repliesToComment.map((reply, index) => {
+                    return <Comment className="ml-4" reply comment={reply} />
+                  })}
+                </>
+              )
+            })}
+          </div>
 
 
 
-        {/* )} */}
+          {/* )} */}
 
 
-        <Sidebar className="col-span-8" tags={tags} />
+          <Sidebar className="col-span-8" tags={tags} />
 
 
 
-        <SectionSeparator className="col-span-8" />
-        {/* {morePosts?.length > 0 && (
+          <SectionSeparator className="col-span-8" />
+          {/* {morePosts?.length > 0 && (
           <div className='col-span-8'>
 
             <MoreStories className="border-none pr-0 sm:pr-0 md:grid-cols-2 lg:grid-cols-3" posts={morePosts} />
           </div>)
         } */}
 
-      </Container>
+        </Container>
+      </FadeIn>
     </Layout>
   )
 }

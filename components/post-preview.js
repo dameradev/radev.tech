@@ -7,6 +7,12 @@ import { getFeaturedImage } from 'lib/wordpress'
 
 
 const PostStyled = styled.div`
+  &:hover { 
+    img {
+      opacity: 0.8;
+    }
+  }
+
   max-height: min-content;
   .excerpt {
     display: -webkit-box;
