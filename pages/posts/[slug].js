@@ -19,6 +19,7 @@ import Sidebar from 'components/sidebar'
 import { getDate, getPost, getSlugs, getTags, postComment } from 'lib/wordpress'
 import { device } from 'styles/deviceSIzes'
 import TableOfContents from 'components/TableOfContents'
+import Comment from 'components/comment'
 
 
 const PostStyled = styled.article`
@@ -209,21 +210,16 @@ export default function Post({ post, morePosts, preview, tags }) {
               send
             </button>
           </form>
-          {post['_embedded']?.replies[0].map((comment, index) => {
-            return (
-              <div className="mr-6 mt-6 border-b-[1px] border-slate-200 pb-4 max-w-full">
-                <div className="flex justify-between">
-                  <div class="flex">
-
-                    <img className="w-12 rounded-full mr-4" src={comment.author_avatar_urls[96]} />
-                    <p className="font-bold mt-2 ">{comment.author_name} says:</p>
-                  </div>
-                  <p className='italic text-xs justify-end'>{getDate(comment.date)}</p>
-                </div>
-                <div className="col-span-8 md:col-span-6 lg:col-span-4 pl-17" key={index} dangerouslySetInnerHTML={{ __html: comment.content?.rendered }} />
-
-
-              </div>
+          {post['_embedded']?.replies?.[0]?.map((comment, index) => {
+            const repliesToComment = post['_embedded']?.replies[0].filter(reply => reply.parent === comment.id)
+            // console.log(repliesToComment, )
+            return comment.parent === 0 && (
+              <>
+                <Comment comment={comment} hasReplies={repliesToComment.length} />
+                {repliesToComment.map((reply, index) => {
+                  return <Comment className="ml-4" reply comment={reply} />
+                })}
+              </>
             )
           })}
         </div>
