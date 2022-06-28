@@ -4,7 +4,7 @@ import React from 'react';
 const Comment = ({ className, comment, reply, hasReplies }) => {
   
   return (
-    <div className={`mr-6 mt-6 border-slate-200 pb-4 max-w-full ${className} ${!hasReplies ? 'border-b-[1px]' : ""}`}>
+    <div className={`mx-6 mt-6 border-slate-200 pb-4 max-w-full ${className} ${!hasReplies ? 'border-b-[1px]' : ""}`}>
       <div className="flex justify-between">
         <div class="flex">
 
