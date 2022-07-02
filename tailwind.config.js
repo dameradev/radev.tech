@@ -24,6 +24,8 @@ const themes = {
     header: "var(--color-header)",//withOpacity("--color-header"),
     "header-fg": withOpacity("--color-header-text"),
     gray: "var(--color-gray)",//withOpacity("--color-header"),
+    'info-window': "var(--color-info-window)",//withOpacity("--color-header"),
+    'code': "var(--color-code)",//withOpacity("--color-header"),
   },
 }
 

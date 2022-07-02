@@ -9,7 +9,7 @@ export default function Header() {
 
 
   return (
-    <header className=" bg-skin-header  shadow-md fixed w-full z-10 inset-0 h-fit  md:px-28">
+    <header className=" bg-skin-header  shadow-md fixed w-full z-10 inset-0 h-fit  ">
       <div className='container mx-auto flex items-center justify-between py-6 z-20'>
 
         <div className='text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight ml-4 md:ml-0'>
@@ -44,7 +44,7 @@ export default function Header() {
           <ThemeSwitch />
         </nav>
 
-        <div className="sm:hidden">
+        <div className="md:hidden">
           <div className="cursor-pointer text-skin-secondary bg-slate-700 p-2 rounded-full hover:opacity-90 border-2 border-transparent ease-in hover:border-secondary">
             <MenuIcon className="w-6" onClick={() => setIsNavOpen(!isNavOpen)} />
           </div>

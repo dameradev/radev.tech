@@ -58,6 +58,9 @@ const PostStyled = styled.article`
 
   p {
     margin: 1rem 0;
+    &.m-0 {
+      margin: 0;
+    }
   }
 
   ul {
@@ -81,6 +84,24 @@ const PostStyled = styled.article`
 
   pre {
     min-width: 100%;
+    margin-top:0;
+    background: var(--color-code);
+    box-shadow: 0 4px 12px rgba(0,0,0,.38);
+    /* margin-top: 6rem !important; */
+    position: relative;
+    /* overflow: unset; */
+    /* code {
+      overflow:scroll !important;
+      position:static;
+    } */
+    /* overflow-x: scroll !important;
+    overflow-y: visible; */
+    /* code {
+      overflow-y: visible !important;
+      overflow-x: scroll;
+      /* overflow-y: visible; */
+      /* overflow: visible; */
+    } */
     button {
       background: var(--primary);
     }
@@ -135,8 +156,50 @@ export default function Post({ post, morePosts, preview, tags }) {
   }, []);
 
   const [nestedHeadings, setNestedHeadings] = useState([]);
+const [elementAdded, setElementAdded] = useState(false);
+  useEffect(() => {
+    // if (!elementAdded) {
+      document.querySelectorAll(".wp-block-code").forEach(function (block) {
+        // block.appendChild(document.createElement("p").innerHTML = `${block.title}`);
+        let fileName = document.createElement("p")
+        const code = block.querySelector("code")
+        
+        let fileNameText;
+        fileName.classList = "w-fit top-[-30px] left-0 m-0 px-4 py-2 bg-code shadow-slate-800 text-white"
+        fileName.style = "box-shadow: 4px 0 10px -10px #010101;"
+        switch (code.lang) {
+          case "javascript":
+            fileNameText = "JS"
+            // fileName.classList.add("text-yellow-400")
+            fileName.innerHTML = `<span class="text-yellow-400">${fileNameText}</span> ${block.title}`
+            break;
+          case "typescript":
+            fileNameText="TS"
+            fileName.innerHTML = `<span class="text-blue-400">${fileNameText}</span> ${block.title}`
+            break;
+          default:
+            fileNameText = code.lang.toUpperCase()
+            fileName.innerHTML = `<span class="text-blue-400">${fileNameText}</span> ${block.title}`
+            break;
+        }
+  
+        block.classList.add("relative")
+        
+        block.classList.add("pt-10")
+        
+        const parentDiv = block.parentNode;
+        // console.log(node)
+        if (parentDiv) parentDiv.insertBefore(fileName, block)
+        // document.insertBefore(fileName, block)
+      })
+      setElementAdded(true)
+    // }
+  },[]);
+
 
   useEffect(() => {
+      // block.appendChild()
+
 
     const headingElements = Array.from(
       document.querySelector('.post-content').querySelectorAll("h2")
@@ -201,8 +264,9 @@ export default function Post({ post, morePosts, preview, tags }) {
               <TableOfContents className="list-none lg:hidden" nestedHeadings={nestedHeadings} />
               <PostBody content={post.content.rendered} />
 
+              
             </PostStyled>
-            <form className='mx-5 md:mr-10' onSubmit={(e) => handleSubmit(e)}>
+            <form className='mt-10 mx-5  md:mr-10' onSubmit={(e) => handleSubmit(e)}>
               {error &&
                 <p className='flex text-red-600 mb-4 bg-red-100 w-fit p-4'>
                   <XCircleIcon className="w-6 mr-2" />

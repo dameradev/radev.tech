@@ -37,6 +37,9 @@ body {
     --color-anchor: #8b5cf6;
     --color-anchor-hover: #a78bfa;
 
+    --color-info-window: #F3F4F6;
+    --color-code: #22262f;
+
     --color-primary: #fff;
     --color-secondary: #F24E41;
 
@@ -58,6 +61,9 @@ body {
     --color-focus: #84cc16;
     --color-anchor: #f472b6;
     --color-anchor-hover: #ec4899;
+
+    --color-info-window: #2e313e;
+    --color-code: #22262f;
 
     --color-primary: #1e3a8a;
     --color-secondary: #F24E41;
