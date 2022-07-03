@@ -82,30 +82,42 @@ const PostStyled = styled.article`
   }
 
 
+  div.bg-info-window {
+    margin: 2rem 0;
+    background: var(--color-info-window);
+    border-radius: 10px;
+  }
+
   pre {
     min-width: 100%;
+    max-height: 100vh;
     margin-top:0;
     background: var(--color-code);
     box-shadow: 0 4px 12px rgba(0,0,0,.38);
+    font-size: 1.2rem;
     /* margin-top: 6rem !important; */
     position: relative;
-    /* overflow: unset; */
-    /* code {
-      overflow:scroll !important;
-      position:static;
-    } */
-    /* overflow-x: scroll !important;
-    overflow-y: visible; */
-    /* code {
-      overflow-y: visible !important;
-      overflow-x: scroll;
-      /* overflow-y: visible; */
-      /* overflow: visible; */
-    } */
+
+    code {
+      padding: 0;
+      margin: 0;
+    }
+    
+
     button {
       background: var(--primary);
     }
   }
+
+
+    code {
+      background: var(--color-code);
+      padding: 0.3rem 1rem;
+      border-radius: 5px;
+      /* margin-right: 0.5rem; */
+      font-size:1.6rem;
+    }
+
 
   .file-name {
     margin-top: 2rem;
@@ -113,7 +125,16 @@ const PostStyled = styled.article`
     text-align: right;
   }
 
-  span.error {
+  img {
+    align-self: center;
+  }
+
+  .wp-block-image {
+    display: flex;
+    
+    justify-content: center;
+  }
+  /* span.error {
     color: red;
   }
 
@@ -139,7 +160,7 @@ const PostStyled = styled.article`
       display: flex;
       justify-content: space-between;
     }
-  }
+  } */
 `
 
 export default function Post({ post, morePosts, preview, tags }) {
@@ -156,9 +177,9 @@ export default function Post({ post, morePosts, preview, tags }) {
   }, []);
 
   const [nestedHeadings, setNestedHeadings] = useState([]);
-const [elementAdded, setElementAdded] = useState(false);
+  const [elementAdded, setElementAdded] = useState(false);
   useEffect(() => {
-    // if (!elementAdded) {
+    if (!elementAdded) {
       document.querySelectorAll(".wp-block-code").forEach(function (block) {
         // block.appendChild(document.createElement("p").innerHTML = `${block.title}`);
         let fileName = document.createElement("p")
@@ -177,9 +198,13 @@ const [elementAdded, setElementAdded] = useState(false);
             fileNameText="TS"
             fileName.innerHTML = `<span class="text-blue-400">${fileNameText}</span> ${block.title}`
             break;
+          case "css":
+            fileNameText="CSS"
+            fileName.innerHTML = `<span class="text-blue-600">${fileNameText}</span> ${block.title}`
+            break;
           default:
             fileNameText = code.lang.toUpperCase()
-            fileName.innerHTML = `<span class="text-blue-400">${fileNameText}</span> ${block.title}`
+            fileName.innerHTML = `<span class="text-secondary">${fileNameText}</span> ${block.title}`
             break;
         }
   
@@ -193,7 +218,7 @@ const [elementAdded, setElementAdded] = useState(false);
         // document.insertBefore(fileName, block)
       })
       setElementAdded(true)
-    // }
+    }
   },[]);
 
 
@@ -247,7 +272,7 @@ const [elementAdded, setElementAdded] = useState(false);
           <PostTitle>Loading…</PostTitle>
         ) : ( */}
 
-          <div className="col-span-8 md:col-span-6 lg:col-span-4">
+          <div className="col-span-8 md:col-span-6 lg:col-span-4 md:mr-5" >
             <PostStyled >
               <Head>
                 <title>
@@ -266,7 +291,7 @@ const [elementAdded, setElementAdded] = useState(false);
 
               
             </PostStyled>
-            <form className='mt-10 mx-5  md:mr-10' onSubmit={(e) => handleSubmit(e)}>
+            <form className='mt-10 mx-5 ' onSubmit={(e) => handleSubmit(e)}>
               {error &&
                 <p className='flex text-red-600 mb-4 bg-red-100 w-fit p-4'>
                   <XCircleIcon className="w-6 mr-2" />
