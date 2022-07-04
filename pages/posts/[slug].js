@@ -338,7 +338,7 @@ export default function Post({ post, morePosts, preview, tags }) {
                 <>
                   <Comment key={index} comment={comment} hasReplies={repliesToComment.length} />
                   {repliesToComment.map((reply, index) => {
-                    return <Comment className="ml-4" reply comment={reply} />
+                    return <Comment className="pl-6" reply comment={reply} />
                   })}
                 </>
               )
