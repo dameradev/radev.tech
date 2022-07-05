@@ -261,6 +261,15 @@ export default function Post({ post, morePosts, preview, tags }) {
     }
   }
 
+  // console.log(post)
+  useEffect(() => {
+    fetch(`/api/views/${post.slug}`, {
+      method: 'POST'
+    });
+  }, [post.slug]);
+
+
+
   return (
     <Layout preview={preview}>
       <FadeIn>
