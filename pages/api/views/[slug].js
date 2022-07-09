@@ -7,11 +7,10 @@ export default async function handler(
   res
 ) {
   if (req.method === 'POST') {
-    console.log(supabaseClient)
+    const { slug } = req.query
     // Call our stored procedure with the page_slug set by the request params slug
-    const response = await supabaseClient.rpc("increment_page_view", {name: "dame"})
-
-    console.log(response)
+    await supabaseClient.functions.invoke("increment_page_view", { body: JSON.stringify({ slug }) });
+    
     return res.status(200).json({
       message: `Successfully incremented page: ${req.query.slug}`
     });
@@ -24,7 +23,7 @@ export default async function handler(
       .select('view_count')
       .filter('slug', 'eq', req.query.slug);
 
-    console.log(response)
+    // console.log(response)
     if (response?.data) {
       return res.status(200).json({
         total: response?.data[0]?.view_count || null

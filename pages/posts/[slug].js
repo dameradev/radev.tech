@@ -171,6 +171,8 @@ export default function Post({ post, morePosts, preview, tags }) {
   const [name, setName] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  // state for total views
+  const [totalViews, setTotalViews] = useState(0);
 
   useEffect(() => {
     prism.highlightAll();
@@ -219,7 +221,13 @@ export default function Post({ post, morePosts, preview, tags }) {
       })
       setElementAdded(true)
     }
-  },[]);
+  }, []);
+  
+  // useEffect(() => {
+    
+  
+  // }, [])
+
 
 
   useEffect(() => {
@@ -264,8 +272,17 @@ export default function Post({ post, morePosts, preview, tags }) {
   // console.log(post)
   useEffect(() => {
     fetch(`/api/views/${post.slug}`, {
-      method: 'POST'
+      method: 'POST',
     });
+
+    fetch(`/api/views/${post.slug}`, {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setTotalViews(data.total)
+      })
+    
   }, [post.slug]);
 
 
@@ -294,6 +311,7 @@ export default function Post({ post, morePosts, preview, tags }) {
                 coverImage={post.coverImage}
                 date={post.date}
                 authors={post.authors}
+                totalViews={totalViews}
               />
               <TableOfContents className="list-none lg:hidden" nestedHeadings={nestedHeadings} />
               <PostBody content={post.content.rendered} />

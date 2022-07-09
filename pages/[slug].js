@@ -17,11 +17,11 @@ import FadeIn from 'react-fade-in/lib/FadeIn'
 export default function Index({ posts, tags, preview, wpPosts, }) {
   const heroPost = wpPosts[0]
   const morePosts = wpPosts.slice(1)
-  console.log(heroPost['_embedded']?.author)
+  // console.log(heroPost['_embedded']?.author)
 
 
   const router = useRouter();
-  console.log(router.query)
+  // console.log(router.query)
 
   return (
     <>
