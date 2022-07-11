@@ -25,6 +25,7 @@ import { data } from 'autoprefixer'
 import FadeIn from 'react-fade-in/lib/FadeIn'
 
 import { XCircleIcon, CheckCircleIcon } from "@heroicons/react/outline"
+import { supabaseClient } from 'lib/hooks/useSupabase'
 
 
 const PostStyled = styled.article`
@@ -163,7 +164,7 @@ const PostStyled = styled.article`
   } */
 `
 
-export default function Post({ post, morePosts, preview, tags }) {
+export default function Post({ post, morePosts, preview, tags, totalViews: staticTotalViews }) {
   const router = useRouter()
 
   const [comment, setComment] = useState('');
@@ -172,7 +173,7 @@ export default function Post({ post, morePosts, preview, tags }) {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   // state for total views
-  const [totalViews, setTotalViews] = useState(0);
+  const [totalViews, setTotalViews] = useState(staticTotalViews);
 
   useEffect(() => {
     prism.highlightAll();
@@ -203,6 +204,10 @@ export default function Post({ post, morePosts, preview, tags }) {
           case "css":
             fileNameText="CSS"
             fileName.innerHTML = `<span class="text-blue-600">${fileNameText}</span> ${block.title}`
+            break;
+          case "markup":
+            fileNameText="HTML"
+            fileName.innerHTML = `<span class="text-orange§-600">${fileNameText}</span> ${block.title}`
             break;
           default:
             fileNameText = code.lang.toUpperCase()
@@ -411,9 +416,17 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const post = await getPost(params.slug);
 
+  const response = await supabaseClient
+  .from('posts')
+  .select('view_count')
+    .filter('slug', 'eq', params.slug);
+  const totalViews = response.data[0]?.view_count || 0;
+
+  
   return {
     props: {
       post,
+      totalViews,
       tags: await getTags()
     },
     revalidate: 10, // In seconds
