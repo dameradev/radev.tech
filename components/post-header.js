@@ -3,7 +3,7 @@ import Date from '../components/date'
 import CoverImage from '../components/cover-image'
 import PostTitle from '../components/PostTitle'
 
-export default function PostHeader({ title, coverImage,totalViews, date, authors }) {
+export default function PostHeader({ title, coverImage, totalViews, timeToRead, date, authors }) {
   console.log(coverImage)
   return (
     <>
@@ -11,14 +11,17 @@ export default function PostHeader({ title, coverImage,totalViews, date, authors
         {/* {authors[0] && <Avatar name={authors[0].name} picture={authors[0].picture.url} dateString={date} />} */}
       </div>
       <PostTitle>{title.rendered}</PostTitle>
-      <p className='text-center text-xl'>{totalViews} views </p>
+      <div class="flex gap-4 justify-center">
+        <p className='text-center text-xl'>{totalViews} views </p>
+        <p className='text-center text-xl'>{Math.round(timeToRead.minutes)} min read </p>
+      </div>
       {/* <div className="md:mx-5 sm:mx-0 flex justify-center w-full cover-photo"> */}
-        {/* <CoverImage title={title} url={coverImage.url} /> */}
+      {/* <CoverImage title={title} url={coverImage.url} /> */}
       {/* </div> */}
       <div className="max-w-2xl mx-auto">
-        
+
         <div className="text-lg">
-          
+
         </div>
       </div>
     </>

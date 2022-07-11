@@ -26,7 +26,7 @@ import FadeIn from 'react-fade-in/lib/FadeIn'
 
 import { XCircleIcon, CheckCircleIcon } from "@heroicons/react/outline"
 import { supabaseClient } from 'lib/hooks/useSupabase'
-
+import readingTime from 'reading-time'
 
 const PostStyled = styled.article`
   padding:0 2rem;
@@ -36,7 +36,7 @@ const PostStyled = styled.article`
     img {
       align-self: center !important;
       margin: 2rem 0;
-      background: #fff;
+      background: var(--color-background);
     }
     a {
       color: #FFA700;
@@ -178,7 +178,9 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
   useEffect(() => {
     prism.highlightAll();
   }, []);
-
+  const timeToRead = readingTime(post.content.rendered.replace(/<[^>]+>/g, ''));
+  console.log(timeToRead)
+  
   const [nestedHeadings, setNestedHeadings] = useState([]);
   const [elementAdded, setElementAdded] = useState(false);
   useEffect(() => {
@@ -187,7 +189,7 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
         // block.appendChild(document.createElement("p").innerHTML = `${block.title}`);
         let fileName = document.createElement("p")
         const code = block.querySelector("code")
-        
+
         let fileNameText;
         fileName.classList = "w-fit top-[-30px] left-0 m-0 px-4 py-2 bg-code shadow-slate-800 text-white"
         fileName.style = "box-shadow: 4px 0 10px -10px #010101;"
@@ -198,15 +200,15 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
             fileName.innerHTML = `<span class="text-yellow-400">${fileNameText}</span> ${block.title}`
             break;
           case "typescript":
-            fileNameText="TS"
+            fileNameText = "TS"
             fileName.innerHTML = `<span class="text-blue-400">${fileNameText}</span> ${block.title}`
             break;
           case "css":
-            fileNameText="CSS"
+            fileNameText = "CSS"
             fileName.innerHTML = `<span class="text-blue-600">${fileNameText}</span> ${block.title}`
             break;
           case "markup":
-            fileNameText="HTML"
+            fileNameText = "HTML"
             fileName.innerHTML = `<span class="text-orange§-600">${fileNameText}</span> ${block.title}`
             break;
           default:
@@ -214,11 +216,11 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
             fileName.innerHTML = `<span class="text-secondary">${fileNameText}</span> ${block.title}`
             break;
         }
-  
+
         block.classList.add("relative")
-        
+
         block.classList.add("pt-10")
-        
+
         const parentDiv = block.parentNode;
         // console.log(node)
         if (parentDiv) parentDiv.insertBefore(fileName, block)
@@ -227,16 +229,16 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
       setElementAdded(true)
     }
   }, []);
-  
+
   // useEffect(() => {
-    
-  
+
+
   // }, [])
 
 
 
   useEffect(() => {
-      // block.appendChild()
+    // block.appendChild()
 
 
     const headingElements = Array.from(
@@ -287,7 +289,7 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
       .then(data => {
         setTotalViews(data.total)
       })
-    
+
   }, [post.slug]);
 
 
@@ -317,11 +319,12 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
                 date={post.date}
                 authors={post.authors}
                 totalViews={totalViews}
+                timeToRead={timeToRead}
               />
               <TableOfContents className="list-none lg:hidden" nestedHeadings={nestedHeadings} />
               <PostBody content={post.content.rendered} />
 
-              
+
             </PostStyled>
             <form className='mt-10 mx-5 ' onSubmit={(e) => handleSubmit(e)}>
               {error &&
@@ -417,12 +420,13 @@ export async function getStaticProps({ params }) {
   const post = await getPost(params.slug);
 
   const response = await supabaseClient
-  .from('posts')
-  .select('view_count')
+    .from('posts')
+    .select('view_count')
     .filter('slug', 'eq', params.slug);
   const totalViews = response.data[0]?.view_count || 0;
 
-  
+  console.log(post)
+
   return {
     props: {
       post,
