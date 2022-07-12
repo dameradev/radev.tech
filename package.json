@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "pnpm install --save-dev typescript @types/react @types/node && next build",
+    "build": "pnpm install --save-dev typescript @types/react @types/node && pnpm i && next build",
     "start": "next start"
   },
   "dependencies": {
