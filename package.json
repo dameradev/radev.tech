@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "build": "yarn add --dev typescript @types/node @types/react eslint && yarn && next build",
     "start": "next start"
   },
   "dependencies": {
