@@ -1,8 +1,8 @@
-import Alert from '../components/alert'
-import Footer from '../components/footer'
-import Meta from '../components/meta'
-import Header from './header'
-import Intro from './intro'
+import Alert from './Alert'
+import Footer from './Footer'
+import Meta from './Meta'
+import Header from './Header'
+import Intro from './Intro'
 import ThemeSwitch from './ThemeSwitch'
 
 export default function Layout({ preview, children }) {

@@ -1,13 +1,13 @@
-import Container from '../components/container'
-import MoreStories from '../components/more-stories'
-import HeroPost from '../components/hero-post'
-import Intro from '../components/intro'
-import Layout from '../components/layout'
+import Container from '../components/Container'
+import MoreStories from '../components/MoreStories'
+import HeroPost from '../components/HeroPost'
+import Intro from '../components/Intro'
+import Layout from '../components/Layout'
 import { getAllPostsForHome, getAllTags } from '../lib/graphcms'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
-import Sidebar from 'components/sidebar'
-import { getDate, getPosts, getFeaturedImage, getTags, getSlugs, getPostsByTag, getTag } from 'lib/wordpress'
+import Sidebar from '../components/Sidebar'
+import { getDate, getPosts, getFeaturedImage, getTags, getSlugs, getPostsByTag, getTag } from '../lib/wordpress'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -30,28 +30,29 @@ export default function Index({ posts, tags, preview, wpPosts, }) {
           <title>Next.js Blog Example with {CMS_NAME}</title>
         </Head>
         <FadeIn>
-          <Container>
+          <Container className="">
 
 
             {heroPost && (
               <HeroPost
+                
                 title={heroPost.title.rendered}
                 coverImage={getFeaturedImage(heroPost)?.source_url}
 
                 date={heroPost.date}
-                // author={heroPost.authors[0]}
+                author={"dace"}
                 slug={heroPost.slug}
                 excerpt={heroPost.excerpt.rendered}
               />
             )}
             <ul className="flex  gap-4 mt-10 lg:mt-20 flex-wrap">
-              <li className="rounded-full border-[1px] px-6 py-2 text-xs ">
+              <li key={12} className="rounded-full border-[1px] px-6 py-2 text-xs ">
                 <Link href='/'>
                   ALL TAGS
                 </Link>
               </li>
               {tags.map(tag => (
-                <li className={`rounded-full border-[1px] px-6 py-2 text-xs  uppercase  ${router.query.slug === tag.slug ? "text-secondary border-secondary" : ""}`}>
+                <li key={tag} className={`rounded-full border-[1px] px-6 py-2 text-xs  uppercase  ${router.query.slug === tag.slug ? "text-secondary border-secondary" : ""}`}>
                   <Link href={tag.slug}>
                     {tag.name}
                   </Link>
@@ -64,10 +65,10 @@ export default function Index({ posts, tags, preview, wpPosts, }) {
 
             <div className='sm:grid grid-cols-8 '>
               <div className='col-span-6 sm:pr-6'>
-                {wpPosts.length > 0 && <MoreStories posts={morePosts} />}
+                {wpPosts.length > 0 && <MoreStories className="" posts={morePosts} />}
               </div>
 
-              <Sidebar tags={tags} />
+              <Sidebar className="" tags={tags} />
             </div>
 
           </Container>
@@ -109,6 +110,6 @@ export async function getStaticProps({ params }) {
       posts,
       wpPosts: posts
     },
-    revalidate: 10, // In seconds
+    revalidate: 60, // In seconds
   };
 }

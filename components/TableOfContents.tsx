@@ -41,7 +41,7 @@ const TableOfContents = ({ nestedHeadings, className }) => {
         <ul >
 
           {nestedHeadings.map((heading, index) => (
-            <li>
+            <li key={heading}>
               <a href={`#${heading.id}`}>{heading.innerText}</a>
             </li>
 

@@ -66,9 +66,6 @@ export async function getSlugs(type) {
     case 'posts':
       elements = await getPosts();
       break;
-    case 'events':
-      elements = await getEvents();
-      break;
     case 'tags':
       elements = await getTags();
       break;

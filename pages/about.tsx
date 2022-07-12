@@ -1,9 +1,9 @@
-import Layout from 'components/layout';
+import Layout from '../components/Layout';
 import React from 'react';
 
 const About = () => {
   return (
-    <Layout>
+    <Layout preview="">
       <h1>About me</h1>
       
     </Layout>

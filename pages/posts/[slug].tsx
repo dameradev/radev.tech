@@ -1,32 +1,38 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import Container from 'components/container'
-import PostBody from 'components/post-body'
-import MoreStories from 'components/more-stories'
-import Header from 'components/header'
-import PostHeader from 'components/post-header'
-import SectionSeparator from 'components/section-separator'
-import Layout from 'components/layout'
-import { getAllPostsWithSlug, getPostAndMorePosts } from 'lib/graphcms'
-import PostTitle from 'components/PostTitle'
+import Container from '../../components/Container'
+import PostBody from '../../components/PostBody'
+import MoreStories from '../../components/MoreStories'
+import Header from '../../components/Header'
+import PostHeader from '../../components/PostHeader'
+
+
+
+import PostTitle from '../../components/PostTitle'
 import Head from 'next/head'
-import { CMS_NAME } from 'lib/constants'
-import styled from 'styled-components'
+
 import "prismjs/themes/prism-tomorrow.css";
 import prism from "prismjs";
 import { useEffect, useRef, useState, createRef } from 'react'
-import Sidebar from 'components/sidebar'
-import { getDate, getPost, getSlugs, getTags, postComment } from 'lib/wordpress'
-import { device } from 'styles/deviceSIzes'
-import TableOfContents from 'components/TableOfContents'
-import Comment from 'components/comment'
+
+import TableOfContents from '../../components/TableOfContents'
+
 import { data } from 'autoprefixer'
 
 import FadeIn from 'react-fade-in/lib/FadeIn'
 
 import { XCircleIcon, CheckCircleIcon } from "@heroicons/react/outline"
-import { supabaseClient } from 'lib/hooks/useSupabase'
+
 import readingTime from 'reading-time'
+import SectionSeparator from '../../components/SectionSeparator'
+
+import styled from "styled-components"
+import Layout from '../../components/Layout'
+import Comment from '../../components/Comment'
+import Sidebar from '../../components/Sidebar'
+import { getPost, getSlugs, getTags, postComment } from '../../lib/wordpress'
+import { supabaseClient } from '../../lib/hooks/useSupabase'
+import { device } from '../../styles/deviceSIzes'
 
 const PostStyled = styled.article`
   padding:0 2rem;
@@ -45,6 +51,7 @@ const PostStyled = styled.article`
       }
     }
   }
+  
 
 
   .heading {
@@ -180,14 +187,33 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
   }, []);
   const timeToRead = readingTime(post.content.rendered.replace(/<[^>]+>/g, ''));
   console.log(timeToRead)
-  
+
   const [nestedHeadings, setNestedHeadings] = useState([]);
   const [elementAdded, setElementAdded] = useState(false);
+
+
+  // console.log(post)
+  useEffect(() => {
+    fetch(`/api/views/${post.slug}`, {
+      method: 'POST',
+    });
+
+    // fetch(`/api/views/${post.slug}`, {
+    //   method: 'GET',
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     setTotalViews(data.total)
+    //   })
+
+  }, [post.slug]);
+
+
   useEffect(() => {
     if (!elementAdded) {
-      document.querySelectorAll(".wp-block-code").forEach(function (block) {
+      document.querySelectorAll(".wp-block-code").forEach(function (block: any) {
         // block.appendChild(document.createElement("p").innerHTML = `${block.title}`);
-        let fileName = document.createElement("p")
+        let fileName = document.createElement("p") as any;
         const code = block.querySelector("code")
 
         let fileNameText;
@@ -276,21 +302,7 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
     }
   }
 
-  // console.log(post)
-  useEffect(() => {
-    fetch(`/api/views/${post.slug}`, {
-      method: 'POST',
-    });
 
-    fetch(`/api/views/${post.slug}`, {
-      method: 'GET',
-    })
-      .then(res => res.json())
-      .then(data => {
-        setTotalViews(data.total)
-      })
-
-  }, [post.slug]);
 
 
 
@@ -371,9 +383,10 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
               const repliesToComment = post['_embedded']?.replies[0].filter(reply => reply.parent === comment.id)
               return comment.parent === 0 && (
                 <>
-                  <Comment key={index} comment={comment} hasReplies={repliesToComment.length} />
+                  
+                  <Comment className="" key={index} reply={false} comment={comment} hasReplies={repliesToComment.length} />
                   {repliesToComment.map((reply, index) => {
-                    return <Comment className="pl-6" reply comment={reply} />
+                    return <Comment key={index} hasReplies={false} className="pl-6" reply comment={reply} />
                   })}
                 </>
               )
@@ -384,6 +397,7 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
 
           {/* )} */}
 
+          
 
           <Sidebar className="col-span-8" tags={tags} />
 
@@ -433,6 +447,6 @@ export async function getStaticProps({ params }) {
       totalViews,
       tags: await getTags()
     },
-    revalidate: 10, // In seconds
+    revalidate: 60, // In seconds
   };
 }

@@ -1,7 +1,7 @@
-import Avatar from '../components/avatar'
-import Date from '../components/date'
-import CoverImage from '../components/cover-image'
-import PostTitle from '../components/PostTitle'
+import Avatar from './Avatar'
+import Date from './Date'
+import CoverImage from './CoverImage'
+import PostTitle from './PostTitle'
 
 export default function PostHeader({ title, coverImage, totalViews, timeToRead, date, authors }) {
   console.log(coverImage)
@@ -11,7 +11,7 @@ export default function PostHeader({ title, coverImage, totalViews, timeToRead, 
         {/* {authors[0] && <Avatar name={authors[0].name} picture={authors[0].picture.url} dateString={date} />} */}
       </div>
       <PostTitle>{title.rendered}</PostTitle>
-      <div class="flex gap-4 justify-center">
+      <div className="flex gap-4 justify-center">
         <p className='text-center text-xl'>{totalViews} views </p>
         <p className='text-center text-xl'>{Math.round(timeToRead.minutes)} min read </p>
       </div>

@@ -33,7 +33,7 @@ const Sidebar = ({ tags, className }) => {
           <ul className='flex flex-wrap gap-2 py-6 text-md justify-center md:justify-start'>
             {
               tags.map(tag => (
-                <li className='border-2 px-2 py-1 rounded-full border-gray-400 uppercase text-sm'>
+                <li key={tag} className='border-2 px-2 py-1 rounded-full border-gray-400 uppercase text-sm'>
                   <Link href={tag.slug}>
                     {tag.name}
                   </Link>

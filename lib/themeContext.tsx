@@ -1,6 +1,6 @@
 import  React  from  "react";
 // Context has been created
-const  ThemeContext  =  React.createContext(false);
+const  ThemeContext  =  React.createContext({toggle: false, toggleFunction: () => {}});
 // Provider
 const  ThemeProvider  =  ({ children })  =>  {
     const  [toggle, setToggle]  =  React.useState(true);

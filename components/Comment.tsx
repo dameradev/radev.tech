@@ -1,5 +1,7 @@
-import { getDate } from 'lib/wordpress';
+import { getDate } from '../lib/wordpress';
 import React from 'react';
+
+import Image from 'next/image';
 
 const Comment = ({ className, comment, reply, hasReplies }) => {
   
@@ -8,7 +10,8 @@ const Comment = ({ className, comment, reply, hasReplies }) => {
       <div className="flex justify-between">
         <div className="flex">
 
-          <img className="w-12 rounded-full mr-4" src={comment.author_avatar_urls[96]} />
+          
+          <Image className="w-12 rounded-full mr-4" src={comment.author_avatar_urls[96]} />
           <p className="font-bold mt-2 ">{comment.author_name} {!reply ? "says" : "replied"}:</p>
         </div>
         <p className='italic text-xs justify-end'>{getDate(comment.date)}</p>
