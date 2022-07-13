@@ -13,8 +13,8 @@ export default function PostHeader({ title, coverImage, totalViews, timeToRead, 
       </div>
       <PostTitle>{title.rendered}</PostTitle>
       <div className="flex gap-6 justify-center flex-wrap">
-        <p className='text-center text-xl flex gap-2'><EyeIcon className="w-6"/> <span className='min-w-max'>{totalViews} views </span></p>
-        <p className='text-center text-xl flex gap-2'><BookOpenIcon className="w-6"/> <span className='min-w-max'>{Math.round(timeToRead.minutes)} min read</span></p>
+        <p className='text-center text-xl h-10 items-center flex gap-2'><EyeIcon className="w-6"/> <span className=''>{totalViews} views </span></p>
+        <p className='text-center text-xl h-10 items-center flex gap-2'><BookOpenIcon className="w-6"/> <span className=''>{Math.round(timeToRead.minutes)} min read</span></p>
         
       </div>
       {/* <div className="md:mx-5 sm:mx-0 flex justify-center w-full cover-photo"> */}
