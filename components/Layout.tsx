@@ -4,11 +4,12 @@ import Meta from './Meta'
 import Header from './Header'
 import Intro from './Intro'
 import ThemeSwitch from './ThemeSwitch'
+import Seo from './Seo'
 
 export default function Layout({ preview, children }) {
   return (
     <>
-      <Meta />
+      <Seo />
       <Header />
       {/* <ThemeSwitch /> */}
       <div className='h-24' />

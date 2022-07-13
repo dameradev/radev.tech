@@ -23,9 +23,7 @@ export default function Index({ posts, tags, preview, wpPosts, }) {
     <>
 
       <Layout preview={preview}>
-        <Head>
-          <title>Next.js Blog Example with {CMS_NAME}</title>
-        </Head>
+        
         <Container className="">
           <FadeIn>
 

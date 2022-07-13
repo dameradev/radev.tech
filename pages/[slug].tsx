@@ -15,8 +15,11 @@ import FadeIn from 'react-fade-in/lib/FadeIn'
 
 
 export default function Index({ posts, tags, preview, wpPosts, }) {
-  const heroPost = wpPosts[0]
-  const morePosts = wpPosts.slice(1)
+  const heroPost = wpPosts?.[0]
+  let morePosts = [];
+  if (wpPosts?.length > 1) {
+    morePosts = wpPosts.slice(1)
+  }
   // console.log(heroPost['_embedded']?.author)
 
 
@@ -26,9 +29,7 @@ export default function Index({ posts, tags, preview, wpPosts, }) {
   return (
     <>
       <Layout preview={preview}>
-        <Head>
-          <title>Next.js Blog Example with {CMS_NAME}</title>
-        </Head>
+        
         <FadeIn>
           <Container className="">
 
@@ -100,7 +101,7 @@ export async function getStaticProps({ params }) {
   const tag = await getTag(params.slug);
   // console.log(params)
 
-  const posts = await getPostsByTag(tag.id);
+  const posts = await getPostsByTag(tag?.id);
 
 
   const tags = await getTags();
