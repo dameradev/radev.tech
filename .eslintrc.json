@@ -1,3 +1,30 @@
 {
-  "extends": "next/core-web-vitals"
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    // "plugin:sonarjs/recommended", 
+    // "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+    // "plugin:prettier/recommended"
+    // "prettier/@typescript-eslint",
+    // "eslint:recommended",
+    // "plugin:@typescript-eslint/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "react/prop-types": ["off"],
+    // "sonarjs/cognitive-complexity": ["warn", 20],
+    "max-lines-per-function": ["error", 200],
+    "react/no-unescaped-entities": 0
+  }
 }
