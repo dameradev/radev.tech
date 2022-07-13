@@ -33,6 +33,7 @@ import Sidebar from '../../components/Sidebar'
 import { getPost, getSlugs, getTags, postComment } from '../../lib/wordpress'
 import { supabaseClient } from '../../lib/hooks/useSupabase'
 import { device } from '../../styles/deviceSIzes'
+import Seo from '../../components/Seo'
 
 const PostStyled = styled.article`
   padding:0 2rem;
@@ -308,6 +309,7 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
 
   return (
     <Layout preview={preview}>
+      <Seo title={post.title.rendered} description={post.excerpt.rendered} />
       <FadeIn>
         <Container className="grid grid-cols-8 relative p-0">
 
@@ -319,12 +321,7 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
 
           <div className="col-span-8 md:col-span-6 lg:col-span-4 md:mr-5" >
             <PostStyled >
-              <Head>
-                <title>
-                  {post.title.rendered} | Next.js Blog Example with
-                </title>
-                {/* <meta property="og:image" content={post.ogImage.url} /> */}
-              </Head>
+
               <PostHeader
                 title={post.title}
                 coverImage={post.coverImage}

@@ -100,8 +100,9 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const tag = await getTag(params.slug);
   // console.log(params)
-
-  const posts = await getPostsByTag(tag?.id);
+  let posts = []
+  if (tag?.id)
+    posts = await getPostsByTag(tag?.id);
 
 
   const tags = await getTags();
