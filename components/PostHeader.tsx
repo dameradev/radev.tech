@@ -12,7 +12,7 @@ export default function PostHeader({ title, coverImage, totalViews, timeToRead, 
         {/* {authors[0] && <Avatar name={authors[0].name} picture={authors[0].picture.url} dateString={date} />} */}
       </div>
       <PostTitle>{title.rendered}</PostTitle>
-      <div className="flex gap-6 justify-center">
+      <div className="flex gap-6 justify-center flex-wrap">
         <p className='text-center text-xl flex gap-2'><EyeIcon className="w-6"/> <span className='min-w-max'>{totalViews} views </span></p>
         <p className='text-center text-xl flex gap-2'><BookOpenIcon className="w-6"/> <span className='min-w-max'>{Math.round(timeToRead.minutes)} min read</span></p>
         
