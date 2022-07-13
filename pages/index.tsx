@@ -10,6 +10,7 @@ import Sidebar from '../components/Sidebar'
 import { getDate, getPosts, getFeaturedImage, getTags } from '../lib/wordpress'
 import Link from 'next/link'
 import FadeIn from 'react-fade-in/lib/FadeIn'
+import HomePageContent from '../components/HomePageContent'
 
 export default function Index({ posts, tags, preview, wpPosts, }) {
   const heroPost = wpPosts[0]
@@ -28,42 +29,8 @@ export default function Index({ posts, tags, preview, wpPosts, }) {
           <FadeIn>
 
 
-            {heroPost && (
-              <HeroPost
-                
-                title={heroPost.title.rendered}
-                coverImage={getFeaturedImage(heroPost)?.source_url}
-
-                date={heroPost.date}
-                author="dace"
-                slug={heroPost.slug}
-                excerpt={heroPost.excerpt.rendered}
-              />
-            )}
-            <ul className="flex gap-4 mt-10 lg:mt-20 flex-wrap">
-              <a className="rounded-full border-[1px] px-6 py-2 text-xs text-secondary border-secondary">
-                ALL TAGS
-              </a>
-              {tags.map(tag => (
-                <Link key={tag} href={tag.slug}>
-                  <a key={tag.name} className="rounded-full border-[1px] px-6 py-2 text-xs  uppercase">
-                    {tag.name}
-                  </a>
-                </Link>
-              ))}
-
-            </ul>
-
-            <hr className="mt-10" />
-
-            <div className='md:grid grid-cols-8 '>
-              <div className='col-span-6 md:pr-6'>
-                {wpPosts.length > 0 && <MoreStories className="" posts={morePosts} />}
-              </div>
-
-              <Sidebar className="" tags={tags} />
-            </div>
-
+            <HomePageContent heroPost={heroPost} posts={morePosts} tags={tags} />
+            
           </FadeIn>
         </Container>
       </Layout>
