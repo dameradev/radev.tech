@@ -9,9 +9,9 @@ import Page from '../components/Page';
 
 function MyApp({ Component, pageProps }) {
 
-  useEffect(() => {
-    Prism.highlightAll()
-  }, [])
+  // useEffect(() => {
+  //   Prism.highlightAll()
+  // }, [])
 
   // const { toggle } = useContext(ThemeContext);
   // console.log(toggle)

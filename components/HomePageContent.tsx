@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { getFeaturedImage } from '../lib/wordpress';
+// import { getFeaturedImage } from '../lib/wordpress';
 import HeroPost from './HeroPost';
 import MoreStories from './MoreStories';
 import Sidebar from './Sidebar';
@@ -13,16 +13,16 @@ const PostsList = ({ heroPost, tags, posts }) => {
       {heroPost && (
         <HeroPost
 
-          title={heroPost.title.rendered}
-          coverImage={getFeaturedImage(heroPost)?.source_url}
+          title={heroPost.title}
+          coverImage={heroPost.coverImage}
 
           date={heroPost.date}
           author="dace"
           slug={heroPost.slug}
-          excerpt={heroPost.excerpt.rendered}
+          excerpt={heroPost.excerpt}
         />
       )}
-      <ul className="flex gap-4 mt-10 lg:mt-20 flex-wrap">
+      {/* <ul className="flex gap-4 mt-10 lg:mt-20 flex-wrap">
         <Link href='/' >
           <a className={`rounded-full border-[1px] px-6 py-2 text-xs ${router.pathname === "/" ? "text-secondary border-secondary" : ""}`}>
             ALL TAGS
@@ -36,7 +36,7 @@ const PostsList = ({ heroPost, tags, posts }) => {
           </Link>
         ))}
 
-      </ul>
+      </ul> */}
 
       <hr className="mt-10" />
 

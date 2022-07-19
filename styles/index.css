@@ -69,3 +69,19 @@ body {
     --color-secondary: #F24E41;
   }
 }
+
+pre[class*=language-] {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219/var(--tw-text-opacity));
+  
+}
+.bg-info-window a {
+  color: var(--color-secondary)
+}
+
+li, li::marker {
+  margin-right:0.5rem !important;
+  /* display: none;
+  visibility: hidden; */
+}
+

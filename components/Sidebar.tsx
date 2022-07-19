@@ -30,7 +30,7 @@ const Sidebar = ({ tags, className }) => {
 
           <p className='font-bold text-xl'>Browse tags</p>
 
-          <ul className='flex flex-wrap gap-2 py-6 text-md justify-center md:justify-start'>
+          {/* <ul className='flex flex-wrap gap-2 py-6 text-md justify-center md:justify-start'>
             {
               tags.map(tag => (
                 <li key={tag} className='border-2 px-2 py-1 rounded-full border-gray-400 uppercase text-sm'>
@@ -42,7 +42,7 @@ const Sidebar = ({ tags, className }) => {
               ))
             }
 
-          </ul>
+          </ul> */}
         </div>
 
         <div className='right-0 py-10  border-gray-300'>

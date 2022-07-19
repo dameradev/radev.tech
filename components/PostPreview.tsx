@@ -3,7 +3,7 @@ import Date from './Date'
 import CoverImage from './CoverImage'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { getFeaturedImage } from '../lib/wordpress'
+// import { getFeaturedImage } from '../lib/wordpress'
 
 
 const PostStyled = styled.div`
@@ -50,8 +50,9 @@ export default function PostPreview({
   
   return (
     <PostStyled>
+      
       <div className="mb-5">
-        {getFeaturedImage(post) && <CoverImage slug={slug} title={title.rendered} url={getFeaturedImage(post).source_url} />}
+         <CoverImage slug={slug} title={title.rendered} url={coverImage} />
       </div>
       <div className="mb-4 text-xs uppercase flex gap-x-4">
         <Date dateString={date} />

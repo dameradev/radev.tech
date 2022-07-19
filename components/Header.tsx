@@ -25,7 +25,7 @@ export default function Header() {
 
         <nav className='hidden md:flex items-center gap-8 text-white'>
           <ul className="flex justify-center uppercase">
-            <li className="mr-4">
+            <li className="mr-4 text-white">
               <Link href="/">
                 <a>Home</a>
               </Link>

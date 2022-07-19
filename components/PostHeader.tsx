@@ -11,10 +11,10 @@ export default function PostHeader({ title, coverImage, totalViews, timeToRead, 
       <div className=" flex flex-col gap-4 mb-4">
         {/* {authors[0] && <Avatar name={authors[0].name} picture={authors[0].picture.url} dateString={date} />} */}
       </div>
-      <PostTitle>{title.rendered}</PostTitle>
+      <PostTitle>{title}</PostTitle>
       <div className="flex gap-6 justify-center flex-wrap">
         <p className='text-center text-xl h-10 items-center flex gap-2'><EyeIcon className="w-6"/> <span className=''>{totalViews} views </span></p>
-        <p className='text-center text-xl h-10 items-center flex gap-2'><BookOpenIcon className="w-6"/> <span className=''>{Math.round(timeToRead.minutes)} min read</span></p>
+        {/* <p className='text-center text-xl h-10 items-center flex gap-2'><BookOpenIcon className="w-6"/> <span className=''>{Math.round(timeToRead.minutes)} min read</span></p> */}
         
       </div>
       {/* <div className="md:mx-5 sm:mx-0 flex justify-center w-full cover-photo"> */}
