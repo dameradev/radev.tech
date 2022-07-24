@@ -36,7 +36,7 @@ export function renderBlocks(block) {
   switch (type) {
     case 'paragraph':
       return (
-        <p className='my-4 text-md md:text-lg leading-16' >
+        <p className='my-4 text-lg md:text-xl  leading-relaxed' >
           
           <Text text={value.text} />
         </p>
@@ -55,7 +55,7 @@ export function renderBlocks(block) {
       );
     case 'heading_3':
       return (
-        <h3 className="text-2xl mt-6 font-bold">
+        <h3 className="text-xl mt-6 font-bold">
           {value.text[0].text.content}
         </h3>
       );
@@ -63,7 +63,7 @@ export function renderBlocks(block) {
     case 'bulleted_list_item':
     case 'numbered_list_item':
       return (
-        <li className='ml-4 mt-2 text-md md:text-lg list-inside marker:hidden'>
+        <li className='mt-2 text-lg md:text-lg leading-tight list-inside marker:hidden'>
           <Text text={value.text} />
           {value.children?.map((block) => (
             <div key={block.id}>{renderBlocks(block)}</div>

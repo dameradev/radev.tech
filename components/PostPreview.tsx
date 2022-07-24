@@ -58,13 +58,13 @@ export default function PostPreview({
         <Date dateString={date} />
         {/* <PostInfoStyled>{authors[0]?.name}</PostInfoStyled> */}
       </div>
-      <h3 className="mb-3 text-3xl leading-snug">
+      <h3 className="mb-6 text-3xl leading-snug">
         <Link href={`/posts/${slug}`}>
           <a className="hover:underline">{title}</a>
         </Link>
       </h3>
 
-      <div className="excerpt mb-4 text-sms leading-relaxed"
+      <div className="excerpt mb-4 text-lg leading-relaxed"
         dangerouslySetInnerHTML={{
           __html: excerpt
         }}>

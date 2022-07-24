@@ -24,7 +24,7 @@ export default function Header() {
         </div>
 
         <nav className='hidden md:flex items-center gap-8 text-white'>
-          <ul className="flex justify-center uppercase">
+          <ul className="flex gap-4 justify-center uppercase">
             <li className="mr-4 text-white">
               <Link href="/">
                 <a>Home</a>

@@ -35,7 +35,7 @@ export default function HeroPost({
               <a className="hover:underline">{title}</a>
             </Link>
           </h3>
-          <div className="mb-4 text-md leading-relaxed  "
+          <div className="mb-4 text-lg leading-relaxed  "
             dangerouslySetInnerHTML={{
               __html: excerpt,
             }}
