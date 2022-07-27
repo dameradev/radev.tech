@@ -29,15 +29,15 @@ export function renderBlocks(block) {
   const { type, id } = block;
   const value = block[type];
 
-  if (type === "bulleted_list_item") {
-    console.log(value)
-  }
+  // if (type === "bulleted_list_item") {
+  //   console.log(value)
+  // }
 
   switch (type) {
     case 'paragraph':
       return (
         <p className='my-4 text-lg md:text-xl  leading-relaxed' >
-          
+
           <Text text={value.text} />
         </p>
       );
@@ -59,7 +59,7 @@ export function renderBlocks(block) {
           {value.text[0].text.content}
         </h3>
       );
-    
+
     case 'bulleted_list_item':
     case 'numbered_list_item':
       return (
@@ -109,7 +109,7 @@ export function renderBlocks(block) {
       return (
         <figure className="mt-0">
 
-          
+
           <Image
             className="rounded-xl"
             objectFit="fill"
@@ -166,7 +166,13 @@ export function renderBlocks(block) {
         </div>
       );
     case 'table_of_contents':
-      return <div>TOC</div>;
+      return (
+        <>
+          <div>
+            TOC
+          </div>
+        </>
+      );
     case 'video':
       return "test"//<YoutubeEmbed url={value.external.url} />;
     case 'quote':

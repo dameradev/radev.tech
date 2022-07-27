@@ -202,7 +202,7 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
           <PostTitle>Loading…</PostTitle>
         ) : ( */}
 
-          <div className="col-span-8 md:col-span-6 lg:col-span-5 md:mr-5 px-4 md:px-0" >
+          <div className="col-span-8 md:col-span-6 lg:col-span-5 md:mx-5 px-4 md:px-0" >
             <div >
 
             <PostHeader

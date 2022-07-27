@@ -38,11 +38,11 @@ const PostsList = ({ heroPost, tags, posts }) => {
 
       </ul> */}
 
-      <hr className="mt-10" />
+      {/* <hr className="mt-10" /> */}
 
       <div className='md:grid grid-cols-8 '>
         <div className='col-span-6 md:pr-6'>
-          {posts.length > 0 && <MoreStories className="" posts={posts} />}
+          {posts.length > 0 && <MoreStories className="mt-14 lg:grid-cols-2" posts={posts} />}
         </div>
 
         <Sidebar className="" tags={tags} />

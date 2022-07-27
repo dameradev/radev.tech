@@ -28,7 +28,7 @@ const Sidebar = ({ tags, className }) => {
         <div className=''>
 
 
-          <p className='font-bold text-xl'>Browse tags</p>
+          {/* <p className='font-bold text-xl'>Browse tags</p> */}
 
           {/* <ul className='flex flex-wrap gap-2 py-6 text-md justify-center md:justify-start'>
             {
@@ -47,7 +47,7 @@ const Sidebar = ({ tags, className }) => {
 
         <div className='right-0 py-10  border-gray-300'>
 
-          <p className='font-bold text-xl'>Subscribe for new</p>
+          <p className='font-bold text-xl'>Subscribe for new posts</p>
           <form method='post' className='pt-4 flex flex-col ' onSubmit={(e) => handleSubmit(e)} >
             <input className='pl-6 p-3 border-[1px] bg-transparent rounded-full text-sm' type="email" placeholder="EMAIL ADDRESS" value={email} onChange={(e) => setEmail(e.target.value)} />
             <button type="submit" className='text-white bg-secondary text-xs font-medium border-2 border-skin-secondary mt-4 py-3 rounded-full uppercase' >Subscribe</button>

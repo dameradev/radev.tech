@@ -12,6 +12,7 @@ function withOpacity(variableName) {
 const themes = {
   skin: {
     base: "var(--color-background)",
+    "text": "var(--color-text)",
     "base-muted": "var(--color-background-muted)",
     "base-md": "var(--color-background-medium)",
     focus: "var(--color-focus)",
