@@ -79,21 +79,32 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
 
 
   // console.log(post)
-  // useEffect(() => {
-  //   fetch(`/api/views/${slug}`, {
-  //     method: 'POST',
-  //   });
+  useEffect(() => {
+    fetch(`/api/views/${slug}`, {
+      method: 'POST',
+    });
 
-  //   // fetch(`/api/views/${post.slug}`, {
-  //   //   method: 'GET',
-  //   // })
-  //   //   .then(res => res.json())
-  //   //   .then(data => {
-  //   //     setTotalViews(data.total)
-  //   //   })
+    // fetch(`/api/views/${post.slug}`, {
+    //   method: 'GET',
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     setTotalViews(data.total)
+    //   })
 
-  // }, [slug]);
+  }, [slug]);
 
+
+  const text=[]
+  content.forEach(block => {
+    if (block.type === "paragraph" || block.bulleted_list_item) {
+      console.log(block[block.type].text.forEach(value => text.push(value.plain_text)))
+      // text.push(block.text.content)
+    }
+  })
+const timeToRead =  readingTime(text.join(" "));
+
+  
 
   // useEffect(() => {
   //   if (!elementAdded) {
@@ -208,9 +219,10 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
             <PostHeader
                 title={title}
                 coverImage={coverImage}
+                slug={slug}
                 // date={post.date}
                 // authors={post.authors}
-                totalViews={totalViews} timeToRead={undefined} date={undefined} authors={undefined}                // timeToRead={timeToRead}
+                 timeToRead={timeToRead} date={undefined} authors={undefined}                // timeToRead={timeToRead}
               />
               
               {/* 

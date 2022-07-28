@@ -4,8 +4,9 @@ import CoverImage from './CoverImage'
 import PostTitle from './PostTitle'
 
 import { BookOpenIcon, EyeIcon } from '@heroicons/react/outline'
+import PageViews from './PageViews'
 
-export default function PostHeader({ title, coverImage, totalViews, timeToRead, date, authors }) {
+export default function PostHeader({ title, slug, coverImage, timeToRead, date, authors }) {
   return (
     <>
       <div className=" flex flex-col gap-4 mb-4">
@@ -13,8 +14,9 @@ export default function PostHeader({ title, coverImage, totalViews, timeToRead, 
       </div>
       <PostTitle>{title}</PostTitle>
       <div className="flex gap-6 justify-center flex-wrap">
-        <p className='text-center text-xl h-10 items-center flex gap-2'><EyeIcon className="w-6"/> <span className=''>{totalViews} views </span></p>
-        {/* <p className='text-center text-xl h-10 items-center flex gap-2'><BookOpenIcon className="w-6"/> <span className=''>{Math.round(timeToRead.minutes)} min read</span></p> */}
+        {/* <p className='text-center text-xl h-10 items-center flex gap-2'><EyeIcon className="w-6"/> <span className=''>{totalViews} views </span></p> */}
+        <PageViews slug={slug}/>
+        <p className='text-center text-xl h-10 items-center flex gap-2'><BookOpenIcon className="w-6"/> <span className=''>{Math.round(timeToRead.minutes)} min read</span></p>
         
       </div>
       {/* <div className="md:mx-5 sm:mx-0 flex justify-center w-full cover-photo"> */}
