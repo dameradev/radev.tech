@@ -35,11 +35,11 @@ export default function Header() {
                 <a>About</a>
               </Link>
             </li>
-            <li className="mr-4">
+            {/* <li className="mr-4">
               <Link href="/contact">
                 <a>Contact</a>
               </Link>
-            </li>
+            </li> */}
           </ul>
           <ThemeSwitch />
         </nav>

@@ -23,7 +23,7 @@ const Sidebar = ({ tags, className }) => {
     console.log(res)
   }
   return (
-    <div className={`md:mt-10 px-4 md:px-0 ${className}  lg:pl-10 relative md:col-span-2 w-full text-center md:text-left`}>
+    <div className={`mt-4 px-4 md:px-0 ${className}  lg:pl-10 relative md:col-span-2 w-full text-center md:text-left`}>
       <div className='sticky top-30 '>
         <div className=''>
 

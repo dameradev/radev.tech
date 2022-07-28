@@ -15,7 +15,7 @@ const About = ({ posts, latestPost }) => {
 
         <div className='max-w-[100rem]'>
 
-          <h1 className='text-5xl '>
+          <h1 className='text-4xl md:text-5xl leading-relaxed'>
             I'm Damian. I'm a developer and blogger freelancing on Upwork.
           </h1>
           <div className='flex gap-6 '>
@@ -35,7 +35,7 @@ const About = ({ posts, latestPost }) => {
           </div>
         </div>
 
-        <h2 className='mt-10 text-3xl'>Here are some of my recent stories</h2>
+        <h2 className='mt-10 text-3xl mb-6'>Here are some of my recent stories</h2>
         <MoreStories className="" posts={posts} />
       </div>
 

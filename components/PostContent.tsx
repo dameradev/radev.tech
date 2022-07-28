@@ -36,7 +36,7 @@ export function renderBlocks(block) {
   switch (type) {
     case 'paragraph':
       return (
-        <p className='my-4 text-lg md:text-xl  leading-relaxed' >
+        <p className='my-4 md:leading-[3.6rem] text-lg md:text-xl  ' >
 
           <Text text={value.text} />
         </p>
@@ -48,9 +48,15 @@ export function renderBlocks(block) {
         </h1>
       );
     case 'heading_2':
+      console.log(value)
       return (
         <h2 className='text-3xl lg:text-4xl mt-12 font-bold'>
-          {value.text[0].text.content}
+          {value.text[0].href ?
+            <a target="_blank" href={value.text[0].href} className='text-accent-2'>
+              {value.text[0].text.content}
+            </a>
+            :
+            value.text[0].text.content}
         </h2>
       );
     case 'heading_3':
@@ -63,7 +69,7 @@ export function renderBlocks(block) {
     case 'bulleted_list_item':
     case 'numbered_list_item':
       return (
-        <li className='mt-2 text-lg md:text-lg leading-tight list-inside marker:hidden'>
+        <li className='mt-2 text-lg md:text-xl leading-normal list-inside marker:hidden'>
           <Text text={value.text} />
           {value.children?.map((block) => (
             <div key={block.id}>{renderBlocks(block)}</div>
@@ -107,14 +113,12 @@ export function renderBlocks(block) {
       const caption =
         value.caption.length >= 1 ? value.caption[0].plain_text : '';
       return (
-        <figure className="mt-0">
-
-
+        <figure className=" mt-0 px-2 py-5">
           <Image
             className="rounded-xl"
             objectFit="fill"
             width={1200}
-            height={684}
+            height={800}
             alt={
               caption
                 ? caption
@@ -126,6 +130,25 @@ export function renderBlocks(block) {
             <figcaption className="text-center">{caption}</figcaption>
           )}
         </figure>
+        // <figure className="my-4">
+        //   <div className=' '>
+        //     <Image
+        //       className="rounded-xl"
+        //       layout="responsive"
+        //       width="50%"
+        //       height={"50%"}
+        //       alt={
+        //         caption
+        //           ? caption
+        //           : 'A visual depiction of what is being written about'
+        //       }
+        //       src={src}
+        //     />
+        //     {caption && (
+        //       <figcaption className="text-center">{caption}</figcaption>
+        //     )}
+        //   </div>
+        // </figure>
       );
     case 'code':
       return (
