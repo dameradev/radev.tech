@@ -36,7 +36,7 @@ export function renderBlocks(block) {
   switch (type) {
     case 'paragraph':
       return (
-        <p className='my-4 md:leading-[3.6rem] text-lg md:text-xl  ' >
+        <p className='my-4 leading-[3.2rem] md:leading-[3.6rem] text-lg md:text-xl  ' >
 
           <Text text={value.text} />
         </p>
