@@ -55,6 +55,7 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
   lastEditedAt,
   slug,
   coverImage,
+  excerpt,
   summary, }) {
   const router = useRouter()
 
@@ -203,7 +204,7 @@ const timeToRead =  readingTime(text.join(" "));
 
   return (
     <Layout preview={preview}>
-      {/* <Seo title={post.title.rendered} description={post.excerpt.rendered} /> */}
+      <Seo title={title} description={excerpt} />
       <FadeIn>
         <Container className="grid grid-cols-8 relative p-0">
 
@@ -415,6 +416,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
     props: {
       content,
       title: articleTitle,
+      excerpt: page.properties.Excerpt.rich_text[0].plain_text,
       publishedDate,
       lastEditedAt,
       slug,
