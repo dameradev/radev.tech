@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import { useCopyToClipboard } from '../lib/hooks/useCopyToClipboard';
 import { ThemeContext } from '../lib/themeContext';
 import { Text } from '../pages/posts/[slug]';
@@ -10,14 +10,16 @@ import vsLight from "prism-react-renderer/themes/vsLight";
 import { FaCopy } from 'react-icons/fa';
 
 const PostContent = ({ content }) => {
+
   return (
     <>
+      <TableOfContent className="" />
       {content.map((block) => (
-        <>
-          {renderBlocks(block)}
+        <div className="post-content">
+          {renderBlocks(block)} 
           {/* dame   */}
           {/* {console.log(block)} */}
-        </>
+        </div>
       ))}
     </>
   );
@@ -48,16 +50,21 @@ export function renderBlocks(block) {
         </h1>
       );
     case 'heading_2':
-      console.log(value)
+      console.log(value, 'headerng 2')
       return (
-        <h2 className='text-3xl lg:text-4xl mt-12 font-bold'>
-          {value.text[0].href ?
-            <a target="_blank" href={value.text[0].href} className='text-accent-2'>
-              {value.text[0].text.content}
-            </a>
-            :
-            value.text[0].text.content}
-        </h2>
+        <div className="relative">
+          <a className="absolute top-[-100px] mb-20" id={value.text[0].text.content.split(" ").join('-').toLowerCase()}>
+          </a>
+
+          <h2 data-id={value.text[0].text.content.split(" ").join('-').toLowerCase()} className='text-3xl lg:text-4xl mt-12 font-bold'>
+            {value.text[0].href ?
+              <a target="_blank" href={value.text[0].href} className='text-accent-2'>
+                {value.text[0].text.content}
+              </a>
+              :
+              value.text[0].text.content}
+          </h2>
+        </div>
       );
     case 'heading_3':
       return (
@@ -151,6 +158,7 @@ export function renderBlocks(block) {
         // </figure>
       );
     case 'code':
+
       return (
         <CodeBlock
           fileName={value.caption?.[0]?.plain_text}
@@ -189,6 +197,7 @@ export function renderBlocks(block) {
         </div>
       );
     case 'table_of_contents':
+      console.log(block, 'toc')
       return (
         <>
           <div>
@@ -316,4 +325,116 @@ export const CodeBlock = ({ code, language, metastring = "", fileName }) => {
       </Highlight>
     </div>
   );
+};
+
+
+function useHeadings() {
+  const [headings, setHeadings] = React.useState([]);
+  React.useEffect(() => {
+    const elements = Array.from(document.querySelectorAll(".post-content h2, h3, h4, h5, h6"))
+      // .filter((element) => element.id)
+      .map((element, index) => {
+        console.log(element)
+        return {
+          id: element.getAttribute('data-id'),
+          text: element.innerHTML ?? "",
+          level: Number(element.tagName.substring(1))
+        }
+
+      }
+
+      );
+    console.log(elements)
+    setHeadings(elements);
+
+
+  }, []);
+  console.log(headings)
+  return headings;
+}
+
+export function useScrollSpy(
+ { activeId,
+  setActiveId,
+  ids,
+  options}
+) {
+
+  const observer = React.useRef<IntersectionObserver>();
+  React.useEffect(() => {
+    const elements = ids.map((id) =>
+      document.getElementById(id)
+    );
+
+    observer.current?.disconnect();
+    observer.current = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        
+        if (entry?.isIntersecting) {
+          setActiveId(entry.target.id);
+        } 
+        // else if (entry.target.id === ids[0].id) {
+        //   setActiveId(ids[0]);
+        // }
+
+        
+       else if (window.scrollY < 400) {
+          console.log(ids)
+          setActiveId(ids[0]);
+        }
+      });
+
+      console.log(options)
+    }, options);
+    
+
+
+    elements.forEach((el) => {
+      if (el) {
+        observer.current?.observe(el);
+      }
+    });
+    return () => observer.current?.disconnect();
+  }, [ids, options]);
+  return activeId;
+}
+
+
+function TableOfContent({className}) {
+  const headings = useHeadings();
+
+  const[activeId, setActiveId] = useState("")
+
+  const isActiveId = useScrollSpy(
+    {
+      ids: headings.map(({ id }) => id),
+      options: { rootMargin: "0% 0% -10% 0%" },
+      activeId,
+      setActiveId
+    }
+  );
+
+  
+  // regex to check if number is odd
+  const match = '(\s*\d*[13579]\s*)'
+  
+  return (
+    <nav className={`lg:mt-32 mb-12 lg:fixed ${className} lg:w-[35rem] right-0 top-0 lg:border-r-2 mr-4`} >
+      <p className="text-xl mb-4">Table of contents</p>
+      <ul className="sticky flex flex-col gap-2">
+        {headings.map((heading, index) => (
+          <li key={heading.id}      className={` ml-${heading.level === 3 ? "4" : "2"}   mr-0 pr-0 lg:${isActiveId === heading.id ? "border-r-4" : ""}`} >
+            <a
+          
+              href={`#${heading.id}`}
+              
+            >
+             {/* {heading.level === 2 ? index + 1 : `${index}.1` }.  */}
+              {heading.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
 };

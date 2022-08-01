@@ -96,68 +96,17 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
   }, [slug]);
 
 
-  const text=[]
+  const text = []
   content.forEach(block => {
-    if (block.type === "paragraph" || block.bulleted_list_item) {
-      console.log(block[block.type].text.forEach(value => text.push(value.plain_text)))
+    if (block.type === "paragraph" || block.type === "bulleted_list_item") {
+      block[block.type].text.forEach(value => text.push(value.plain_text))
       // text.push(block.text.content)
+    } else if (block.type === "code") {
+      block[block.type].text.forEach(value => text.push(value.text.content))
     }
   })
-const timeToRead =  readingTime(text.join(" "));
+  const timeToRead = readingTime(text.join(" "));
 
-  
-
-  // useEffect(() => {
-  //   if (!elementAdded) {
-  //     document.querySelectorAll(".wp-block-code").forEach(function (block: any) {
-  //       // block.appendChild(document.createElement("p").innerHTML = `${block.title}`);
-  //       let fileName = document.createElement("p") as any;
-  //       const code = block.querySelector("code")
-
-  //       let fileNameText;
-  //       fileName.classList = "w-fit top-[-30px] left-0 m-0 px-4 py-2 bg-code shadow-slate-800 text-white"
-  //       fileName.style = "box-shadow: 4px 0 10px -10px #010101;"
-  //       switch (code.lang) {
-  //         case "javascript":
-  //           fileNameText = "JS"
-  //           // fileName.classList.add("text-yellow-400")
-  //           fileName.innerHTML = `<span class="text-yellow-400">${fileNameText}</span> ${block.title}`
-  //           break;
-  //         case "typescript":
-  //           fileNameText = "TS"
-  //           fileName.innerHTML = `<span class="text-blue-400">${fileNameText}</span> ${block.title}`
-  //           break;
-  //         case "css":
-  //           fileNameText = "CSS"
-  //           fileName.innerHTML = `<span class="text-blue-600">${fileNameText}</span> ${block.title}`
-  //           break;
-  //         case "markup":
-  //           fileNameText = "HTML"
-  //           fileName.innerHTML = `<span class="text-orange§-600">${fileNameText}</span> ${block.title}`
-  //           break;
-  //         default:
-  //           fileNameText = code.lang.toUpperCase()
-  //           fileName.innerHTML = `<span class="text-secondary">${fileNameText}</span> ${block.title}`
-  //           break;
-  //       }
-
-  //       block.classList.add("relative")
-
-  //       block.classList.add("pt-10")
-
-  //       const parentDiv = block.parentNode;
-  //       // console.log(node)
-  //       if (parentDiv) parentDiv.insertBefore(fileName, block)
-  //       // document.insertBefore(fileName, block)
-  //     })
-  //     setElementAdded(true)
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-
-
-  // }, [])
 
 
 
@@ -181,27 +130,6 @@ const timeToRead =  readingTime(text.join(" "));
     return <ErrorPage statusCode={404} />
   }
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const res = await postComment(post.id, comment, name, email)
-  //   console.log(res)
-  //   if (res.data?.status === 400) {
-  //     if (res.data.params?.author_email) {
-  //       setError(res.data.params.author_email)
-  //     } else {
-  //       setError(res.message)
-  //     }
-  //   } else {
-  //     setComment('');
-  //     setEmail('');
-  //     setName('');
-  //     setError('');
-  //     setSuccess('Your comment has been submitted, it will show after approval!')
-  //   }
-  // }
-
-
-
   return (
     <Layout preview={preview}>
       <Seo title={title} description={excerpt} />
@@ -214,24 +142,24 @@ const timeToRead =  readingTime(text.join(" "));
           <PostTitle>Loading…</PostTitle>
         ) : ( */}
 
-          <div className="col-span-8 md:col-span-6 lg:col-span-5 md:mx-5 px-4 md:px-0" >
-            <div >
+          <div className="col-span-8 md:col-span-12 lg:col-span-5 md:mx-5 px-4 md:px-0 relative" >
+            
 
-            <PostHeader
+              <PostHeader
                 title={title}
                 coverImage={coverImage}
                 slug={slug}
                 // date={post.date}
                 // authors={post.authors}
-                 timeToRead={timeToRead} date={undefined} authors={undefined}                // timeToRead={timeToRead}
+                timeToRead={timeToRead} date={undefined} authors={undefined}                // timeToRead={timeToRead}
               />
-              
+
               {/* 
               <TableOfContents className="list-none lg:hidden" nestedHeadings={nestedHeadings} /> */}
-              <PostContent content={content}/>
+              <PostContent content={content} />
 
 
-            </div>
+            
             {/* <form className='mt-10 mx-5 ' onSubmit={(e) => handleSubmit(e)}>
               {error &&
                 <p className='flex text-red-600 mb-4 bg-red-100 w-fit p-4'>
@@ -368,7 +296,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
   // const page: any = getArticlePage(data, slug);
   // getBlocks
   console.log(slug, 'pros')
-  
+
   const response = await supabaseClient
     .from('posts')
     .select('view_count')
@@ -376,7 +304,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
   console.log(response)
   const totalViews = response.data[0]?.view_count || 0;
 
-  
+
 
   articleTitle = page.properties.Name.title[0].plain_text;
   // publishedDate = page.properties.Published.date.start;

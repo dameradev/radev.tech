@@ -80,7 +80,7 @@ pre[class*=language-] {
 }
 
 li, li::marker {
-  margin-right:0.5rem !important;
+  /* margin-right:0.5rem !important; */
   /* display: none;
   visibility: hidden; */
 }
