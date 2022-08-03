@@ -1,9 +1,9 @@
 # *
 User-agent: *
-Disallow: /
+Allow: /
 
 # Host
-Host: https://blog-graphcms-weld.vercel.app
+Host: https://radev.tech
 
 # Sitemaps
-Sitemap: https://blog-graphcms-weld.vercel.app/sitemap.xml
+Sitemap: https://radev.tech/sitemap.xml
