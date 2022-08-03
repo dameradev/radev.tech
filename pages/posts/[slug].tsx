@@ -295,7 +295,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
 
   // const page: any = getArticlePage(data, slug);
   // getBlocks
-  console.log(slug, 'pros')
+  console.log(page.properties.CoverImage, 'coverimage')
 
   const response = await supabaseClient
     .from('posts')

@@ -58,19 +58,21 @@ export async function getStaticProps({ preview = false }) {
   //   database_id:"59d5a9a6217c4aa0ad2142cce56fbfc2",
   // });
   // response.results.forEach(result => console.log(result))
-
+  
   const posts = data.map(post => {
-    console.log(post.properties.Excerpt)
+    // console.log(post.properties.Excerpt)
+    console.log(post.properties.CoverImage.files,'test')
     return {
       id: post.id,
       title: post.properties.Name.title[0].plain_text,
       slug: slugify(post.properties.Name.title[0].plain_text.toLowerCase()),
       publishDate: post.created_time,
-      coverImage: post.properties.CoverImage.files[0].file.url,
+      coverImage: post.properties.CoverImage.files[0].file ? post.properties.CoverImage.files[0].file.url : post.properties.CoverImage.files[0].name,
       excerpt: post.properties.Excerpt.rich_text[0].plain_text,
       // excerpt: "",
     }
   })
+
 
 
   // const page: any = getArticlePage(data, '5-custom-developer-blogs-i-found-inspiration-from');

@@ -52,7 +52,7 @@ export default function PostPreview({
     <PostStyled>
       
       <div className="mb-5">
-         <CoverImage slug={slug} title={title.rendered} url={coverImage} />
+         {coverImage && <CoverImage slug={slug} title={title.rendered} url={coverImage} />}
       </div>
       <div className="mb-4 text-xs uppercase flex gap-x-4">
         <Date dateString={date} />

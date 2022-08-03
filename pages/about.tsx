@@ -65,7 +65,7 @@ export const getStaticProps = async () => {
       title: post.properties.Name.title[0].plain_text,
       slug: slugify(post.properties.Name.title[0].plain_text.toLowerCase()),
       publishDate: post.created_time,
-      coverImage: post.properties.CoverImage.files[0].file.url,
+      coverImage: post.properties.CoverImage.files[0].file ? post.properties.CoverImage.files[0].file.url : post.properties.CoverImage.files[0].name,
       excerpt: post.properties.Excerpt.rich_text[0].plain_text,
       // excerpt: "",
     }
