@@ -65,7 +65,7 @@ export default function Footer() {
 
 
         </div>
-        <div className="flex justify-between pb-4"><p>© {new Date().getFullYear()} Damian Radev</p> <a href="https://radev.tech" className="text-secondary">Previous Portfolio Website</a></div>
+        <div className="flex justify-between pb-4"><p>© {new Date().getFullYear()} Damian Radev</p> <a href="https://damjans-portfolio.vercel.app/" className="text-secondary">Previous Portfolio Website</a></div>
       </Container>
     </footer>
   )
