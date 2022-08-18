@@ -24,6 +24,7 @@ export default function Seo({
       <meta key="og_site_name" property="og:site_name" content={siteName} />
       <meta key="og_url" property="og:url" content={canonical ?? DOMAIN} />
       <meta key="og_site_name" property="og:site_name" content={siteName} />
+      <meta name="google-site-verification" content="WlAkywNQehSxEY1-hPHl8-dbrKlvu3pqQXKZjGzkdBI" />
       <meta
         key="og_image"
         property="og:image"
