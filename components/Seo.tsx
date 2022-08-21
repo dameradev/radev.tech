@@ -6,8 +6,8 @@ const DEFAULT_OG_IMAGE =
 
 export default function Seo({
   title = "Radev's Digital Space ",
-  description = "Damjan Radev is a freelance web-developer working on mostly on the front-end, writing about stuff on his learning journey.",
-  siteName = "Radev",
+  description = "Damian Radev is a freelance web-developer working on mostly on the front-end, writing about the web on his learning journey.",
+  siteName = "Damian Radev",
   canonical = DOMAIN,
   ogImage = DEFAULT_OG_IMAGE,
   ogType = "website",
@@ -25,6 +25,10 @@ export default function Seo({
       <meta key="og_url" property="og:url" content={canonical ?? DOMAIN} />
       <meta key="og_site_name" property="og:site_name" content={siteName} />
       <meta name="google-site-verification" content="WlAkywNQehSxEY1-hPHl8-dbrKlvu3pqQXKZjGzkdBI" />
+
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <link rel="alternate icon" href="/favicon.ico" />
+
       <meta
         key="og_image"
         property="og:image"
@@ -68,7 +72,6 @@ export default function Seo({
 
       <link rel="canonical" href={canonical ?? DOMAIN} />
 
-      <link rel="shortcut icon" href="/favicon.ico" />
     </Head>
   );
 }
