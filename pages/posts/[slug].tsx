@@ -47,19 +47,20 @@ import { PostStyled } from '../../styles/PostPageStyles'
 import { FaCopy } from 'react-icons/fa'
 import { ThemeContext } from '../../lib/themeContext'
 import PostContent from '../../components/PostContent'
+import { getTimeToRead } from '../../lib/timeToRead'
 
 
 export default function Post({ post, morePosts, preview, tags, totalViews: staticTotalViews, content,
   title,
-  publishedDate,
-  lastEditedAt,
+  publishDate,
+  editDate,
   slug,
   coverImage,
   excerpt,
   summary, }) {
   const router = useRouter()
 
-  // console.log(content)
+  console.log(publishDate, editDate)
 
   const [comment, setComment] = useState('');
   const [email, setEmail] = useState('');
@@ -69,62 +70,14 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
   // state for total views
   const [totalViews, setTotalViews] = useState(staticTotalViews);
 
-  // useEffect(() => {
-  //   prism.highlightAll();
-  // }, []);
-  // const timeToRead = readingTime(content);
-  // console.log(timeToRead)
-
-  const [nestedHeadings, setNestedHeadings] = useState([]);
-  const [elementAdded, setElementAdded] = useState(false);
-
-
-  // console.log(post)
   useEffect(() => {
     fetch(`/api/views/${slug}`, {
       method: 'POST',
     });
-
-    // fetch(`/api/views/${post.slug}`, {
-    //   method: 'GET',
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     setTotalViews(data.total)
-    //   })
-
   }, [slug]);
 
 
-  const text = []
-  content.forEach(block => {
-    if (block.type === "paragraph" || block.type === "bulleted_list_item") {
-      block[block.type].text.forEach(value => text.push(value.plain_text))
-      // text.push(block.text.content)
-    } else if (block.type === "code") {
-      block[block.type].text.forEach(value => text.push(value.text.content))
-    }
-  })
-  const timeToRead = readingTime(text.join(" "));
-
-
-
-
-  // useEffect(() => {
-  //   // block.appendChild()
-
-
-  //   const headingElements = Array.from(
-  //     document.querySelector('.post-content').querySelectorAll("h2")
-  //   );
-
-  //   headingElements.map((heading, index) => {
-  //     heading.id = `heading-${index}`;
-  //     heading.className = "heading";
-  //   })
-
-  //   setNestedHeadings(headingElements)
-  // }, []);
+  const timeToRead = getTimeToRead(content)
 
   if (!router.isFallback && !slug) {
     return <ErrorPage statusCode={404} />
@@ -136,102 +89,20 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
       <FadeIn>
         <Container className="grid grid-cols-8 relative p-0">
 
-          {/* <TableOfContents className="relative col-span-2 hidden lg:block" nestedHeadings={nestedHeadings} /> */}
-
-          {/* {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : ( */}
-
           <div className="col-span-8 md:col-span-12 lg:col-span-5 md:mx-5 px-4 md:px-0 relative" >
-            
 
               <PostHeader
                 title={title}
                 coverImage={coverImage}
                 slug={slug}
-                // date={post.date}
-                // authors={post.authors}
-                timeToRead={timeToRead} date={undefined} authors={undefined}                // timeToRead={timeToRead}
+                timeToRead={timeToRead}
+                date={publishDate}
+                editDate={editDate}
               />
-
-              {/* 
-              <TableOfContents className="list-none lg:hidden" nestedHeadings={nestedHeadings} /> */}
               <PostContent content={content} />
-
-
-            
-            {/* <form className='mt-10 mx-5 ' onSubmit={(e) => handleSubmit(e)}>
-              {error &&
-                <p className='flex text-red-600 mb-4 bg-red-100 w-fit p-4'>
-                  <XCircleIcon className="w-6 mr-2" />
-                  {error}
-                </p>
-              }
-              {success &&
-                <p className='flex text-green-600 mb-4 bg-green-100 w-fit p-4'>
-                  <CheckCircleIcon className="w-6 mr-2" />
-                  {success}
-                </p>
-              }
-              <div className='flex mb-4 gap-4'>
-                <input
-
-                  placeholder='Email'
-                  className='w-full bg-skin-base text-skin-fg  border-[1px] border-slate-300 font-bold py-2 px-4 rounded-xl'
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                  placeholder='Name'
-                  className='w-full bg-skin-base text-skin-fg  border-[1px] border-slate-300 font-bold py-2 px-4 rounded-xl'
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
-              <textarea
-                placeholder='Leave a comment'
-                className='w-full bg-skin-base text-skin-fg  border-[1px] border-slate-300 font-bold py-2 px-4 rounded-xl'
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-              />
-              <button
-                className='text-white bg-secondary text-xs font-medium border-2 border-skin-secondary mt-4 px-6 py-2 rounded-full uppercase'
-                type='submit'
-              >
-                send
-              </button>
-            </form> */}
-            {/* {post['_embedded']?.replies?.[0]?.map((comment, index) => {
-              const repliesToComment = post['_embedded']?.replies[0].filter(reply => reply.parent === comment.id)
-              return comment.parent === 0 && (
-                <>
-
-                  <Comment className="" key={index} reply={false} comment={comment} hasReplies={repliesToComment.length} />
-                  {repliesToComment.map((reply, index) => {
-                    return <Comment key={index} hasReplies={false} className="pl-6" reply comment={reply} />
-                  })}
-                </>
-              )
-            })} */}
           </div>
 
 
-
-          {/* )} */}
-
-
-
-          {/* <Sidebar className="col-span-8" tags={tags} /> */}
-
-
-
-          {/* <SectionSeparator className="col-span-8" /> */}
-          {/* {morePosts?.length > 0 && (
-          <div className='col-span-8'>
-
-            <MoreStories className="border-none pr-0 sm:pr-0 md:grid-cols-2 lg:grid-cols-3" posts={morePosts} />
-          </div>)
-        } */}
 
         </Container>
       </FadeIn>
@@ -284,18 +155,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
 
   const data: any = await getAllArticles(process.env.BLOG_DATABASE_ID);
   const page: any = getArticlePage(data, slug);
-  // console.log(slug)     
-  // console.log(page)
-
-  // console.log(page, '[ageee')
-  // const response = await notion.databases.query({
-  //   database_id: process.env.BLOG_DATABASE_ID,
-  // });
-  // console.log(response)
-
-  // const page: any = getArticlePage(data, slug);
-  // getBlocks
-  console.log(page.properties.CoverImage, 'coverimage')
+ console.log(page.properties)
 
   const response = await supabaseClient
     .from('posts')
@@ -307,23 +167,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
 
 
   articleTitle = page.properties.Name.title[0].plain_text;
-  // publishedDate = page.properties.Published.date.start;
-  // lastEditedAt = page.properties.LastEdited.last_edited_time;
-  // // sponsoredArticleUrl = page.properties.canonicalUrl?.url;
-  // summary = page.properties.Summary?.rich_text[0]?.plain_text;
-  // coverImage =
-  //   page.properties?.coverImage?.files[0]?.file?.url ||
-  //   page.properties.coverImage?.files[0]?.external?.url ||
-  //   'https://via.placeholder.com/600x400.png';
-
-  // const moreArticles: any = await getMoreArticlesToSuggest(
-  //   process.env.BLOG_DATABASE_ID,
-  //   articleTitle
-  // );
-  // const moreArticles: any = await getMoreArticlesToSuggest(
-  //   process.env.BLOG_DATABASE_ID,
-  //   articleTitle
-  // );
+  
 
   let blocks = await notion.blocks.children.list({
     block_id: page.id
@@ -345,8 +189,8 @@ export const getStaticProps = async ({ params: { slug } }) => {
       content,
       title: articleTitle,
       excerpt: page.properties.Excerpt.rich_text[0].plain_text,
-      publishedDate,
-      lastEditedAt,
+      publishDate: page.properties.PublishDate.created_time,
+      editDate: page.properties.LastEdited.last_edited_time,
       slug,
       coverImage,
       summary,

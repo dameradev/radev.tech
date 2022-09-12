@@ -3,6 +3,8 @@ import Date from './Date'
 import CoverImage from './CoverImage'
 import Link from 'next/link'
 import styled from 'styled-components'
+import { getTimeToRead } from '../lib/timeToRead'
+import TimeToRead from './TimeToRead'
 
 const ReadMoreLink = styled.a`
   padding: 1rem 2rem;
@@ -21,8 +23,10 @@ export default function HeroPost({
   excerpt,
   author,
   slug,
+  content
 }) {
 
+  const timeToRead = getTimeToRead(content)
   return (
     <section className='mt-5 lg:mt-10 grid grid-cols-1 md:grid-cols-2 justify-center gap-x-8 items-center '>
       <div className="mt-4 lg:mt-0 hover:opacity-80">
@@ -44,9 +48,9 @@ export default function HeroPost({
         </div>
         <div className='self-end'>
 
-          {/* <div className="text-lg md:mb-0">
-            <Date dateString={date} />
-          </div> */}
+          <div className="text-lg md:mb-0 flex justify-between items-center">
+            <Date dateString={date} /> <TimeToRead timeToRead={timeToRead} />
+          </div>
 
           {/* <p className="mb-4 text-lg leading-relaxed">{excerpt}</p> */}
           {/* {author && <Avatar name={author.name} picture={author.picture.url} dateString={date} />} */}

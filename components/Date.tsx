@@ -1,8 +1,7 @@
-import { parseISO, format } from 'date-fns'
-// import { getDate } from '../lib/wordpress'
+import { formatDate } from '../lib/formatDate'
 
-export default function Date({ dateString }) {
-  // const date = getDate(dateString)
-  
-  return <time dateTime={dateString}>{dateString}</time>
+export default function DateFormatted({ dateString }) {  
+  const date = formatDate(dateString)
+
+  return <time className="capitalize text-xl" dateTime={dateString}>{date}</time>
 }

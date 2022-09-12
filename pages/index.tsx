@@ -17,9 +17,7 @@ import slugify from 'slugify'
 export default function Index({ posts, tags, preview, wpPosts, }) {
   const heroPost = posts[0]
   const morePosts = posts.slice(1)
-  // console.log(heroPost['_embedded']?.author)
 
-console.log(posts)
 
 
   return (
@@ -29,10 +27,7 @@ console.log(posts)
 
         <Container className="">
           <FadeIn>
-
-
             <HomePageContent heroPost={heroPost} posts={morePosts} tags={[]} />
-
           </FadeIn>
         </Container>
       </Layout>
@@ -59,22 +54,41 @@ export async function getStaticProps({ preview = false }) {
   // });
   // response.results.forEach(result => console.log(result))
   
-  const posts = data.map(post => {
+  const postsPromises = data.map(async post => {
     // console.log(post.properties.Excerpt)
-    console.log(post.properties.CoverImage.files,'test')
+
+    let content;
+    let blocks = await notion.blocks.children.list({
+      block_id: post.id
+    });
+
+    content = [...blocks.results];
+
+    while (blocks.has_more) {
+      blocks = await notion.blocks.children.list({
+        block_id: post.id,
+        start_cursor: blocks.next_cursor
+      });
+
+      content = [...content, ...blocks.results];
+    }
+    console.log(content)
+    
     return {
       id: post.id,
       title: post.properties.Name.title[0].plain_text,
       slug: slugify(post.properties.Name.title[0].plain_text.toLowerCase()),
-      publishDate: post.created_time,
       coverImage: post.properties.CoverImage.files[0].file ? post.properties.CoverImage.files[0].file.url : post.properties.CoverImage.files[0].name,
       excerpt: post.properties.Excerpt.rich_text[0].plain_text,
+      publishDate: post.properties.PublishDate.created_time,
+      editDate: post.properties.LastEdited.last_edited_time,
+      content
       // excerpt: "",
     }
   })
 
 
-
+  const posts = await Promise.all(postsPromises)
   // const page: any = getArticlePage(data, '5-custom-developer-blogs-i-found-inspiration-from');
   // console.log(page,'page')
 

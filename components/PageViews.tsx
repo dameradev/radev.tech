@@ -10,7 +10,7 @@ const PageViews = ({ slug }) => {
 
   const views = new Number(data?.total);
 
-  return <span className='text-center text-xl h-10 items-center flex gap-2'><EyeIcon className='w-6'/>{`${views > 0 ? views.toLocaleString() : '–––'} views`}</span>;
+  return <span className='text-center text-xl items-center flex gap-2'><EyeIcon className='w-6'/>{`${views > 0 ? views.toLocaleString() : '–––'} views`}</span>;
 };
 
 export default PageViews;
