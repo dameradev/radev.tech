@@ -368,7 +368,7 @@ export function useScrollSpy(
 
     observer.current?.disconnect();
     observer.current = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
+      entries?.forEach((entry, index) => {
         
         if (entry?.isIntersecting) {
           setActiveId(entry.target.id);
@@ -389,7 +389,7 @@ export function useScrollSpy(
     
 
 
-    elements.forEach((el) => {
+    elements?.forEach((el) => {
       if (el) {
         observer.current?.observe(el);
       }
