@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "yarn add --dev typescript @types/node @types/react eslint && yarn && next build",
+    "build": "yarn  add --dev --ignore-engines typescript @types/node @types/react eslint && yarn --ignore-engines && next build",
     "postbuild": "next-sitemap",
     "start": "next start"
   },

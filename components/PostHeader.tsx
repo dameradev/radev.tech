@@ -26,15 +26,6 @@ export default function PostHeader({ title, slug, coverImage, timeToRead, date, 
           <span className='flex items-center justify-between w-full gap-2 '><FaEdit /> <Date dateString={editDate} /></span>
         </div>
       </div>
-      {/* <div className="md:mx-5 sm:mx-0 flex justify-center w-full cover-photo"> */}
-      {/* <CoverImage title={title} url={coverImage.url} /> */}
-      {/* </div> */}
-      <div className="max-w-2xl mx-auto">
-
-        <div className="text-lg">
-
-        </div>
-      </div>
     </>
   )
 }
