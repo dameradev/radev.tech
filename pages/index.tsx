@@ -54,7 +54,7 @@ export async function getStaticProps({ preview = false }) {
   // });
   // response.results.forEach(result => console.log(result))
   
-  const postsPromises = data.map(async post => {
+  const postsPromises = data.sort((a,b) => b.properties.PublishDate.created_time > a.properties.PublishDate.created_time ? -1 : 1).map(async post => {
     // console.log(post.properties.Excerpt)
 
     let content;

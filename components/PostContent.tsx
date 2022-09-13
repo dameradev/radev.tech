@@ -15,7 +15,7 @@ const PostContent = ({ content }) => {
     <>
       <TableOfContent className="" />
       {content.map((block) => (
-        <div className="post-content">
+        <div className="post-content">    
           {renderBlocks(block)} 
           {/* dame   */}
           {/* {console.log(block)} */}
@@ -334,10 +334,9 @@ function useHeadings() {
     const elements = Array.from(document.querySelectorAll(".post-content h2, h3, h4, h5, h6"))
       // .filter((element) => element.id)
       .map((element, index) => {
-        console.log(element)
         return {
           id: element.getAttribute('data-id'),
-          text: element.innerHTML ?? "",
+          text: !element.hasChildNodes ? element.innerHTML ?? "" : element.childNodes[0].textContent,
           level: Number(element.tagName.substring(1))
         }
 
