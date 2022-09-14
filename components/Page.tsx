@@ -18,8 +18,7 @@ const Page = ({ children }) => {
 
 
   return (
-    <div className={`main-wrapper bg-skin-base text-skin-fg ${isDark ? "dark" : "light"}`}>
-
+    <div className={`main-wrapper bg-skin-base text-skin-fg min-h-[100vh] ${isDark ? "dark" : "light"}`}>
       {children}
     </div>
   );
