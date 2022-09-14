@@ -418,7 +418,7 @@ function TableOfContent({className}) {
   const match = '(\s*\d*[13579]\s*)'
   
   return (
-    <nav className={`lg:mt-32 mb-12 lg:fixed ${className} lg:w-[35rem] right-0 top-0 lg:border-r-2 mr-4`} >
+    <nav className={`lg:mt-32 mb-12 lg:fixed ${className} lg:w-[35rem] right-0 top-0 lg:border-r-2 mr-4 mt-10 md:mt-0`} >
       <p className="text-xl mb-4">Table of contents</p>
       <ul className="sticky flex flex-col gap-2">
         {headings.map((heading, index) => (

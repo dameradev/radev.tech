@@ -21,7 +21,7 @@ import vsLight from "prism-react-renderer/themes/vsLight";
 import prism from "prismjs";
 import { useEffect, useRef, useState, createRef, Fragment, useContext } from 'react'
 
-import TableOfContents from '../../components/TableOfContents'
+
 
 // import { data } from 'autoprefixer'
 
