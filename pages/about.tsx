@@ -2,7 +2,7 @@ import Layout from '../components/Layout';
 import React from 'react';
 import MoreStories from '../components/MoreStories';
 import { supabaseClient } from '../lib/hooks/useSupabase';
-import { getAllArticles } from '../lib/notion';
+import { getAllArticles, notion } from '../lib/notion';
 import slugify from 'slugify';
 import Link from 'next/link';
 
@@ -58,23 +58,37 @@ export const getStaticProps = async () => {
 
   const data: any = await getAllArticles(process.env.BLOG_DATABASE_ID);
 
-  const posts = data.map(post => {
+  const postsPromises = data.map(async post => {
     // console.log(post.properties.Excerpt)
+    let content;
+    let blocks = await notion.blocks.children.list({
+      block_id: post.id
+    });
+
+    content = [...blocks.results];
+
+    while (blocks.has_more) {
+      blocks = await notion.blocks.children.list({
+        block_id: post.id,
+        start_cursor: blocks.next_cursor
+      });
+
+      content = [...content, ...blocks.results];
+    }
     return {
       id: post.id,
       title: post.properties.Name.title[0].plain_text,
       slug: slugify(post.properties.Name.title[0].plain_text.toLowerCase()),
-      publishDate: post.created_time,
       coverImage: post.properties.CoverImage.files[0].file ? post.properties.CoverImage.files[0].file.url : post.properties.CoverImage.files[0].name,
       excerpt: post.properties.Excerpt.rich_text[0].plain_text,
-      // excerpt: "",
+      publishDate: post.properties.PublishDate.created_time,
+      editDate: post.properties.LastEdited.last_edited_time,
+      content
     }
   })
 
+  const posts = await Promise.all(postsPromises)
   const latestPost = posts.find(post => post.publishDate === posts.sort((a, b) => b.publishDate - a.publishDate)[0].publishDate);
-  console.log(latestPost)
-
-
 
   return {
     props: {

@@ -72,7 +72,6 @@ export async function getStaticProps({ preview = false }) {
 
       content = [...content, ...blocks.results];
     }
-    console.log(content)
     
     return {
       id: post.id,
