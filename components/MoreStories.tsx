@@ -1,13 +1,14 @@
 import { getTimeToRead } from '../lib/timeToRead'
 import PostPreview from './PostPreview'
+import ProjectPreview from './ProjectPreview'
 
-export default function MoreStories({ posts, className }) {
+export default function MoreStories({ posts, isProject, className }) {
   return (
     <section>
-      <div className={`grid grid-cols-1 md:grid-cols-2 mb-14 lg:grid-cols-3  md:gap-x-6 lg:gap-x-12 gap-y-10  mt-4 ${className}`}>
+      <div className={`grid grid-cols-1 md:grid-cols-2 mb-14 lg:grid-cols-3  md:gap-x-6 lg:gap-x-12 gap-y-10  mt-4 ${className} ${isProject ? "md:grid-cols-1 lg:grid-cols-1 gap-y-20" : ""}`}>
         {posts.map((post) => {
           const timeToRead = getTimeToRead(post.content)
-          return (
+          return !isProject ? (
             <PostPreview
               key={post.slug}
               post={post}
@@ -17,7 +18,7 @@ export default function MoreStories({ posts, className }) {
               excerpt={post.excerpt}
               timeToRead={timeToRead}
             />
-          )
+          ): <ProjectPreview post={post} />
         })}
       </div>
     </section>

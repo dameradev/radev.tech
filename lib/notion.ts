@@ -156,6 +156,28 @@ export const getBlocks = async (blockId) => {
   return response.results;
 };
 
+
+export const getAllPortfolioProjects = async (databaseId) => {
+  console.log(databaseId)
+  const response = await notion.databases.query({
+    database_id: databaseId,
+    
+        
+  });
+
+  return response.results;
+};
+
+export const getImageForPortfolio = async (id) => {
+  const response: any = await notion.databases.query({
+    database_id: process.env.IMAGES_DATABASE_ID
+    
+  })
+
+
+  return response.results.find(result => result.id === id).properties.image
+}
+
 // export const getMoreArticlesToSuggest = async (
 //   databaseId,
 //   currentArticleTitle

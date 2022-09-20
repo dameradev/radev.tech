@@ -28,9 +28,14 @@ export default function Footer() {
                   <a>Contact</a>
                 </Link>
               </li>
+              <li className="">
+                <Link href="/projects">
+                  <a>Projects</a>
+                </Link>
+              </li>
             </ul>
 
-            <ThemeSwitch />
+            {/* <ThemeSwitch className="self-start"/> */}
           </nav>
 
           <h2 className="text-5xl font-bold min-w-full justify-self-center text-center">

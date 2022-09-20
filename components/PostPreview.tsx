@@ -35,9 +35,10 @@ export default function PostPreview({
   return (
     <PostStyled>
       
-      <div className="mb-5">
+      <div className="mb-5 relative">
          {coverImage && <CoverImage slug={slug} title={title.rendered} url={coverImage} />}
       </div>
+      
       <div className="mb-4 text-xs uppercase flex gap-x-4 items-center">
         <Date dateString={post.publishDate} />
         <TimeToRead timeToRead={timeToRead} />

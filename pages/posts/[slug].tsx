@@ -59,8 +59,8 @@ export default function Post({ post, morePosts, preview, tags, totalViews: stati
   excerpt,
   summary, }) {
   const router = useRouter()
-
-  console.log(publishDate, editDate)
+// /
+  // console.log(publishDate, editDate)
 
   const [comment, setComment] = useState('');
   const [email, setEmail] = useState('');
@@ -155,16 +155,21 @@ export const getStaticProps = async ({ params: { slug } }) => {
 
   const data: any = await getAllArticles(process.env.BLOG_DATABASE_ID);
   const page: any = getArticlePage(data, slug);
- console.log(page.properties)
+
+
+  
+
+//  console.log(page.properties)
 
   const response = await supabaseClient
     .from('posts')
     .select('view_count')
     .filter('slug', 'eq', slug);
-  console.log(response)
+  // console.log(response)
   const totalViews = response.data[0]?.view_count || 0;
 
 
+  
 
   articleTitle = page.properties.Name.title[0].plain_text;
   
@@ -184,6 +189,8 @@ export const getStaticProps = async ({ params: { slug } }) => {
     content = [...content, ...blocks.results];
   }
 
+
+  // console.log(page.properties.test.files.name)
   return {
     props: {
       content,

@@ -9,13 +9,13 @@ import vsDark from "prism-react-renderer/themes/vsDark";
 import vsLight from "prism-react-renderer/themes/vsLight";
 import { FaCopy } from 'react-icons/fa';
 
-const PostContent = ({ content }) => {
+const PostContent = ({ content, className = ""}) => {
 
   return (
     <>
       <TableOfContent className="" />
       {content.map((block) => (
-        <div className="post-content">    
+        <div className={`post-content ${className}`}>    
           {renderBlocks(block)} 
           {/* dame   */}
           {/* {console.log(block)} */}
@@ -50,7 +50,7 @@ export function renderBlocks(block) {
         </h1>
       );
     case 'heading_2':
-      console.log(value, 'headerng 2')
+      // console.log(value, 'headerng 2')
       return (
         <div className="relative">
           <a className="absolute top-[-100px] mb-20" id={value.text[0].text.content.split(" ").join('-').toLowerCase()}>
@@ -419,7 +419,7 @@ function TableOfContent({className}) {
   
   return (
     <nav className={`lg:mt-32 mb-12 lg:fixed ${className} lg:w-[35rem] right-0 top-0 lg:border-r-2 mr-4 mt-10 md:mt-0`} >
-      <p className="text-xl mb-4">Table of contents</p>
+      {headings.length ? <p className="text-xl mb-4">Table of contents</p> : ""}
       <ul className="sticky flex flex-col gap-2">
         {headings.map((heading, index) => (
           <li key={heading.id}      className={` ml-${heading.level === 3 ? "4" : "2"}   mr-0 pr-0 lg:${isActiveId === heading.id ? "border-r-4" : ""}`} >

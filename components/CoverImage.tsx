@@ -15,16 +15,17 @@ export default function CoverImage({ title, url, slug }) {
       src={url}
     />
   )
-
-  return (
-    <div className="sm:mx-0 bg-white rounded-3xl">
-      {slug ? (
-        <Link href={`/posts/${slug}`}>
-          <a aria-label={title}>{image}</a>
-        </Link>
-      ) : (
-        image
-      )}
-    </div>
-  )
+  return image
+  // return (
+  //   <div className="sm:mx-0 bg-white rounded-3xl">
+  //     {slug ? (
+  //       <Link href={`/posts/${slug}`}>
+  //         <a aria-label={title}>{image}</a>
+  //       </Link>
+  //     ) : (
+  //       image
+  //     )}
+  //   </div>
+  
+  // )
 }

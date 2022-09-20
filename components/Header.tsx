@@ -35,9 +35,14 @@ export default function Header() {
                 <a>About</a>
               </Link>
             </li>
-            <li className="mr-4">
+            {/* <li className="mr-4">
               <Link href="/contact">
                 <a>Contact</a>
+              </Link>
+            </li> */}
+            <li className="">
+              <Link href="/projects">
+                <a>Projects</a>
               </Link>
             </li>
           </ul>
@@ -49,10 +54,10 @@ export default function Header() {
             <MenuIcon className="w-6" onClick={() => setIsNavOpen(!isNavOpen)} />
           </div>
           {/* {isNavOpen && <div className='w-[100vw] h-[100vh] absolute bg-white top-0 left-0 opacity-30' />} */}
-          {isNavOpen && 
+          {isNavOpen &&
             <div className='fixed inset-0 bg-black/20 backdrop-blur-sm dark:bg-gray-900/80 ' onClick={() => setIsNavOpen(!isNavOpen)} />
           }
-           <div className={`mt-10 w-fit h-fit  absolute bg-skin-base z-10 top-[-12px] right-5 transition-all p-5 px-5 rounded-md ${isNavOpen ? 'translate-x-0' : 'translate-x-[120%]'} `}>
+          <div className={`mt-10 w-fit h-fit  absolute bg-skin-base z-10 top-[-12px] right-5 transition-all p-5 px-5 rounded-md ${isNavOpen ? 'translate-x-0' : 'translate-x-[120%]'} `}>
 
             <nav className='flex  items-center gap-8 relative top-0  '>
 
@@ -70,6 +75,11 @@ export default function Header() {
                 <li className="">
                   <Link href="/contact">
                     <a>Contact</a>
+                  </Link>
+                </li>
+                <li className="">
+                  <Link href="/projects">
+                    <a>Projects</a>
                   </Link>
                 </li>
               </ul>
