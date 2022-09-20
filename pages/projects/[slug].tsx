@@ -36,7 +36,7 @@ const Project = ({ preview, content, title, images, technologies, url }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = [];
-  const data: any = await getAllArticles(process.env.BLOG_DATABASE_ID);
+  const data: any = await getAllPortfolioProjects(process.env.PORTFOLIO_DATABASE_ID);
 
 
   data.forEach((result) => {
@@ -84,12 +84,12 @@ export const getStaticProps = async ({ params: { slug } }) => {
 
 
 
-  const response = await supabaseClient
-    .from('posts')
-    .select('view_count')
-    .filter('slug', 'eq', slug);
-  console.log(response)
-  const totalViews = response.data[0]?.view_count || 0;
+  // const response = await supabaseClient
+  //   .from('posts')
+  //   .select('view_count')
+  //   .filter('slug', 'eq', slug);
+  // console.log(response)
+  // const totalViews = response.data[0]?.view_count || 0;
 
 
   articleTitle = page.properties.Name.title[0].plain_text;
@@ -121,7 +121,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
       slug,
       coverImage,
       // summary,
-      totalViews,
+      // totalViews,
       images,
       url: page.properties.url.url
 

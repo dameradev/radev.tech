@@ -222,7 +222,6 @@ export const getImageForPortfolio = async (id) => {
 // };
 
 export const getArticlePage = (data, slug) => {
-  console.log(data, 'data')
   const response = data.find((result) => {
     if (result.object === 'page') {
       const resultSlug = slugify(
