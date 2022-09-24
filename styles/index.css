@@ -5,6 +5,22 @@
 @tailwind utilities;
 
 
+@font-face {
+  font-family: "Larsseit-Bold";
+  font-weight: 700;
+  src: url("/fonts/Larsseit-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: "Larsseit";
+  font-weight: 400;
+  src: url("/fonts/Larsseit.otf") format("opentype");
+}
+@font-face {
+  font-family: "Larsseit";
+  font-weight: 100;
+  src: url("/fonts/Larsseit-Thin.otf") format("opentype");
+}
+
 html {
   font-size: 62.5%;
   font-family: Helvetica, sans-serif;
@@ -12,6 +28,7 @@ html {
 }
 
 body {
+  font-family: "Larsseit", Helvetica, sans-serif;
   font-size: 16px;
 }
 
