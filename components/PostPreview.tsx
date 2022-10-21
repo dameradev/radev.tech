@@ -10,18 +10,8 @@ import { device } from '../styles/deviceSIzes'
 
 const PostStyled = styled.div`
 
-  border-bottom: 1px solid var(--accent-3); 
-  &:first-of-type {
-    border-top: 1px solid #747474; 
-    padding-top: 3rem;
-  }
-  
-  &:last-of-type { 
-    
-    border-bottom: none; 
-  }
 
-  padding-bottom: 2rem;
+
   &:hover { 
     img {
       opacity: 0.8;
@@ -39,6 +29,17 @@ const PostStyled = styled.div`
   @media ${device.tabletMini} {
     flex-direction: column-reverse;
     display: flex;
+    border-bottom: 1px solid var(--accent-3); 
+    padding-bottom: 2rem;
+   
+    &:first-of-type {
+      border-top: 1px solid #747474; 
+      padding-top: 3rem;
+    }
+    
+    &:last-of-type { 
+      border-bottom: none; 
+    }
   }
 
 
