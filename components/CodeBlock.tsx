@@ -77,28 +77,6 @@ export const CodeBlock = ({ code, language, metastring = "", fileName }) => {
 };
 
 
-export function renderBlocks(block) {
-  const { type, id } = block;
-  const value = block[type];
-
-  // if (type === "bulleted_list_item") {
-  //   console.log(value)
-  // }
-
-  switch (type) {
-
-    case 'code':
-
-      return (
-        <CodeBlock
-          fileName={value.caption?.[0]?.plain_text}
-          language={value.language}
-          code={value.text[0].text.content}
-        />
-      );
-  }
-}
-
 
 
 export default CodeBlock;

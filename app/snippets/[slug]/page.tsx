@@ -4,7 +4,9 @@ import { notion, slugifyResult } from '../../../lib/notion';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import Highliter from '../../../components/Highliter';
-import CodeBlock, { renderBlocks } from '../../../components/CodeBlock';
+import CodeBlock from '../../../components/CodeBlock';
+import Container from '../../../components/Container';
+// import { renderBlocks } from '../../../components/CodeBlock';
 
 
 
@@ -67,9 +69,10 @@ const Page = async (props) => {
   await getData(props.params.slug)
 
   return (
-    <div>
+    <Container className="">
       
-      <h1>{page.properties.name.title[0].plain_text}</h1>
+      <h1 className='text-5xl pt-10'>{page.properties.name.title[0].plain_text}</h1>
+      <p className='text-2xl pt-10'>{page.properties.description?.rich_text[0]?.plain_text}</p>
       
       {content.map((block) => (
         <div className={`post-content `}>
@@ -77,9 +80,31 @@ const Page = async (props) => {
         </div>
       ))}
 
-    </div>
+    </Container>
   );
 };
+function renderBlocks(block) {
+  const { type, id } = block;
+  const value = block[type];
+
+  // if (type === "bulleted_list_item") {
+  //   console.log(value)
+  // }
+
+  switch (type) {
+
+    case 'code':
+
+      return (
+        <CodeBlock
+          fileName={value.caption?.[0]?.plain_text}
+          language={value.language}
+          code={value.text[0].text.content}
+        />
+      );
+  }
+}
+
 
 
 
