@@ -1,4 +1,6 @@
 module.exports = {
+  swcMinify: true,
+  experimental: { appDir: true },
   images: {
     domains: ["media.graphassets.com", "www.tum.thz.mybluehost.me", "s3.us-west-2.amazonaws.com", "res.cloudinary.com"],
   },

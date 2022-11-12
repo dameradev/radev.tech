@@ -19,19 +19,12 @@ const About = ({ posts, latestPost }) => {
             I'm Damian. I'm a developer and blogger freelancing on Upwork.
           </h1>
           <div className='flex gap-6 '>
-            <Link href={`posts/${latestPost.slug}`}>
-
-              <a className='text-white bg-secondary text-xs font-medium border-2 border-skin-secondary mt-4 p-3 rounded-full uppercase'>
-                Read the newst post
-              </a>
+            <Link className='text-white bg-secondary text-xs font-medium border-2 border-skin-secondary mt-4 p-3 rounded-full uppercase' href={`posts/${latestPost.slug}`}>
+              Read the newst post
             </Link>
-            <Link href="/contact">
-
-              <a className='text-white bg-secondary text-xs font-medium border-2 border-skin-secondary mt-4 p-3 rounded-full uppercase'>
-                Get in touch
-              </a>
+            <Link className='text-white bg-secondary text-xs font-medium border-2 border-skin-secondary mt-4 p-3 rounded-full uppercase' href="/contact">
+              Get in touch
             </Link>
-
           </div>
         </div>
 

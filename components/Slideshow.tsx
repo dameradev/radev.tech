@@ -16,6 +16,7 @@ function SlideShow({ slideshowData, className }) {
   return (
     <div className={`relative h-[20vh] sm:h-[30vh] md:h-[40vh] lg:h-[50vh] w-[80%] ${className}`}>
       {slideshowData[index] ? <Image
+        alt=''
         layout='fill'
         src={slideshowData[index]}
       // alt={slideshowData[index]?.alt}

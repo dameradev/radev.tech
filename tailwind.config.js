@@ -42,6 +42,7 @@ const themes = {
 }
 
 module.exports = {
+  safelist: ['bg-orange-800', 'bg-green-800', 'bg-red-800', 'bg-brown-800', 'bg-yellow-800', 'bg-blue-800', 'bg-purple-800', 'bg-pink-800'],
   content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
 
   theme: {

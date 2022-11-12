@@ -11,7 +11,7 @@ const Comment = ({ className, comment, reply, hasReplies }) => {
         <div className="flex">
 
           
-          <Image className="w-12 rounded-full mr-4" src={comment.author_avatar_urls[96]} />
+          <Image className="w-12 rounded-full mr-4" src={comment.author_avatar_urls[96]} alt={''} />
           <p className="font-bold mt-2 ">{comment.author_name} {!reply ? "says" : "replied"}:</p>
         </div>
         {/* <p className='italic text-xs justify-end'>{getDate(comment.date)}</p> */}

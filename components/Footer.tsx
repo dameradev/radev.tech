@@ -15,22 +15,22 @@ export default function Footer() {
             <ul className="flex flex-col gap-4 justify-center uppercase">
               <li className="mr-4 ">
                 <Link href="/">
-                  <a>Home</a>
+                  Home
                 </Link>
               </li>
               <li className="mr-4">
                 <Link href="/about">
-                  <a>About</a>
+                  About
                 </Link>
               </li>
               <li className="mr-4">
                 <Link href="/contact">
-                  <a>Contact</a>
+                  Contact
                 </Link>
               </li>
               <li className="">
                 <Link href="/projects">
-                  <a>Projects</a>
+                  Projects
                 </Link>
               </li>
             </ul>

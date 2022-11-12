@@ -265,3 +265,8 @@ function turnIntoChangelogItem(item: any, array: any[]) {
   ];
   return updatedChangelogList;
 }
+
+
+export const slugifyResult = (name) => {
+  return slugify(name).toLowerCase()
+}
