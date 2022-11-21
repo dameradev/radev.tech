@@ -35,6 +35,7 @@ export default function Header() {
                 About
               </Link>
             </li>
+            
             <li className="mr-4">
               <Link href="/snippets">
                 Snippets
