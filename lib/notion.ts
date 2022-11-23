@@ -63,15 +63,16 @@ export const getAllArticles = async (databaseId) => {
         // }
       ]
     },
-    // sorts: [
-    //   {
-    //     property: 'Published',
-    //     direction: 'descending'
-    //   }
-    // ]
+    sorts: [
+      {
+        property: 'PublishDate',
+        direction: 'descending'
+      }
+    ]
     
   });
 
+  console.log(response.results)
   return response.results;
 };
 
