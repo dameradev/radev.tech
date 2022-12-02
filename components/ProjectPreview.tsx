@@ -66,8 +66,8 @@ export default function ProjectPreview({
   console.log(technologies)
   return (
     <ProjectStyled className="">
-      <Link href={`/projects/${slug}`}>
-        <a className='grid lg:grid-cols-8 gap-10 md:grid-cols-1'>
+      <Link className='grid lg:grid-cols-8 gap-10 md:grid-cols-1' href={`/projects/${slug}`}>
+        
           <div className='md:col-span-4 lg:col-span-3'>{coverImage && <CoverImage slug={slug} title={title.rendered} url={coverImage} />}</div>
           <div className='md:col-span-4 lg:col-span-5'>
             <h2 className='text-4xl'>{title}</h2>
@@ -93,7 +93,7 @@ export default function ProjectPreview({
             }}>
 
           </div> */}
-        </a>
+        
       </Link>
     </ProjectStyled>
   )

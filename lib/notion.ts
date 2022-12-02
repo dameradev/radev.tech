@@ -63,15 +63,16 @@ export const getAllArticles = async (databaseId) => {
         // }
       ]
     },
-    // sorts: [
-    //   {
-    //     property: 'Published',
-    //     direction: 'descending'
-    //   }
-    // ]
+    sorts: [
+      {
+        property: 'PublishDate',
+        direction: 'descending'
+      }
+    ]
     
   });
 
+  console.log(response.results)
   return response.results;
 };
 
@@ -264,4 +265,9 @@ function turnIntoChangelogItem(item: any, array: any[]) {
     }
   ];
   return updatedChangelogList;
+}
+
+
+export const slugifyResult = (name) => {
+  return slugify(name).toLowerCase()
 }

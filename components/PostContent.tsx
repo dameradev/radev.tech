@@ -169,8 +169,8 @@ export function renderBlocks(block) {
     case 'callout':
       return (
 
-        <div className="flex p-3 space-x-4 bg-gray-100 rounded-lg bg-info-window mt-6" >
-          {value.icon && <span>{value.icon.emoji}</span>}
+        <div className="flex p-4 space-x-4 bg-gray-100 rounded-lg bg-info-window mt-6" >
+          {value.icon && <span className='text-2xl'>{value.icon.emoji}</span>}
           <div>
             <Text text={value.text} />
           </div>
@@ -210,7 +210,7 @@ export function renderBlocks(block) {
     case 'quote':
       return (
         <blockquote className="p-4 rounded-r-lg">
-          {/* <Text text={value.text} /> */}
+          <Text text={value.text} />
         </blockquote>
       );
     case 'divider':

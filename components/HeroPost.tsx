@@ -35,8 +35,8 @@ export default function HeroPost({
       <div className="min-h-full order-first lg:order-last grid grid-cols-1  md:gap-x-16 lg:gap-x-8 gap-y-4   ">
         <div className='flex flex-col gap-6'>
           <h3 className="mb-4 text-3xl font-bold leading-tight col-span-2 lg:text-4xl ">
-            <Link href={`/posts/${slug}`}>
-              <a className="hover:underline">{title}</a>
+            <Link className="hover:underline"  href={`/posts/${slug}`}>
+              {title}
             </Link>
           </h3>
           <div className="mb-4 text-lg leading-relaxed  "
@@ -44,7 +44,7 @@ export default function HeroPost({
               __html: excerpt,
             }}
           ></div>
-          <Link href={`/posts/${slug}`}><ReadMoreLink className="text-xs h-min cursor-pointer">Read more</ReadMoreLink></Link>
+          {/* <Link href={`/posts/${slug}`}><ReadMoreLink className="text-xs h-min cursor-pointer">Read more</ReadMoreLink></Link> */}
         </div>
         <div className='self-end'>
 

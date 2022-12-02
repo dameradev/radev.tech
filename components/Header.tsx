@@ -13,11 +13,11 @@ export default function Header() {
       <div className='container mx-auto flex items-center justify-between py-6 z-20'>
 
         <div className='text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight ml-4 md:ml-0'>
-          <Link href="/">
+          <Link className="hover:underline" href="/">
 
-            <a className="hover:underline">
-              <Image layout='fixed' width="80" height="25" src="/logo.png" alt="logo" />
-            </a>
+
+            <Image layout='fixed' width="80" height="25" src="/logo.png" alt="logo" />
+
           </Link>
 
 
@@ -27,27 +27,33 @@ export default function Header() {
           <ul className="flex gap-4 justify-center uppercase">
             <li className="mr-4 text-white">
               <Link href="/">
-                <a>Home</a>
+                Home
               </Link>
             </li>
             <li className="mr-4">
               <Link href="/about">
-                <a>About</a>
+                About
+              </Link>
+            </li>
+            
+            <li className="mr-4">
+              <Link href="/snippets">
+                Snippets
               </Link>
             </li>
             {/* <li className="mr-4">
               <Link href="/contact">
-                <a>Contact</a>
+                Contact
               </Link>
             </li> */}
             <li className="">
               <Link href="/projects">
-                <a>Projects</a>
+                Projects
               </Link>
             </li>
           </ul>
           <ThemeSwitch />
-        </nav>
+        </nav >
 
         <div className="md:hidden">
           <div className="cursor-pointer text-skin-secondary bg-slate-700 p-2 rounded-full hover:opacity-90 border-2 border-transparent ease-in hover:border-secondary">
@@ -64,34 +70,34 @@ export default function Header() {
               <ul className="flex flex-col  gap-6 text-lg justify-center uppercase mr-15">
                 <li className="">
                   <Link href="/">
-                    <a>Home</a>
+                    Home
                   </Link>
                 </li>
                 <li className="">
                   <Link href="/about">
-                    <a>About</a>
+                    About
                   </Link>
                 </li>
                 <li className="">
                   <Link href="/contact">
-                    <a>Contact</a>
+                    Contact
                   </Link>
                 </li>
                 <li className="">
                   <Link href="/projects">
-                    <a>Projects</a>
+                    Projects
                   </Link>
                 </li>
-              </ul>
+              </ul >
               <XCircleIcon className='w-8 self-start cursor-pointer' onClick={() => setIsNavOpen(false)} />
-            </nav>
+            </nav >
             <div className="flex justify-center w-full mt-6">
               <ThemeSwitch />
             </div>
-          </div>
-        </div>
-      </div>
+          </div >
+        </div >
+      </div >
 
-    </header>
+    </header >
   )
 }

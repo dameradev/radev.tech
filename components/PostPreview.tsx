@@ -57,10 +57,10 @@ export default function PostPreview({
   return (
     <PostStyled>
 
-      <Link href={`/posts/${slug}`}>
-        <a className="mb-5 block relative">
+      <Link className="mb-5 block relative" href={`/posts/${slug}`}>
+        
           {coverImage && <CoverImage slug={slug} title={title.rendered} url={coverImage} />}
-        </a>
+        
       </Link>
       <div className="mb-4 text-xs uppercase flex gap-x-4 items-center">
         <Date dateString={post.publishDate} />
@@ -69,8 +69,8 @@ export default function PostPreview({
       <div className='flex flex-col'>
 
         <h3 className="mb-6 text-3xl leading-snug">
-          <Link href={`/posts/${slug}`}>
-            <a className="hover:underline">{title}</a>
+          <Link className="hover:underline" href={`/posts/${slug}`}>
+            {title}
           </Link>
         </h3>
 

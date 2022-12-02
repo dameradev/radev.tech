@@ -77,6 +77,7 @@ body {
     
   }
 
+  body.dark,
   body .main-wrapper.dark {
     --color-background: #171921;
     --color-background-muted: #52525b;
