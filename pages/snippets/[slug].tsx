@@ -111,7 +111,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
       block_id: page?.id
     });
 
-    console.log(blocks.results, 'results')
+    
 
     content = [...blocks.results];
 
