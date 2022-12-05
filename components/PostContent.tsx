@@ -53,12 +53,12 @@ export function renderBlocks(block) {
       // console.log(value, 'headerng 2')
       return (
         <div className="relative">
-          <a className="absolute top-[-100px] mb-20" id={value.text[0].text.content.split(" ").join('-').toLowerCase()}>
+          <a className="absolute top-[-100px] mb-20" id={value.text[0].text.content.split(" ").join('-').toLowerCase().trim()}>
           </a>
 
           <h2 data-id={value.text[0].text.content.split(" ").join('-').toLowerCase()} className='text-3xl lg:text-4xl mt-12 font-bold'>
             {value.text[0].href ?
-              <a target="_blank" href={value.text[0].href} className='text-accent-2'>
+              <a target="_blank" href={value.text[0].href} className=' text-accent-8'>
                 {value.text[0].text.content}
               </a>
               :
@@ -68,7 +68,7 @@ export function renderBlocks(block) {
       );
     case 'heading_3':
       return (
-        <h3 className="text-xl mt-6 font-bold">
+        <h3 className="text-xl mt-6 font-bold ">
           {value.text[0].text.content}
         </h3>
       );

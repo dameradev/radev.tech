@@ -11,11 +11,12 @@ import { supabaseClient } from '../../lib/hooks/useSupabase';
 import { getAllArticles, getAllPortfolioProjects, getArticlePage, getImageForPortfolio, notion, slugifyResult } from '../../lib/notion';
 
 const Project = ({ preview, content, page, images, technologies, url }) => {
+  console.log(content,'content')
   return (
     <Layout preview={preview}>
       <Container className="">
 
-        <h1 className='text-5xl pt-10'>{page?.properties.name.title[0].plain_text}</h1>
+        <h1 className='text-5xl pt-4'>{page?.properties.name.title[0].plain_text}</h1>
         <p className='text-xl pt-4'>{page?.properties.description?.rich_text[0]?.plain_text}</p>
 
         {content?.map((block) => (
@@ -51,6 +52,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   });
 
 
+  // console.log(response)
 
 
 
@@ -99,8 +101,8 @@ export const getStaticProps = async ({ params: { slug } }) => {
 
   let page: any;
 
-  response.results.find((page: any) => slugifyResult(page?.properties.name.title[0].plain_text) === slug);
-  console.log(page)
+  page = response.results.find((page: any) => slugifyResult(page?.properties.name.title[0].plain_text) === slug);
+  console.log(page, 'page')
 
   let content;
   if (page) {
@@ -108,6 +110,8 @@ export const getStaticProps = async ({ params: { slug } }) => {
     let blocks = await notion.blocks.children.list({
       block_id: page?.id
     });
+
+    console.log(blocks.results, 'results')
 
     content = [...blocks.results];
 

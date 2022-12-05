@@ -1,6 +1,6 @@
 import Container from './Container'
 import { EXAMPLE_PATH } from '../lib/constants'
-import { FaGit, FaGithub, FaTwitter } from 'react-icons/fa'
+import { FaGit, FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa'
 import Link from 'next/link'
 import ThemeSwitch from './ThemeSwitch'
 
@@ -9,28 +9,38 @@ export default function Footer() {
     <footer className="border-t border-accent-2 bg-base text-text mt-10">
       <Container className="">
 
-        <div className=" w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center justify-items-center py-6 z-20">
+        <div className=" w-full grid grid-cols-1 md:grid-cols-3 items-center justify-items-center py-6 z-20">
 
-          <nav className='hidden md:flex items-center gap-8 justify-self-start'>
-            <ul className="flex flex-col gap-4 justify-center uppercase">
-              <li className="mr-4 ">
+          <nav className='mb-6 md:mb-0 justify-self-center md:flex items-center gap-8 md:justify-self-start'>
+            <ul className="grid grid-cols-2 md:flex lg:grid flex-col gap-4 justify-center uppercase text-center md:text-left">
+              <li className="md:mr-4 ">
                 <Link href="/">
                   Home
                 </Link>
               </li>
-              <li className="mr-4">
+              <li className="md:mr-4">
                 <Link href="/about">
                   About
                 </Link>
               </li>
-              <li className="mr-4">
+              <li className="md:mr-4">
                 <Link href="/contact">
                   Contact
                 </Link>
               </li>
-              <li className="">
+              <li className="md:mr-4">
+                <Link href="/snippets">
+                  Snippets
+                </Link>
+              </li>
+              <li className="md:mr-4">
                 <Link href="/projects">
                   Projects
+                </Link>
+              </li>
+              <li className="">
+                <Link href="/instagram">
+                  Instagram Links
                 </Link>
               </li>
             </ul>
@@ -63,6 +73,16 @@ export default function Footer() {
                 >
 
                   <FaGithub className="w-8 h-8" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://instagram.com/webradev"
+
+
+                >
+
+                  <FaInstagram className="w-8 h-8" />
                 </a>
               </li>
             </ul>
