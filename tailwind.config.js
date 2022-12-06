@@ -74,6 +74,9 @@ module.exports = {
           '2xl': '1496px',
         },
       },
+      boxShadow: {
+        '3xl': '0px 3px 6px #00000029;'
+      },
       typography: theme => ({
         DEFAULT: {
           css: {
