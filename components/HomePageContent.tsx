@@ -18,11 +18,11 @@ const PostsList = ({ heroPost, tags, posts }) => {
           content={heroPost.content}
         />
       {/* )} */}
-      <div className='md:grid grid-cols-8 '>
-        <div className='col-span-6 md:pr-6'>
-          {posts.length > 0 && <MoreStories className="mt-14 md:grid-cols-1 lg:grid-cols-2" posts={posts} />}
+      <div className='md:grid grid-cols-12 '>
+        <div className='col-span-12 '>
+          {posts.length > 0 && <MoreStories className="mt-14 " posts={posts} />}
         </div>
-        <Sidebar className="" tags={tags} />
+        {/* <Sidebar className="" tags={tags} /> */}
       </div>
     </>
   );

@@ -57,6 +57,9 @@ export async function getServerSideProps(context) {
     const foundInstagramImage = res.data.data.find((image) => {
       return image.id === item.properties.post.rich_text[0].plain_text
     })
+
+    console.log(foundInstagramImage)
+
     return {
       ...foundInstagramImage,
       url: item.properties.url.url
