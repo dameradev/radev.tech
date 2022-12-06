@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MenuIcon, XCircleIcon } from "@heroicons/react/outline"
 import Link from 'next/link'
+import ThemeSwitch from './ThemeSwitch';
 
 const MobileNavigation = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);

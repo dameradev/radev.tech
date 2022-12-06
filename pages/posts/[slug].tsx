@@ -223,7 +223,7 @@ export const Text = ({ text }) => {
     return (
       <span
         key={index}
-        className={[code && "bg-code px-2 py-[2px] rounded-md text-md md:text-lg text-white "].join()}
+        className={[code && "bg-code text-secondary px-2 py-[2px] rounded-md text-md md:text-lg "].join()}
         // className={[
         //   bold ? 'font-bold' : null,
         //   italic ? 'font-fancy text-black dark:text-white' : null,
