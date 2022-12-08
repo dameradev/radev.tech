@@ -13,9 +13,8 @@ const Instagram = ({ preview, images }) => {
         <h1 className='text-5xl my-10'>Instagram</h1>
 
         <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2'>
-          {images?.sort((a, b) => b - a ? 1 : - 1)?.map((image) => (
+          {images?.sort((a, b) => b.sort - a.sort)?.map((image) => (
             <li key={image.id}>
-
               <Link href={image.url || ""} target={image.url.includes('radev') ? "_self" : "_blank"}>
                 <Image
                   width={520}
