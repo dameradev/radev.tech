@@ -68,9 +68,9 @@ export default function ProjectPreview({
     <ProjectStyled className="">
       <Link className='grid lg:grid-cols-8 gap-10 md:grid-cols-1' href={`/projects/${slug}`}>
         
-          <div className='md:col-span-4 lg:col-span-3'>{coverImage && <CoverImage slug={slug} title={title.rendered} url={coverImage} />}</div>
+          <div className='md:col-span-4 lg:col-span-3 md:mb-5 block relative w-full h-[25rem] md:h-[30rem] lg:h-[30rem]'>{coverImage && <CoverImage slug={slug} title={title.rendered} url={coverImage} />}</div>
           <div className='md:col-span-4 lg:col-span-5'>
-            <h2 className='text-4xl'>{title}</h2>
+            <h2 className='text-3xl md:text-4xl'>{title}</h2>
             <p className='text-xl mt-4 lg:pr-20 mb-6'>{description}</p>
             <ul className='flex flex-wrap gap-4'>
             {technologies?.map(item => <span className='keep-all uppercase bg-slate-400 rounded-md px-4 py-1'>{item}</span>)}
