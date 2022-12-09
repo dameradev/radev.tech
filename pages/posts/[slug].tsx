@@ -223,7 +223,10 @@ export const Text = ({ text }) => {
     return (
       <span
         key={index}
-        className={[code && "bg-code text-secondary px-2 py-[2px] rounded-md text-md md:text-lg "].join()}
+        className={`${[code && "bg-code text-secondary px-2 py-[2px] rounded-md text-md md:text-lg "].join()}
+          ${[bold && "font-bold"].join()} 
+          ${[italic && "italic"].join()}
+        `}
         // className={[
         //   bold ? 'font-bold' : null,
         //   italic ? 'font-fancy text-black dark:text-white' : null,
@@ -235,7 +238,7 @@ export const Text = ({ text }) => {
         // ].join(' ')}
         style={color !== 'default' ? { color } : {}}
       >
-        {text.link ? <a href={text.link.url}>{text.content}</a> : text.content}
+        {text.link ? <a className='text-secondary' href={text.link.url}>{text.content}</a> : text.content}
       </span>
     );
   });

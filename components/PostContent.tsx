@@ -38,7 +38,7 @@ export function renderBlocks(block) {
   switch (type) {
     case 'paragraph':
       return (
-        <p className='my-4 leading-[3.2rem] md:leading-[3.6rem] text-lg md:text-xl  ' >
+        <p className='mt-4 leading-[3.2rem] md:leading-[3.6rem] text-lg md:text-xl  ' >
 
           <Text text={value.text} />
         </p>
@@ -169,7 +169,7 @@ export function renderBlocks(block) {
     case 'callout':
       return (
 
-        <div className="flex p-4 space-x-4 bg-gray-100 rounded-lg bg-info-window mt-6" >
+        <div className="flex p-4 mb-4 space-x-4 bg-gray-100 rounded-lg bg-info-window mt-6 items-center" >
           {value.icon && <span className='text-2xl'>{value.icon.emoji}</span>}
           <div>
             <Text text={value.text} />
@@ -281,7 +281,7 @@ export const CodeBlock = ({ code, language, metastring = "", fileName }) => {
         theme={toggle ? vsDark : vsLight}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <div className={`relative not-prose my-10 ${!toggle ? "border-red-100 border-[1px]" : ""}`} >
+          <div className={`relative not-prose mb-10 ${!toggle ? "border-red-100 border-[1px]" : ""}`} >
             <pre
               className={`rounded-xl relative overflow-hidden bg-slate-800 ${className}`}
               style={style}
