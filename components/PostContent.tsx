@@ -281,13 +281,13 @@ export const CodeBlock = ({ code, language, metastring = "", fileName }) => {
         theme={toggle ? vsDark : vsLight}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <div className={`relative not-prose mb-10 ${!toggle ? "border-red-100 border-[1px]" : ""}`} >
+          <div className={`relative not-prose mb-10 max-h-[60vh] md:max-h-[70rem] overflow-scroll  ${!toggle ? "border-red-100 border-[1px]" : ""}`} >
             <pre
-              className={`rounded-xl relative overflow-hidden bg-slate-800 ${className}`}
+              className={`rounded-xl relative  min-h-full  bg-slate-800 ${className} relative`}
               style={style}
             >
-              <div className="relative flex text-xs leading-6 ">
-                <div className="flex items-center  px-4 pt-1 mt-2  border-t border-b border-t-transparent border-b-slate-400 w-full justify-between">
+              <div className=" flex text-xs leading-6  sticky top-0 left-0 bg-zinc-900 z-10">
+                <div className="flex items-center  px-4 pt-1 mt-2  border-t border-b border-t-transparent border-b-slate-400 w-full justify-between ">
                   <p className={`${toggle ? "bg-zinc-800" : "bg-zinc-200"} h-full pt-2 pb-2 px-4`}><span className={color}>{JSON.stringify(languageFormatted).replace(/['"]+/g, '').toUpperCase()}</span> <span className='text-current'>{fileName}</span></p>
                   <button
                     className={`hidden md:inline-block group mb-2 mr-1 ${isCopied ? 'text-secondary' : 'text-gray-400'}`}
