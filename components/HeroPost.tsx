@@ -44,7 +44,8 @@ export default function HeroPost({
               __html: excerpt,
             }}
           ></div>
-          <Link href={`/posts/${slug}`}><ReadMoreLink className="text-xs h-min cursor-pointer">Read more</ReadMoreLink></Link>
+          {/* <Link href={`/posts/${slug}`}><ReadMoreLink className="text-xs h-min cursor-pointer">Read more</ReadMoreLink></Link> */}
+          <Link className="text-xs h-min cursor-pointer bg-secondary w-fit px-4 py-2 uppercase rounded-full" href={`/posts/${slug}`}> Read more </Link>
         </div>
         <div className='self-end'>
 
