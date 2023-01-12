@@ -49,7 +49,7 @@ export default function Footer() {
           </nav>
 
           <h2 className="text-5xl font-bold min-w-full justify-self-center text-center">
-            Damian Radev
+            Damjan Radev
           </h2>
 
           {/* Social media links with icons display in an ul list */}
@@ -92,7 +92,7 @@ export default function Footer() {
 
 
         </div>
-        <div className="flex justify-between pb-4"><p>© {new Date().getFullYear()} Damian Radev</p> <a href="https://damjans-portfolio.vercel.app/" className="text-secondary">Previous Portfolio Website</a></div>
+        <div className="flex justify-between pb-4"><p>© {new Date().getFullYear()} Damjan Radev</p> <a href="https://damjans-portfolio.vercel.app/" className="text-secondary">Previous Portfolio Website</a></div>
       </Container>
     </footer>
   )

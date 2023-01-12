@@ -59,7 +59,7 @@ const Contact = () => {
 
                       <FaLinkedin className='text-2xl mr-6' />
                       <div>
-                        <p className="font-serif md:text-lg">Damian Radev</p>
+                        <p className="font-serif md:text-lg">Damjan Radev</p>
                         <span className="block text-xs uppercase">LinkedIn</span>
                       </div>
                     </a>
