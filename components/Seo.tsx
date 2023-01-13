@@ -6,8 +6,8 @@ const DEFAULT_OG_IMAGE =
 
 export default function Seo({
   title = "Radev's Digital Space ",
-  description = "Damian Radev is a freelance web-developer working on mostly on the front-end, writing about the web on his learning journey.",
-  siteName = "Damian Radev",
+  description = "Damjan Radev is a freelance web-developer working on mostly on the front-end, writing about the web on his learning journey.",
+  siteName = "Damjan Radev",
   canonical = DOMAIN,
   ogImage = DEFAULT_OG_IMAGE,
   ogType = "website",

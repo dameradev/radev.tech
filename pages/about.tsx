@@ -16,7 +16,7 @@ const About = ({ posts, latestPost }) => {
         <div className='max-w-[100rem]'>
 
           <h1 className='text-4xl md:text-5xl leading-relaxed'>
-            I'm Damian. I'm a developer and blogger freelancing on Upwork.
+            I'm Damjan. I'm a developer and blogger freelancing on Upwork.
           </h1>
           <div className='flex gap-6 '>
             <Link className='text-white bg-secondary text-xs font-medium border-2 border-skin-secondary mt-4 p-3 rounded-full uppercase' href={`posts/${latestPost.slug}`}>
