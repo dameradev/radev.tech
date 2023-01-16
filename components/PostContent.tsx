@@ -209,7 +209,7 @@ export function renderBlocks(block) {
       return "test"//<YoutubeEmbed url={value.external.url} />;
     case 'quote':
       return (
-        <blockquote className="p-4 rounded-r-lg">
+        <blockquote className="p-4 rounded-r-lg italic">
           <Text text={value.text} />
         </blockquote>
       );
