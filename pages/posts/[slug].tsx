@@ -111,7 +111,7 @@ export default function Post({
             <PostContent content={content} />
             <UtterancesComments
               repo="dameradev/radev.tech"
-              issueTerm={slug}
+              issueTerm={"pathname"}
               theme="github-dark"
             />
           
