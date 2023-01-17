@@ -1,22 +1,22 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
-const UtterancesComments = () => {
+const UtterancesComments = ({ repo, theme, issueTerm }) => {
   const ref = useRef();
 
   useEffect(() => {
-    const script = document.createElement("script");
+    const script = document.createElement('script');
 
     const config = {
-      src: "https://utteranc.es/client.js",
-      repo: "dameradev/radev.tech",
-      label: "✨💬✨",
-      theme: "github-dark",
-      crossOrigin: "anonymous",
-      defer: true,
+      src: 'https://utteranc.es/client.js',
+      repo: repo,
+      'issue-term': issueTerm,
+      theme: theme,
+      crossOrigin: 'anonymous',
+      defer: true
     };
 
     Object.entries(config).forEach(([key, value]) => {
-      // @ts-ignore
       script.setAttribute(key, value);
     });
 
@@ -24,9 +24,8 @@ const UtterancesComments = () => {
       // @ts-ignore
       ref.current.append(script);
     }, 300);
-  }, []);
-  // @ts-ignore
+  }, [repo, theme, issueTerm]);
+
   return <div ref={ref} />;
 };
-
 export default UtterancesComments;

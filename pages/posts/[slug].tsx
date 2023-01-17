@@ -53,7 +53,7 @@ import { FaCopy } from "react-icons/fa";
 import { ThemeContext } from "../../lib/themeContext";
 import PostContent from "../../components/PostContent";
 import { getTimeToRead } from "../../lib/timeToRead";
-import UtterancesComments from "../../components/UtterancesComments";
+import UtterancesComments from '../../components/UtterancesComments';
 
 export default function Post({
   post,
@@ -109,7 +109,12 @@ export default function Post({
               editDate={editDate}
             />
             <PostContent content={content} />
-            <UtterancesComments />
+            <UtterancesComments
+              repo="dameradev/radev.tech"
+              issueTerm={slug}
+              theme="github-dark"
+            />
+          
           </div>
         </Container>
       </FadeIn>
