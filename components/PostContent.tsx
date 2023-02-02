@@ -68,7 +68,7 @@ export function renderBlocks(block) {
       );
     case 'heading_3':
       return (
-        <h3 className="text-xl mt-6 font-bold ">
+        <h3 className="text-2xl mt-12 font-bold ">
           {value.text[0].text.content}
         </h3>
       );
