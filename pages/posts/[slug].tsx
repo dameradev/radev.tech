@@ -122,13 +122,14 @@ export default function Post({
   
 </script> */}
               {/* host: 'http://localhost:8080', */}
-          {/* <script
+          <script
             dangerouslySetInnerHTML={{
               __html: `
               var remark_config = {
-                
-                 host: 'http://localhost:8080',
-                site_id: 'remark',
+
+                 host: 'https://remark-new-vonqsdfwvq-uc.a.run.app',
+                  site_id: 'remark',
+                  theme: 'dark',
               }
               `,
             }}
@@ -138,7 +139,7 @@ export default function Post({
               __html: `
     !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);`,
             }}
-          ></script> */}
+          ></script>
         </Container>
       </FadeIn>
     </Layout>
