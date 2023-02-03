@@ -127,8 +127,8 @@ export default function Post({
               __html: `
               var remark_config = {
 
-                 host: 'https://remark-new-vonqsdfwvq-uc.a.run.app',
-                  site_id: 'remark42',
+                  host: 'https://remark-new-vonqsdfwvq-uc.a.run.app',
+                  site_id: 'remark',
                   theme: 'dark',
               }
               `,
