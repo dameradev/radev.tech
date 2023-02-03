@@ -53,7 +53,7 @@ import { FaCopy } from "react-icons/fa";
 import { ThemeContext } from "../../lib/themeContext";
 import PostContent from "../../components/PostContent";
 import { getTimeToRead } from "../../lib/timeToRead";
-import UtterancesComments from '../../components/UtterancesComments';
+import UtterancesComments from "../../components/UtterancesComments";
 
 export default function Post({
   post,
@@ -109,13 +109,36 @@ export default function Post({
               editDate={editDate}
             />
             <PostContent content={content} />
-            <UtterancesComments
+            <div id="remark42">{""}</div>
+            {/* <UtterancesComments
               repo="dameradev/radev.tech"
               issueTerm="url"
               theme="github-dark"
-            />
-          
+            /> */}
           </div>
+
+          
+          {/* <script>
+  
+</script> */}
+              {/* host: 'http://localhost:8080', */}
+          {/* <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              var remark_config = {
+                
+                 host: 'http://localhost:8080',
+                site_id: 'remark',
+              }
+              `,
+            }}
+          ></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+    !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);`,
+            }}
+          ></script> */}
         </Container>
       </FadeIn>
     </Layout>
