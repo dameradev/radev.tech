@@ -110,7 +110,7 @@ export default function Post({
               editDate={editDate}
             />
             <PostContent content={content} />
-            {typeof window !== "undefined" ? (
+            {/* {typeof window !== "undefined" ? (
               <GitalkComponent
                 options={{
                   clientID: process.env.GITHUB_CLIENT_ID,
@@ -122,7 +122,7 @@ export default function Post({
               />
             ) : (
               <></>
-            )}
+            )} */}
           </div>
         </Container>
       </FadeIn>
