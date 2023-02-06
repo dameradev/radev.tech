@@ -9,6 +9,7 @@ import PostHeader from "../../components/PostHeader";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import slugify from "slugify";
 
+import GitalkComponent from "gitalk/dist/gitalk-component";
 import { useCopyToClipboard } from "../../lib/hooks/useCopyToClipboard";
 
 import PostTitle from "../../components/PostTitle";
@@ -109,37 +110,20 @@ export default function Post({
               editDate={editDate}
             />
             <PostContent content={content} />
-            <div id="remark42">{""}</div>
-            {/* <UtterancesComments
-              repo="dameradev/radev.tech"
-              issueTerm="url"
-              theme="github-dark"
-            /> */}
+            {typeof window !== "undefined" ? (
+              <GitalkComponent
+                options={{
+                  clientID: process.env.GITHUB_CLIENT_ID,
+                  clientSecret: process.env.GITHUB_CLIENT_SECRET,
+                  repo: "https://github.com/dameradev/radev.tech",
+                  // ...
+                  // options below
+                }}
+              />
+            ) : (
+              <></>
+            )}
           </div>
-
-          
-          {/* <script>
-  
-</script> */}
-              {/* host: 'http://loca lhost:8080', */}
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-              var remark_config = {
-
-                  host: 'https://remark-new-vonqsdfwvq-uc.a.run.app',
-                  site_id: 'remark',
-                  theme: 'dark',
-              }
-              `,
-            }}
-          ></script>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-    !function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);`,
-            }}
-          ></script>
         </Container>
       </FadeIn>
     </Layout>
