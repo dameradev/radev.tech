@@ -63,7 +63,7 @@ export default function ProjectPreview({
     slug,
     technologies,
     type } = post
-  console.log(technologies)
+  // console.log(technologies)
   return (
     <ProjectStyled className="">
       <Link className='grid lg:grid-cols-8 gap-10 md:grid-cols-1' href={`/projects/${slug}`}>

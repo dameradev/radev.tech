@@ -41,7 +41,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   data.forEach((result) => {
     if (result.object === 'page') {
-      console.log(result.properties, 'here')
+      // console.log(result.properties, 'here')
       paths.push({
         params: {
           slug: slugify(

@@ -11,7 +11,7 @@ import { supabaseClient } from '../../lib/hooks/useSupabase';
 import { getAllArticles, getAllPortfolioProjects, getArticlePage, getImageForPortfolio, notion, slugifyResult } from '../../lib/notion';
 
 const Project = ({ preview, content, page, images, technologies, url }) => {
-  console.log(content,'content')
+  // console.log(content,'content')
   return (
     <Layout preview={preview}>
       <Container className="">
@@ -102,7 +102,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
   let page: any;
 
   page = response.results.find((page: any) => slugifyResult(page?.properties.name.title[0].plain_text) === slug);
-  console.log(page, 'page')
+  // console.log(page, 'page')
 
   let content;
   if (page) {

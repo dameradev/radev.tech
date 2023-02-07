@@ -10,7 +10,7 @@ const Sidebar = ({ tags, className }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('insed')
+    // console.log('insed')
     const res = await fetch(`/api/subscribe`, {
       body: JSON.stringify({
         email
@@ -20,7 +20,7 @@ const Sidebar = ({ tags, className }) => {
       },
       method: 'POST'
     });
-    console.log(res)
+    // console.log(res)
   }
   return (
     <div className={`mt-4 px-4 md:px-0 ${className}  lg:pl-10 relative md:col-span-2 w-full text-center md:text-left`}>

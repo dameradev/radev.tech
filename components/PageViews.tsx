@@ -5,7 +5,7 @@ import { EyeIcon } from '@heroicons/react/outline';
 
 const PageViews = ({ slug }) => {
   const { data } = useSWR<{ total: number }>(`/api/views/${slug}`, fetcher, {
-    refreshInterval: 5000
+    refreshInterval: 60000
   });
 
   const views = new Number(data?.total);

@@ -72,7 +72,7 @@ export const getAllArticles = async (databaseId) => {
     
   });
 
-  console.log(response.results)
+  // console.log(response.results)
   return response.results;
 };
 
@@ -159,7 +159,7 @@ export const getBlocks = async (blockId) => {
 
 
 export const getAllPortfolioProjects = async (databaseId) => {
-  console.log(databaseId)
+  // console.log(databaseId)
   const response = await notion.databases.query({
     database_id: databaseId,
     
@@ -229,7 +229,7 @@ export const getArticlePage = (data, slug) => {
         result.properties.Name.title[0].plain_text
       ).toLowerCase();
 
-      console.log(resultSlug, slug, 'resultSlug')
+      // console.log(resultSlug, slug, 'resultSlug')
       return resultSlug === slug;
     }
     return false;

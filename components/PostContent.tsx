@@ -197,7 +197,7 @@ export function renderBlocks(block) {
         </div>
       );
     case 'table_of_contents':
-      console.log(block, 'toc')
+      // console.log(block, 'toc')
       return (
         <>
           <div>
@@ -343,12 +343,12 @@ function useHeadings() {
       }
 
       );
-    console.log(elements)
+    // console.log(elements)
     setHeadings(elements);
 
 
   }, []);
-  console.log(headings)
+  // console.log(headings)
   return headings;
 }
 
@@ -378,12 +378,12 @@ export function useScrollSpy(
 
         
        else if (window.scrollY < 400) {
-          console.log(ids)
+          // console.log(ids)
           setActiveId(ids[0]);
         }
       });
 
-      console.log(options)
+      // console.log(options)
     }, options);
     
 

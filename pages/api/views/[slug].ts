@@ -23,6 +23,9 @@ if (req.method === 'GET') {
     .select('view_count')
     .filter('slug', 'eq', req.query.slug);
 
+  // console.log(response?.data[0], 'response')
+  // console.log(comments, 'comments')
+
   // console.log(response)
   if (response?.data) {
     return res.status(200).json({

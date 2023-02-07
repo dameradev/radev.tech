@@ -37,7 +37,7 @@ export async function getServerSideProps(context) {
 
   const res = await axios.get(`https://graph.instagram.com/me/media?fields=id,caption,media_url,image&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
 
-  console.log(res.data.data)
+  // console.log(res.data.data)
 
   const response = await notion.databases.query({
     database_id: process.env.INSTAGRAM_DATABASE_ID,
@@ -58,8 +58,8 @@ export async function getServerSideProps(context) {
       return image.id === item.properties.post.rich_text[0].plain_text
     })
 
-    console.log(foundInstagramImage)
-    console.log(item)
+    // console.log(foundInstagramImage)
+    // console.log(item)
 
     return {
       ...foundInstagramImage,

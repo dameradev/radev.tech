@@ -5,8 +5,8 @@ function SlideShow({ slideshowData, className }) {
   const [index, setIndex] = useState(0);
 
   const length = slideshowData.length;
-  console.log(index);
-  console.log(length);
+  // console.log(index);
+  // console.log(length);
   const handleNext = () => {
     index === length - 1 ? setIndex(0) : setIndex(index + 1);
   };

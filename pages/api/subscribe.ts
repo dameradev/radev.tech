@@ -20,7 +20,7 @@ export default async function handler(req, res) {
 
   const data = await result.json();
   
-  console.log(result)
+  // console.log(result)
 
   if (!result.ok) {
     return res.status(500).json({ error: data.error.email[0] });
