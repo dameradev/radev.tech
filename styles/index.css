@@ -125,10 +125,11 @@ pre[class*=language-] {
   color: var(--color-secondary)
 }
 
-li, li::marker {
-  /* margin-right:0.5rem !important; */
-  /* display: none;
-  visibility: hidden; */
+li {
+  /* list-style-position: outside; */
+  list-style-position: inside;
+  padding: 2.5px 30px;
+  text-indent: -1.3em;
 }
 
 .container {

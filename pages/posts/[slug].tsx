@@ -146,7 +146,7 @@ export default function Post({
               <div className="mt-4">
                 <form
                   onSubmit={(e) => {
-                    e.preventDefault()
+                    e.preventDefault();
                     fetch(`/api/comments/${slug}`, {
                       method: "POST",
                       body: JSON.stringify({
@@ -325,15 +325,6 @@ export const Text = ({ text }) => {
           ${[bold && "font-bold"].join()} 
           ${[italic && "italic"].join()}
         `}
-        // className={[
-        //   bold ? 'font-bold' : null,
-        //   italic ? 'font-fancy text-black dark:text-white' : null,
-        //   code
-        //     ? ''
-        //     : null,
-        //   strikethrough ? 'line-through' : null,
-        //   underline ? 'underline' : null
-        // ].join(' ')}
         style={color !== "default" ? { color } : {}}
       >
         {text.link ? (
