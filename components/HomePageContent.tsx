@@ -18,7 +18,7 @@ const PostsList = ({ heroPost, tags, posts }) => {
           content={heroPost.content}
         />
       {/* )} */}
-      <div className='md:grid grid-cols-12 '>
+      <div className='md:grid grid-cols-12'>
         <div className='col-span-12 '>
           {posts.length > 0 && <MoreStories className="mt-14 " posts={posts} />}
         </div>

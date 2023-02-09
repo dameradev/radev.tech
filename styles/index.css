@@ -4,7 +4,6 @@
 /* purgecss end ignore */
 @tailwind utilities;
 
-
 @font-face {
   font-family: "Larsseit-Bold";
   font-weight: 700;
@@ -25,7 +24,6 @@
 }
 
 html {
-
   font-size: 62.5%;
   font-family: Helvetica, sans-serif;
   scroll-behavior: smooth;
@@ -35,9 +33,7 @@ html {
 body {
   font-family: "Larsseit", Helvetica, sans-serif;
   font-size: 16px;
-
 }
-
 
 @layer base {
   /* html,
@@ -60,13 +56,13 @@ body {
     --color-anchor: #8b5cf6;
     --color-anchor-hover: #a78bfa;
 
-    --color-info-window: #F3F4F6;
+    --color-info-window: #f3f4f6;
     --color-code: #22262f;
 
     --color-primary: #fff;
-    --color-secondary: #F24E41;
+    --color-secondary: #f24e41;
 
-    --color-gray: #C7C7C7;
+    --color-gray: #c7c7c7;
 
     --accent-0: #fff;
     --accent-1: #fafafa;
@@ -78,8 +74,6 @@ body {
     --accent-7: #333333;
     --accent-8: #111111;
     --accent-9: #000;
-
-    
   }
 
   body.dark,
@@ -101,7 +95,7 @@ body {
     --color-code: #22262f;
 
     --color-primary: #1e3a8a;
-    --color-secondary: #F24E41;
+    --color-secondary: #f24e41;
 
     --accent-9: #fff;
     --accent-8: #fafafa;
@@ -116,16 +110,15 @@ body {
   }
 }
 
-pre[class*=language-] {
+pre[class*="language-"] {
   --tw-text-opacity: 1;
-  color: rgb(209 213 219/var(--tw-text-opacity));
-  
+  color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 .bg-info-window a {
-  color: var(--color-secondary)
+  color: var(--color-secondary);
 }
 
-li {
+.post-content li {
   /* list-style-position: outside; */
   list-style-position: inside;
   padding: 2.5px 30px;
