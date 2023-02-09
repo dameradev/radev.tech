@@ -37,16 +37,16 @@ export default function Index({ posts, tags, preview, wpPosts }) {
                 throughout my journey.
               </h1>
               <img
-                className="lg:h-[50rem]"
+                className="lg:h-[45rem]"
                 src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Round&hairColor=Blonde&facialHairType=MoustacheFancy&facialHairColor=Blonde&clotheType=BlazerSweater&eyeType=Side&eyebrowType=RaisedExcitedNatural&mouthType=Sad&skinColor=Tanned"
               />
             </div>
 
-            <h2 className="text-center text-4xl mb-14 py-4 w-full bg-accent-2 rounded-lg flex justify-center items-center gap-4 ">
+            <a href="#hero" className="text-center text-4xl mb-14 py-4 w-full bg-accent-2 rounded-lg flex justify-center items-center gap-4 ">
               {" "}
               My Content{" "}
               <ChevronDoubleDownIcon className="w-8 animate-bounce" />{" "}
-            </h2>
+            </a>
             <HomePageContent heroPost={heroPost} posts={morePosts} tags={[]} />
           </FadeIn>
         </Container>

@@ -28,7 +28,8 @@ export default function HeroPost({
 
   const timeToRead = getTimeToRead(content)
   return (
-    <section className='mt-5 lg:mt-10 grid grid-cols-1 md:grid-cols-2 justify-center gap-x-8 items-center '>
+    <section className='mt-5 lg:mt-10 grid grid-cols-1 md:grid-cols-2 justify-center gap-x-8 items-center relative'>
+      <div id="hero" className=' absolute top-[-110px]'  />
       <div className="mb-5 block relative w-full h-[25rem] md:h-[45rem]" >
         {coverImage && <CoverImage slug={slug} title={title} url={coverImage} />}
       </div>
