@@ -57,6 +57,7 @@ import { getTimeToRead } from "../../lib/timeToRead";
 import UtterancesComments from "../../components/UtterancesComments";
 import useSWR from "swr";
 import { fetcher } from "../../lib/fetcher";
+import { UserContext } from "../_app";
 
 export default function Post({
   post,
@@ -79,7 +80,7 @@ export default function Post({
 
   const [comment, setComment] = useState("");
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   // state for total views
@@ -119,11 +120,42 @@ export default function Post({
     "https://avataaars.io/?avatarStyle=Circle&topType=LongHairFroBand&accessoriesType=Wayfarers&hatColor=PastelGreen&hairColor=BrownDark&facialHairType=BeardLight&facialHairColor=Platinum&clotheType=ShirtCrewNeck&clotheColor=White&eyeType=Cry&eyebrowType=RaisedExcited&mouthType=Concerned&skinColor=Tanned",
     "https://avataaars.io/?avatarStyle=Circle&topType=LongHairBigHair&accessoriesType=Prescription01&hairColor=Red&facialHairType=BeardMedium&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Cry&eyebrowType=FlatNatural&mouthType=ScreamOpen&skinColor=Black",
   ];
-
-  // generate a random number between 0 and 11
-  // const randomAvatar =
-  // console.log(data, 'here')
   const comments = data?.comments;
+
+  async function signInWithGoogle() {
+    await supabaseClient.auth.signIn(
+      {
+        provider: "google",
+      },
+      {
+        redirectTo: `${process.env.FRONTEND_URL}${router.asPath}`,
+      }
+    );
+  }
+
+  const commentsRef = useRef<HTMLDivElement>();
+
+  useEffect(() => {
+    if (router.asPath.split("#access_token=")[1]?.split("&")?.[0]) {
+      window.scrollTo(
+        commentsRef?.current.offsetTop,
+        commentsRef?.current.offsetTop - 100
+      );
+    }
+  });
+
+  const [message, setMessage] = useState("");
+  const userData = useContext(UserContext);
+
+  const [name, setName] = useState(
+    userData?.name?.split(" ")[0] || "Please sign in"
+  );
+
+  useEffect(() => {
+    if (userData?.name) {
+      setName(userData?.name?.split(" ")[0]);
+    }
+  }, [userData]);
 
   return (
     <Layout preview={preview}>
@@ -140,9 +172,29 @@ export default function Post({
               editDate={editDate}
             />
             <PostContent content={content} />
+
+            {!userData?.email && (
+              <div className="mt-10 flex flex-col items-center italic">
+                To comment please authenticate
+                <button
+                  className="flex items-center gap-2 bg-accent-9 text-accent-0 pl-2 pr-6 my-6"
+                  onClick={() => signInWithGoogle()}
+                >
+                  <Image
+                    src={"/google.png"}
+                    alt="google"
+                    width={50}
+                    height={50}
+                  />
+                  Sign in with Google
+                </button>
+              </div>
+            )}
             <div>
-              <h3 className="text-2xl mt-10">Comments</h3>
               {/* input and textarea for comments */}
+              {message && (
+                <p className="text-green-600 text-2xl text-center">{message}</p>
+              )}
               <div className="mt-4">
                 <form
                   onSubmit={(e) => {
@@ -156,6 +208,7 @@ export default function Post({
                     });
                     setName("");
                     setComment("");
+                    setMessage("Thanks for your comment!");
                   }}
                 >
                   <div className="flex flex-col">
@@ -163,6 +216,7 @@ export default function Post({
                       Name
                     </label>
                     <input
+                      disabled
                       type="text"
                       name="name"
                       id="name"
@@ -171,11 +225,12 @@ export default function Post({
                       onChange={(e) => setName(e.target.value)}
                     />
                   </div>
-                  <div className="flex flex-col mt-4">
+                  <div ref={commentsRef} className="flex flex-col mt-4">
                     <label htmlFor="comment" className="text-lg">
                       Comment
                     </label>
                     <textarea
+                      disabled={!userData?.name}
                       name="comment"
                       id="comment"
                       className="text-black border border-gray-300 rounded-lg p-2 mt-2"
@@ -184,6 +239,7 @@ export default function Post({
                     />
                   </div>
                   <button
+                    disabled={!userData?.name}
                     type="submit"
                     className="bg-slate-700 text-white rounded-lg p-2 mt-4"
                   >
@@ -192,7 +248,9 @@ export default function Post({
                 </form>
               </div>
               {/* list of comments */}
-
+              {comments?.length && (
+                <p className="text-2xl text-center mt-10">Comments</p>
+              )}
               <ul className="list-none">
                 {comments?.map((comment, index) => (
                   <li
@@ -203,7 +261,7 @@ export default function Post({
                       <img src={AVATARS[Math.floor(Math.random() * 12)]} />
                     </div>
                     <div className="ml-4">
-                      <h4 className="text-lg font-extrabold">{comment.name}</h4>
+                      <p className="text-lg font-extrabold">{comment.name}</p>
                       <p className="text-gray-700 mt-2">{comment.text}</p>
                     </div>
                   </li>
