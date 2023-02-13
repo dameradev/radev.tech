@@ -120,33 +120,39 @@ export default function Post({
     "https://avataaars.io/?avatarStyle=Circle&topType=LongHairFroBand&accessoriesType=Wayfarers&hatColor=PastelGreen&hairColor=BrownDark&facialHairType=BeardLight&facialHairColor=Platinum&clotheType=ShirtCrewNeck&clotheColor=White&eyeType=Cry&eyebrowType=RaisedExcited&mouthType=Concerned&skinColor=Tanned",
     "https://avataaars.io/?avatarStyle=Circle&topType=LongHairBigHair&accessoriesType=Prescription01&hairColor=Red&facialHairType=BeardMedium&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Cry&eyebrowType=FlatNatural&mouthType=ScreamOpen&skinColor=Black",
   ];
+
+  // generate a random number between 0 and 11
+  // const randomAvatar =
+  // console.log(data, 'here')
   const comments = data?.comments;
 
   async function signInWithGoogle() {
-    await supabaseClient.auth.signIn(
+    const { user, error } = await supabaseClient.auth.signIn(
       {
         provider: "google",
       },
       {
-        redirectTo: `${process.env.FRONTEND_URL}${router.asPath}`,
+        redirectTo: `https://radev.tech${router.asPath}`,
       }
     );
+    console.log(user);
+    console.log(error);
   }
 
   const commentsRef = useRef<HTMLDivElement>();
 
-  useEffect(() => {
+  useEffect(() => { 
     if (router.asPath.split("#access_token=")[1]?.split("&")?.[0]) {
-      window.scrollTo(
-        commentsRef?.current.offsetTop,
-        commentsRef?.current.offsetTop - 100
-      );
+      window.scrollTo(commentsRef?.current.offsetTop, commentsRef?.current.offsetTop - 100)
     }
+
   });
 
+  
   const [message, setMessage] = useState("");
-  const userData = useContext(UserContext);
 
+  const userData = useContext(UserContext);
+  
   const [name, setName] = useState(
     userData?.name?.split(" ")[0] || "Please sign in"
   );
@@ -248,9 +254,7 @@ export default function Post({
                 </form>
               </div>
               {/* list of comments */}
-              {comments?.length && (
-                <p className="text-2xl text-center mt-10">Comments</p>
-              )}
+              {comments?.length && <p className="text-2xl text-center mt-10">Comments</p>}
               <ul className="list-none">
                 {comments?.map((comment, index) => (
                   <li
