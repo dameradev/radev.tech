@@ -1,9 +1,10 @@
 import { Client } from '@notionhq/client';
 import { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints';
 import slugify from 'slugify';
+import { IMAGES_DATABASE_ID, NOTION_SECRET } from './constants';
 
 export const notion = new Client({
-  auth: process.env.NOTION_SECRET
+  auth: NOTION_SECRET
 });
 
 export const getChangelogData = async (databaseId) => {
@@ -169,7 +170,7 @@ export const getAllPortfolioProjects = async (databaseId) => {
 
 export const getImageForPortfolio = async (id) => {
   const response: any = await notion.databases.query({
-    database_id: process.env.IMAGES_DATABASE_ID
+    database_id: IMAGES_DATABASE_ID
   })
   return response.results.find(result => result.id === id).properties.image
 }

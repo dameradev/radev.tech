@@ -6,8 +6,10 @@ import Page from "@/components/Page";
 
 // LIBS
 import { ThemeProvider } from "@/lib/themeContext";
-import "../styles/index.css";
 import { User, UserContext } from '@/lib/userContext';
+import { NEXT_PUBLIC_SUPABASE_CLIENT_KEY } from '@/lib/constants';
+
+import "../styles/index.css";
 
 const MyApp = ({ Component, pageProps }) =>{
   const router = useRouter();
@@ -28,7 +30,7 @@ const MyApp = ({ Component, pageProps }) =>{
     if (isTokenSet) {
       fetch("https://cytpssgpodczcaxfmgoc.supabase.co/auth/v1/user", {
         headers: {
-          apikey: process.env.NEXT_PUBLIC_SUPABASE_CLIENT_KEY,
+          apikey: NEXT_PUBLIC_SUPABASE_CLIENT_KEY,
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
       })

@@ -1,9 +1,10 @@
 import { createClient } from '@supabase/supabase-js';
 
 import { useState } from 'react';
+import { NEXT_PUBLIC_SUPABASE_CLIENT_KEY, NEXT_PUBLIC_SUPABASE_URL } from '../constants';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_CLIENT_KEY;
+const supabaseUrl = NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseKey = NEXT_PUBLIC_SUPABASE_CLIENT_KEY;
 // https://cytpssgpodczcaxfmgoc.functions.supabase.co/increment_page_view
 
 // const supabaseClient = createClient(supabaseUrl, supabaseKey);

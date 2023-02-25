@@ -8,11 +8,9 @@ import Layout from '@/components/Layout';
 import { renderBlocks } from '@/components/PostContent';
 
 // UTILS
-import {
-  notion,
-  slugifyResult,
-} from '@/lib/notion';
+import { notion, slugifyResult } from '@/lib/notion';
 import { getContentBlocks } from '@/lib/utils';
+import { NOTES_DATABASE } from '@/lib/constants';
 
 const Project = ({ preview, content, page, images, technologies, url }) => {
   return (
@@ -37,7 +35,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = [];
 
   const response = await notion.databases.query({
-    database_id: process.env.NOTES_DATABASE,
+    database_id: NOTES_DATABASE,
 
     filter: {
       or: [
@@ -71,7 +69,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
   const response = await notion.databases.query({
-    database_id: process.env.NOTES_DATABASE,
+    database_id: NOTES_DATABASE,
 
     filter: {
       or: [

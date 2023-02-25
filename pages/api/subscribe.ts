@@ -1,5 +1,4 @@
-
-// import type { NextApiRequest, NextApiResponse } from 'next';
+import { REVUE_API_KEY } from '@/lib/constants';
 
 export default async function handler(req, res) {
   const { email } = req.body;
@@ -12,7 +11,7 @@ export default async function handler(req, res) {
   const result = await fetch('https://www.getrevue.co/api/v2/subscribers', {
     method: 'POST',
     headers: {
-      Authorization: `Token ${process.env.REVUE_API_KEY}`,
+      Authorization: `Token ${REVUE_API_KEY}`,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ email, double_opt_in: false })

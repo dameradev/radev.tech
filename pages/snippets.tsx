@@ -7,6 +7,7 @@ import Container from '@/components/Container';
 import Layout from '@/components/Layout';
 
 import { notion } from '@/lib/notion';
+import { NOTES_DATABASE } from '@/lib/constants';
 
 const Page = ({data, preview}) => {
 
@@ -45,7 +46,7 @@ const Page = ({data, preview}) => {
 export async function getStaticProps({ preview = false }) {
 
   const response = await notion.databases.query({
-    database_id: process.env.NOTES_DATABASE,
+    database_id: NOTES_DATABASE,
 
     filter: {
       or: [

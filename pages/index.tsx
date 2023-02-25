@@ -14,6 +14,7 @@ import {
   notion,
 } from '@/lib/notion';
 import { getContentBlocks } from '@/lib/utils';
+import { BLOG_DATABASE_ID } from '@/lib/constants';
 
 export default function Index({ posts, tags, preview, wpPosts }) {
   const heroPost = posts[0];
@@ -53,7 +54,7 @@ export default function Index({ posts, tags, preview, wpPosts }) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const data: any = await getAllArticles(process.env.BLOG_DATABASE_ID);
+  const data: any = await getAllArticles(BLOG_DATABASE_ID);
 
   const postsPromises = data.map(async (post) => {
     const content = await getContentBlocks({ page: post, notion });

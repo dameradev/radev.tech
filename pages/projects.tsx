@@ -1,9 +1,14 @@
 import React from 'react';
-import Layout from '@/components/Layout';
-import { getAllPortfolioProjects } from '@/lib/notion';
 import slugify from 'slugify'
+
+// COMPONENTS
+import Layout from '@/components/Layout';
 import MoreStories from '@/components/MoreStories';
 import Container from '@/components/Container';
+
+// UTILS
+import { getAllPortfolioProjects } from '@/lib/notion';
+import { PORTFOLIO_DATABASE_ID } from '@/lib/constants';
 
 const Projects = ({ preview, projects }) => {
   return (
@@ -19,7 +24,7 @@ const Projects = ({ preview, projects }) => {
 
 export async function getStaticProps({ preview = false }) {
 
-  const data: any = await getAllPortfolioProjects(process.env.PORTFOLIO_DATABASE_ID);
+  const data: any = await getAllPortfolioProjects(PORTFOLIO_DATABASE_ID);
 
   const projects = data.map(post => {
     return {

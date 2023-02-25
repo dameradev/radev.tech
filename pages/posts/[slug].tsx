@@ -20,6 +20,7 @@ import { supabaseClient } from '@/lib/hooks/useSupabase';
 import { getAllArticles, getArticlePage, notion } from '@/lib/notion';
 import { getTimeToRead } from '@/lib/timeToRead';
 import { getContentBlocks } from '@/lib/utils';
+import { BLOG_DATABASE_ID } from '@/lib/constants';
 
 const Post = ({
   preview,
@@ -69,7 +70,7 @@ const Post = ({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = [];
-  const data: any = await getAllArticles(process.env.BLOG_DATABASE_ID);
+  const data: any = await getAllArticles(BLOG_DATABASE_ID);
 
   data.forEach((result) => {
     if (result.object === 'page') {
@@ -97,7 +98,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
   let sponsoredArticleUrl = null;
   let summary = null;
 
-  const data: any = await getAllArticles(process.env.BLOG_DATABASE_ID);
+  const data: any = await getAllArticles(BLOG_DATABASE_ID);
   const page: any = getArticlePage(data, slug);
 
   const response = await supabaseClient

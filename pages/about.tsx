@@ -5,6 +5,7 @@ import { supabaseClient } from '@/lib/hooks/useSupabase';
 import { getAllArticles, notion } from '@/lib/notion';
 import slugify from 'slugify';
 import Link from 'next/link';
+import { BLOG_DATABASE_ID } from '@/lib/constants';
 
 const About = ({ posts, latestPost }) => {
   return (
@@ -36,7 +37,7 @@ const About = ({ posts, latestPost }) => {
 export default About;
 
 export const getStaticProps = async () => {
-  const data: any = await getAllArticles(process.env.BLOG_DATABASE_ID);
+  const data: any = await getAllArticles(BLOG_DATABASE_ID);
 
   const postsPromises = data.map(async post => {
     

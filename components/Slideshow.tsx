@@ -5,8 +5,6 @@ function SlideShow({ slideshowData, className }) {
   const [index, setIndex] = useState(0);
 
   const length = slideshowData.length;
-  // console.log(index);
-  // console.log(length);
   const handleNext = () => {
     index === length - 1 ? setIndex(0) : setIndex(index + 1);
   };
@@ -14,10 +12,11 @@ function SlideShow({ slideshowData, className }) {
     index === 0 ? setIndex(length) : setIndex(index - 1);
 
   return (
-    <div className={`relative h-[20vh] sm:h-[30vh] md:h-[40vh] lg:h-[50vh] w-[80%] ${className}`}>
+    <div className={`relative h-[25rem] md:h-[45rem] lg:h-[70vh] w-[80%] ${className}`}>
       {slideshowData[index] ? <Image
         alt=''
-        layout='fill'
+        // layout='fill'
+        fill
         src={slideshowData[index]}
       // alt={slideshowData[index]?.alt}
       />
