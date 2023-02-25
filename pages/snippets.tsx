@@ -1,15 +1,12 @@
 // @refresh reset
-import Image from 'next/image';
+import React from 'react';
 import Link from 'next/link';
-import Highlight, { defaultProps } from 'prism-react-renderer';
-import vsDark from "prism-react-renderer/themes/vsDark";
-import React, { Fragment, useContext } from 'react';
 import slugify from 'slugify';
+
 import Container from '../components/Container';
 import Layout from '../components/Layout';
+
 import { notion } from '../lib/notion';
-
-
 
 const Page = ({data, preview}) => {
 
@@ -22,12 +19,10 @@ const Page = ({data, preview}) => {
         <ul className='flex flex-col gap-6'>
 
           {data.map((item) => {
-
             const name = item.properties.name.title[0].plain_text
-
             const description = item.properties.description?.rich_text[0]?.plain_text
-
             const tags = item.properties.tags.multi_select;
+
             return (
               <Link className='flex  items-center justify-between w-full bg-slate-800 p-4 rounded-lg' href={`snippets/${slugify(name).toLowerCase()}`} key={item.id}>
                 <div className='flex flex-col'>
@@ -61,17 +56,12 @@ export async function getStaticProps({ preview = false }) {
           }
         }
       ]
-
-
-
     }
   });
+
   return {
     props: { preview, data: response.results },
   }
 }
-
-
-
 
 export default Page;

@@ -1,8 +1,9 @@
-import Link from 'next/link'
-import ThemeSwitch from './ThemeSwitch'
-import Image from "next/image"
-import { MenuIcon, XCircleIcon } from "@heroicons/react/outline"
 import { useState } from 'react';
+import Link from 'next/link'
+import Image from "next/image"
+
+import { MenuIcon, XCircleIcon } from "@heroicons/react/outline"
+import ThemeSwitch from './ThemeSwitch'
 
 export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -30,11 +31,11 @@ export default function Header() {
                 Home
               </Link>
             </li>
-            <li className="mr-4">
+            {/* <li className="mr-4">
               <Link href="/about">
                 About
               </Link>
-            </li>
+            </li> */}
             
             <li className="mr-4">
               <Link href="/snippets">
@@ -73,11 +74,11 @@ export default function Header() {
                     Home
                   </Link>
                 </li>
-                <li className="">
+                {/* <li className="">
                   <Link href="/about">
                     About
                   </Link>
-                </li>
+                </li> */}
                 <li className="">
                   <Link href="/contact">
                     Contact

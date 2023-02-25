@@ -1,16 +1,19 @@
-import  React  from  "react";
+import React from 'react';
 // Context has been created
-const  ThemeContext  =  React.createContext({toggle: false, toggleFunction: () => {}});
+const ThemeContext = React.createContext({
+  toggle: false,
+  toggleFunction: () => {},
+});
 // Provider
-const  ThemeProvider  =  ({ children })  =>  {
-    const  [toggle, setToggle]  =  React.useState(true);
-    const toggleFunction =  ()  =>  {
+const ThemeProvider = ({ children }) => {
+  const [toggle, setToggle] = React.useState(true);
+  const toggleFunction = () => {
     setToggle(!toggle);
-};
-return  (
+  };
+  return (
     <ThemeContext.Provider value={{ toggle, toggleFunction }}>
-        {children}
+      {children}
     </ThemeContext.Provider>
-    );
+  );
 };
-export  {  ThemeContext,  ThemeProvider  };
+export { ThemeContext, ThemeProvider };

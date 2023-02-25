@@ -29,7 +29,6 @@ export async function getStaticProps({ preview = false }) {
       technologies: post.properties.Technologies.multi_select.map(item => item.name),
       description: post.properties.description.rich_text[0]?.plain_text || "",
       slug: slugify(post.properties.Name.title[0].plain_text.toLowerCase()),
-
     }
   })
 

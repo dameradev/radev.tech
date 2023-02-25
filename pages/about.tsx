@@ -9,12 +9,8 @@ import Link from 'next/link';
 const About = ({ posts, latestPost }) => {
   return (
     <Layout preview="">
-      {/* <h1>About me</h1> */}
-
       <div className='container mx-auto'>
-
         <div className='max-w-[100rem]'>
-
           <h1 className='text-4xl md:text-5xl leading-relaxed'>
             I'm Damjan. I'm a developer and blogger freelancing on Upwork.
           </h1>
@@ -40,19 +36,10 @@ const About = ({ posts, latestPost }) => {
 export default About;
 
 export const getStaticProps = async () => {
-
-
-  // const profilePicture = await getTwitterProfilePicture();
-
-
-  // const notion = new Client({
-  //   auth: process.env.NOTION_SECRET
-  // });
-
   const data: any = await getAllArticles(process.env.BLOG_DATABASE_ID);
 
   const postsPromises = data.map(async post => {
-    // console.log(post.properties.Excerpt)
+    
     let content;
     let blocks = await notion.blocks.children.list({
       block_id: post.id

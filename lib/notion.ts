@@ -159,11 +159,9 @@ export const getBlocks = async (blockId) => {
 
 
 export const getAllPortfolioProjects = async (databaseId) => {
-  // console.log(databaseId)
+  
   const response = await notion.databases.query({
-    database_id: databaseId,
-    
-        
+    database_id: databaseId,        
   });
 
   return response.results;
@@ -172,55 +170,9 @@ export const getAllPortfolioProjects = async (databaseId) => {
 export const getImageForPortfolio = async (id) => {
   const response: any = await notion.databases.query({
     database_id: process.env.IMAGES_DATABASE_ID
-    
   })
-
-
   return response.results.find(result => result.id === id).properties.image
 }
-
-// export const getMoreArticlesToSuggest = async (
-//   databaseId,
-//   currentArticleTitle
-// ) => {
-//   let moreArticles;
-
-//   const response = await notion.databases.query({
-//     database_id: databaseId,
-//     filter: {
-//       and: [
-//         {
-//           property: 'Status',
-//           select: {
-//             equals: '✅ Published'
-//           }
-//         },
-//         {
-//           property: 'Name',
-//           text: {
-//             does_not_equal: currentArticleTitle
-//           }
-//         }
-//       ]
-//     }
-//   });
-
-//   moreArticles = response.results.map((article: any) => {
-//     return {
-//       title: article.properties.Name.title[0].plain_text,
-//       coverImage:
-//         article.properties?.coverImage?.files[0]?.file?.url ||
-//         article.properties.coverImage?.files[0]?.external?.url ||
-//         'https://via.placeholder.com/600x400.png',
-//       publishedDate: article.properties.Published.date.start,
-//       summary: article.properties?.Summary.rich_text[0]?.plain_text
-//     };
-//   });
-
-//   shuffleArray(moreArticles);
-
-//   return moreArticles.slice(0, 3);
-// };
 
 export const getArticlePage = (data, slug) => {
   const response = data.find((result) => {
