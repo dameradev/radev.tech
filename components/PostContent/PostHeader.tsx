@@ -1,12 +1,13 @@
-import Avatar from './Avatar'
-import Date from './Date'
-import CoverImage from './CoverImage'
-import PostTitle from './PostTitle'
+import Avatar from '../Avatar'
+import Date from '../Date'
+// import CoverImage from '../CoverImage'
+import PostTitle from '../PostTitle'
 
 import { ArrowUpIcon, BookOpenIcon, EyeIcon, UploadIcon } from '@heroicons/react/outline'
-import PageViews from './PageViews'
+
 import { FaEdit, FaParachuteBox } from 'react-icons/fa'
-import TimeToRead from './TimeToRead'
+import TimeToRead from '../TimeToRead'
+import PageViews from './PageViews'
 
 export default function PostHeader({ title, slug, coverImage, timeToRead, date, editDate }) {
   return (

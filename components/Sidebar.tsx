@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 
-import { FaTwitter, FaGithub } from 'react-icons/fa';
-
 const Sidebar = ({ tags, className }) => {
 
   const [email, setEmail] = useState('');
@@ -10,7 +8,7 @@ const Sidebar = ({ tags, className }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log('insed')
+
     const res = await fetch(`/api/subscribe`, {
       body: JSON.stringify({
         email

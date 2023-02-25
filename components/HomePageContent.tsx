@@ -7,7 +7,6 @@ import Sidebar from './Sidebar';
 const PostsList = ({ heroPost, tags, posts }) => {
   return (
     <>
-      {/* {heroPost && ( */}
         <HeroPost
           title={heroPost.title}
           coverImage={heroPost.coverImage}

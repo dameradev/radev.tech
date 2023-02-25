@@ -1,3 +1,5 @@
-export default function Container({ children, className = "" }) {
+const Container = ({ children, className = "" }) => {
   return <div className={`container mx-auto  ${className}`}>{children}</div>
 }
+
+export default Container

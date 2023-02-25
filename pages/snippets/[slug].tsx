@@ -5,12 +5,13 @@ import slugify from 'slugify';
 // COMPONENTS
 import Container from '@/components/Container';
 import Layout from '@/components/Layout';
-import { renderBlocks } from '@/components/PostContent';
 
 // UTILS
 import { notion, slugifyResult } from '@/lib/notion';
 import { getContentBlocks } from '@/lib/utils';
 import { NOTES_DATABASE } from '@/lib/constants';
+import { renderBlocks } from '@/components/PostContent/RenderBlocks';
+
 
 const Project = ({ preview, content, page, images, technologies, url }) => {
   return (

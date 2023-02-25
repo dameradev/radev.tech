@@ -3,7 +3,7 @@ import Head from "next/head";
 const DOMAIN = "https://www.radev.tech";
 const DEFAULT_OG_IMAGE = "";
 
-export default function Seo({
+const Seo = ({
   title = "Radev's Digital Space ",
   description = "Damjan Radev is a freelance web-developer working on mostly on the front-end, writing about the web on his learning journey.",
   siteName = "Damjan Radev",
@@ -11,7 +11,7 @@ export default function Seo({
   ogImage = DEFAULT_OG_IMAGE,
   ogType = "website",
   twitterHandle = "@dameradev",
-}) {
+}) => {
   return (
     <Head>
       <title key="title">{`${title} – ${siteName}`}</title>
@@ -72,3 +72,5 @@ export default function Seo({
     </Head>
   );
 }
+
+export default Seo;

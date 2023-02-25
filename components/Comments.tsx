@@ -4,7 +4,6 @@ import Image from 'next/image';
 import useSWR from 'swr';
 
 // UTILS
-// import { UserContext } from '../pages/_app';
 import { supabaseClient } from '@/lib/hooks/useSupabase';
 import { fetcher } from '@/lib/fetcher';
 import { AVATARS } from '@/lib/data';

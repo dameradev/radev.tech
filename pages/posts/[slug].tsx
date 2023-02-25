@@ -9,10 +9,9 @@ import FadeIn from 'react-fade-in/lib/FadeIn';
 
 // COMPONENTS
 import Container from '@/components/Container';
-import PostHeader from '@/components/PostHeader';
 import Layout from '@/components/Layout';
 import Seo from '@/components/Seo';
-import PostContent from '@/components/PostContent';
+
 import Comments from '@/components/Comments';
 
 // UTILS
@@ -21,6 +20,8 @@ import { getAllArticles, getArticlePage, notion } from '@/lib/notion';
 import { getTimeToRead } from '@/lib/timeToRead';
 import { getContentBlocks } from '@/lib/utils';
 import { BLOG_DATABASE_ID } from '@/lib/constants';
+import PostHeader from '@/components/PostContent/PostHeader';
+import PostContent from '@/components/PostContent';
 
 const Post = ({
   preview,
