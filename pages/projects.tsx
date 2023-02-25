@@ -1,9 +1,9 @@
 import React from 'react';
-import Layout from '../components/Layout';
-import { getAllPortfolioProjects } from '../lib/notion';
+import Layout from '@/components/Layout';
+import { getAllPortfolioProjects } from '@/lib/notion';
 import slugify from 'slugify'
-import MoreStories from '../components/MoreStories';
-import Container from '../components/Container';
+import MoreStories from '@/components/MoreStories';
+import Container from '@/components/Container';
 
 const Projects = ({ preview, projects }) => {
   return (

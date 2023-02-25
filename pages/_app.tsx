@@ -1,37 +1,18 @@
-import "../styles/index.css";
-// import "react-comments-section/dist/index.css";
-import Prism from "prismjs";
 import React, { useEffect, useState } from "react";
-import { ThemeContext, ThemeProvider } from "../lib/themeContext";
-import Page from "../components/Page";
 import { useRouter } from "next/router";
 
-// const ThemeContext = React.createContext('light');
-export const UserContext = React.createContext(
-  {} as {
-    avatar_url: string;
-    email: string;
-    email_verified: boolean;
-    full_name: string;
-    iss: string;
-    name: string;
-    picture: string;
-    provider_id: string;
-    sub: string;
-  }
-);
+// COMPONENTS
+import Page from "@/components/Page";
 
-function MyApp({ Component, pageProps }) {
-  // useEffect(() => {
-  //   Prism.highlightAll()
-  // }, [])
+// LIBS
+import { ThemeProvider } from "@/lib/themeContext";
+import "../styles/index.css";
+import { User, UserContext } from '@/lib/userContext';
 
-  // const { toggle } = useContext(ThemeContext);
-  // console.log(toggle)
-
+const MyApp = ({ Component, pageProps }) =>{
   const router = useRouter();
   const [isTokenSet, setIsTokenSet] = useState(false);
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState({} as User);
   useEffect(() => {
     const token =
       router.asPath.split("#access_token=")[1]?.split("&")[0] ||

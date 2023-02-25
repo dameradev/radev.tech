@@ -3,7 +3,7 @@ import Date from './Date'
 import CoverImage from './CoverImage'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { getTimeToRead } from '../lib/timeToRead'
+import { getTimeToRead } from '@/lib/timeToRead'
 import TimeToRead from './TimeToRead'
 
 const ReadMoreLink = styled.a`

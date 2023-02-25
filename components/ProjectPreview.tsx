@@ -3,8 +3,8 @@ import Date from './Date'
 import CoverImage from './CoverImage'
 import Link from 'next/link'
 import styled from 'styled-components'
-import useWindowSize from '../lib/hooks/useWindowSize'
-// import { getFeaturedImage } from '../lib/wordpress'
+import useWindowSize from '@/lib/hooks/useWindowSize'
+// import { getFeaturedImage } from '@/lib/wordpress'
 
 
 const ProjectStyled = styled.div`

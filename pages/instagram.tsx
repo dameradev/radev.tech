@@ -2,9 +2,9 @@ import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import Container from '../components/Container';
-import Layout from '../components/Layout';
-import { notion } from '../lib/notion';
+import Container from '@/components/Container';
+import Layout from '@/components/Layout';
+import { notion } from '@/lib/notion';
 
 const Instagram = ({ preview, images }) => {
   return (

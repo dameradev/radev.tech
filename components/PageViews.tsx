@@ -1,5 +1,5 @@
 
-import { fetcher } from '../lib/fetcher';
+import { fetcher } from '@/lib/fetcher';
 import useSWR from 'swr';
 import { EyeIcon } from '@heroicons/react/outline';
 

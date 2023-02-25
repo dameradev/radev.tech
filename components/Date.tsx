@@ -1,4 +1,4 @@
-import { formatDate } from '../lib/formatDate'
+import { formatDate } from '@/lib/formatDate'
 
 export default function DateFormatted({ dateString }) {  
   const date = formatDate(dateString)

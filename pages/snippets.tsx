@@ -3,10 +3,10 @@ import React from 'react';
 import Link from 'next/link';
 import slugify from 'slugify';
 
-import Container from '../components/Container';
-import Layout from '../components/Layout';
+import Container from '@/components/Container';
+import Layout from '@/components/Layout';
 
-import { notion } from '../lib/notion';
+import { notion } from '@/lib/notion';
 
 const Page = ({data, preview}) => {
 

@@ -4,16 +4,16 @@ import FadeIn from 'react-fade-in/lib/FadeIn';
 import { ChevronDoubleDownIcon } from '@heroicons/react/outline';
 
 // COMPONENTS
-import Container from '../components/Container';
-import Layout from '../components/Layout';
-import HomePageContent from '../components/HomePageContent';
+import Container from '@/components/Container';
+import Layout from '@/components/Layout';
+import HomePageContent from '@/components/HomePageContent';
 
 // UTILS
 import {
   getAllArticles,
   notion,
-} from '../lib/notion';
-import { getContentBlocks } from '../lib/utils';
+} from '@/lib/notion';
+import { getContentBlocks } from '@/lib/utils';
 
 export default function Index({ posts, tags, preview, wpPosts }) {
   const heroPost = posts[0];

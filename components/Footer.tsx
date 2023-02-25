@@ -1,5 +1,5 @@
 import Container from "./Container";
-import { EXAMPLE_PATH } from "../lib/constants";
+import { EXAMPLE_PATH } from "@/lib/constants";
 import { FaGit, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 import Link from "next/link";
 import ThemeSwitch from "./ThemeSwitch";

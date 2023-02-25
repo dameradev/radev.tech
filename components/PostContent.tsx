@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import React, { Fragment, useContext, useState } from "react";
-import { useCopyToClipboard } from "../lib/hooks/useCopyToClipboard";
-import { ThemeContext } from "../lib/themeContext";
+import { useCopyToClipboard } from "@/lib/hooks/useCopyToClipboard";
+import { ThemeContext } from "@/lib/themeContext";
 // import { Text } from "../pages/posts/[slug]";
 
 import vsDark from "prism-react-renderer/themes/vsDark";

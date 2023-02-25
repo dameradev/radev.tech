@@ -5,7 +5,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import TimeToRead from "./TimeToRead";
 import { device } from "../styles/deviceSIzes";
-// import { getFeaturedImage } from '../lib/wordpress'
+// import { getFeaturedImage } from '@/lib/wordpress'
 
 const PostStyled = styled.div`
   &:hover {

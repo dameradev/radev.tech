@@ -3,16 +3,16 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import slugify from 'slugify';
 
 // COMPONENTS
-import Container from '../../components/Container';
-import Layout from '../../components/Layout';
-import { renderBlocks } from '../../components/PostContent';
+import Container from '@/components/Container';
+import Layout from '@/components/Layout';
+import { renderBlocks } from '@/components/PostContent';
 
 // UTILS
 import {
   notion,
   slugifyResult,
-} from '../../lib/notion';
-import { getContentBlocks } from '../../lib/utils';
+} from '@/lib/notion';
+import { getContentBlocks } from '@/lib/utils';
 
 const Project = ({ preview, content, page, images, technologies, url }) => {
   return (

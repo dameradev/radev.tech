@@ -8,18 +8,18 @@ import slugify from 'slugify';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 
 // COMPONENTS
-import Container from '../../components/Container';
-import PostHeader from '../../components/PostHeader';
-import Layout from '../../components/Layout';
-import Seo from '../../components/Seo';
-import PostContent from '../../components/PostContent';
+import Container from '@/components/Container';
+import PostHeader from '@/components/PostHeader';
+import Layout from '@/components/Layout';
+import Seo from '@/components/Seo';
+import PostContent from '@/components/PostContent';
+import Comments from '@/components/Comments';
 
 // UTILS
-import { supabaseClient } from '../../lib/hooks/useSupabase';
-import { getAllArticles, getArticlePage, notion } from '../../lib/notion';
-import { getTimeToRead } from '../../lib/timeToRead';
-import { getContentBlocks } from '../../lib/utils';
-import Comments from '../../components/Comments';
+import { supabaseClient } from '@/lib/hooks/useSupabase';
+import { getAllArticles, getArticlePage, notion } from '@/lib/notion';
+import { getTimeToRead } from '@/lib/timeToRead';
+import { getContentBlocks } from '@/lib/utils';
 
 const Post = ({
   preview,

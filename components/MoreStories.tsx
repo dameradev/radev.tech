@@ -1,4 +1,4 @@
-import { getTimeToRead } from '../lib/timeToRead'
+import { getTimeToRead } from '@/lib/timeToRead'
 import PostPreview from './PostPreview'
 import ProjectPreview from './ProjectPreview'
 

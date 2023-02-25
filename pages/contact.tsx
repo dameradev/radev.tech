@@ -2,11 +2,11 @@ import React, {  useState } from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 // COMPONENTS
-import Layout from '../components/Layout';
-import Container from '../components/Container';
+import Layout from '@/components/Layout';
+import Container from '@/components/Container';
 
 // UTILS
-import useForm from '../lib/hooks/useForm';
+import useForm from '@/lib/hooks/useForm';
 
 const Contact = () => {
   const [errorMessage, setErrorMessage] = useState("")

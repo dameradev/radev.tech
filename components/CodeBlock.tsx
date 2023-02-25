@@ -3,8 +3,8 @@
 import React, { useContext } from "react";
 // import { jsx } from "@emotion/core";
 import Highlight, { defaultProps, Prism } from "prism-react-renderer";
-import { useCopyToClipboard } from '../lib/hooks/useCopyToClipboard';
-import { ThemeContext } from '../lib/themeContext';
+import { useCopyToClipboard } from '@/lib/hooks/useCopyToClipboard';
+import { ThemeContext } from '@/lib/themeContext';
 import { FaCopy } from 'react-icons/fa';
 import vsDark from "prism-react-renderer/themes/vsDark";
 import vsLight from "prism-react-renderer/themes/vsLight";

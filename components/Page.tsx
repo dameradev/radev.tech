@@ -1,4 +1,4 @@
-import { ThemeContext } from '../lib/themeContext';
+import { ThemeContext } from '@/lib/themeContext';
 
 import React, { useEffect, useState } from 'react';
 import { GlobalStyle } from '../styles/GlobalStyle';

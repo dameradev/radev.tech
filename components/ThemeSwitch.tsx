@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react"
 // import { } from "@headless/ui"
 import { MoonIcon, SunIcon } from "@heroicons/react/outline"
 
-import { getTheme, setDarkMode, setLightMode } from "../lib/fns"
-import { ThemeContext } from '../lib/themeContext'
+import { getTheme, setDarkMode, setLightMode } from "@/lib/fns"
+import { ThemeContext } from '@/lib/themeContext'
 // import { Switch } from '@headlessui/react'
 const Switch = require('@headlessui/react').Switch
 // : React.FC<EmptyProps> 

@@ -1,8 +1,8 @@
-import Layout from '../components/Layout';
+import Layout from '@/components/Layout';
 import React from 'react';
-import MoreStories from '../components/MoreStories';
-import { supabaseClient } from '../lib/hooks/useSupabase';
-import { getAllArticles, notion } from '../lib/notion';
+import MoreStories from '@/components/MoreStories';
+import { supabaseClient } from '@/lib/hooks/useSupabase';
+import { getAllArticles, notion } from '@/lib/notion';
 import slugify from 'slugify';
 import Link from 'next/link';
 

@@ -1,4 +1,4 @@
-// import { getDate } from '../lib/wordpress';
+// import { getDate } from '@/lib/wordpress';
 import React from 'react';
 
 import Image from 'next/image';
