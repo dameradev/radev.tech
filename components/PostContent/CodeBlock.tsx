@@ -5,7 +5,7 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import vsLight from 'prism-react-renderer/themes/vsLight';
 
-import { ThemeContext } from '@/lib/themeContext';
+import { ThemeContext } from '@/components/ThemeContext';
 import { useCopyToClipboard } from '@/lib/hooks/useCopyToClipboard';
 
 const RE = /{([\d,-]+)}/;

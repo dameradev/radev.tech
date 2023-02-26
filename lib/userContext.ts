@@ -1,5 +1,4 @@
 import React from 'react';
-
 export interface User {
   avatar_url: string;
   email: string;

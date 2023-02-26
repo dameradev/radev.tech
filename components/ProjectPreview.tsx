@@ -1,48 +1,8 @@
-import Avatar from './Avatar';
-import Date from './Date';
-import { CoverImage } from './CoverImage';
 import Link from 'next/link';
-import styled from 'styled-components';
+
+import { CoverImage } from './CoverImage';
 import useWindowSize from '@/lib/hooks/useWindowSize';
 
-const ProjectStyled = styled.div`
-  position: relative;
-
-  .name-and-type {
-    position: absolute;
-    top: 6rem;
-    left: 6rem;
-    display: none;
-  }
-
-  h3 {
-    display: none;
-    @media only screen and (max-width: 760px) {
-      display: block;
-    }
-  }
-  max-height: min-content;
-  .excerpt {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-`;
-
-const PostInfoStyled = styled.p`
-  position: relative;
-  &:before {
-    content: '';
-    width: 5px;
-    height: 5px;
-    background: var(--color-secondary);
-    border-radius: 100%;
-    position: absolute;
-    top: 5px;
-    left: -10px;
-  }
-`;
 
 export default function ProjectPreview({ post }) {
   const { width } = useWindowSize();
@@ -60,7 +20,7 @@ export default function ProjectPreview({ post }) {
   } = post;
   // console.log(technologies)
   return (
-    <ProjectStyled className=''>
+    <article className=''>
       <Link
         className='grid lg:grid-cols-8 gap-10 md:grid-cols-1'
         href={`/projects/${slug}`}
@@ -99,6 +59,6 @@ export default function ProjectPreview({ post }) {
 
           </div> */}
       </Link>
-    </ProjectStyled>
+    </article>
   );
 }

@@ -4,8 +4,5 @@ module.exports = {
   images: {
     domains: ["media.graphassets.com", "images.unsplash.com", "s3.us-west-2.amazonaws.com", "res.cloudinary.com", "scontent.cdninstagram.com", "scontent-iad3-3.cdninstagram.com", "scontent-iad3-1.cdninstagram.com", "fna.fbcdn.net"],
   },
-  compiler: {
-    // ssr and displayName are configured by default
-    styledComponents: true,
-  },
+  
 }

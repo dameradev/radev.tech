@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import Page from "@/components/Page";
 
 // LIBS
-import { ThemeProvider } from "@/lib/themeContext";
+import { ThemeProvider } from "@/components/ThemeContext";
 import { User, UserContext } from '@/lib/userContext';
 import { NEXT_PUBLIC_SUPABASE_CLIENT_KEY } from '@/lib/constants';
 

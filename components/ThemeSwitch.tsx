@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { MoonIcon, SunIcon } from '@heroicons/react/outline';
-import { ThemeContext } from '@/lib/themeContext';
+import { ThemeContext } from '@/components/ThemeContext';
 
 const Switch = require('@headlessui/react').Switch;
 

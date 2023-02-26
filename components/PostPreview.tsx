@@ -1,26 +1,10 @@
 import Link from 'next/link';
-import styled from 'styled-components';
 
 import Avatar from './Avatar';
 import Date from './Date';
 import { CoverImage } from './CoverImage';
 import TimeToRead from './TimeToRead';
 
-const PostStyled = styled.div`
-  &:hover {
-    img {
-      opacity: 0.8;
-    }
-  }
-
-  max-height: min-content;
-  .excerpt {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-`;
 
 const PostPreview = ({
   title,
@@ -31,7 +15,7 @@ const PostPreview = ({
   post,
 }) => {
   return (
-    <PostStyled className='bg-accent-1 rounded-2xl flex flex-col items-start justify-between'>
+    <article className='bg-accent-1 rounded-2xl flex flex-col items-start justify-between'>
       <Link
         className='md:mb-5 block relative w-full h-[25rem] md:h-[30rem] lg:h-[30rem]'
         href={`/posts/${slug}`}
@@ -51,7 +35,7 @@ const PostPreview = ({
           </Link>
         </h3>
       </div>
-    </PostStyled>
+    </article>
   );
 };
 

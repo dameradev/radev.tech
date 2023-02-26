@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ThemeContext } from '@/lib/themeContext';
+import { ThemeContext } from '@/components/ThemeContext';
 
 const Page = ({ children }) => {
   const { toggle } = React.useContext(ThemeContext);
