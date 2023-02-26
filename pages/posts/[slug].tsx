@@ -11,7 +11,8 @@ import FadeIn from 'react-fade-in/lib/FadeIn';
 import Container from '@/components/Container';
 import Layout from '@/components/Layout';
 import Seo from '@/components/Seo';
-
+import PostHeader from '@/components/PostContent/PostHeader';
+import PostContent from '@/components/PostContent';
 import Comments from '@/components/Comments';
 
 // UTILS
@@ -20,8 +21,7 @@ import { getAllArticles, getArticlePage, notion } from '@/lib/notion';
 import { getTimeToRead } from '@/lib/timeToRead';
 import { getContentBlocks } from '@/lib/utils';
 import { BLOG_DATABASE_ID } from '@/lib/constants';
-import PostHeader from '@/components/PostContent/PostHeader';
-import PostContent from '@/components/PostContent';
+import generateSocialImage from '@/lib/generateSocialImage';
 
 const Post = ({
   preview,
@@ -46,9 +46,17 @@ const Post = ({
   if (!router.isFallback && !slug) {
     return <ErrorPage statusCode={404} />;
   }
+
+  const socialImageConf = generateSocialImage({
+    title,
+    underlayImage: coverImage.slice(coverImage.lastIndexOf('/') + 1),
+    cloudName: 'dvvbls283',
+    imagePublicID: 'v1677406450/Blog/og_social_large.png', // the OG template image name uploaded in Cloudinary
+  });
+
   return (
     <Layout preview={preview}>
-      <Seo title={title} description={excerpt} />
+      <Seo title={title} description={excerpt} ogImage={socialImageConf} />
       <FadeIn>
         <Container className='grid grid-cols-8 relative p-0'>
           <div className='col-span-8 md:col-span-12 lg:col-span-5 md:mx-5 px-4 md:px-0 relative'>
@@ -120,13 +128,14 @@ export const getStaticProps = async ({ params: { slug } }) => {
       publishDate: page.properties.PublishDate.created_time,
       editDate: page.properties.LastEdited.last_edited_time,
       slug,
-      coverImage,
+      coverImage: page.properties.CoverImage.files[0].file
+        ? page.properties.CoverImage.files[0].file.url
+        : page.properties.CoverImage.files[0].name,
       summary,
       totalViews,
     },
     revalidate: 30,
   };
 };
-
 
 export default Post;
