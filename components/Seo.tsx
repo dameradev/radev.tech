@@ -11,7 +11,7 @@ const Seo = ({
   ogImage = DEFAULT_OG_IMAGE,
   ogType = 'website',
   twitterHandle = '@dameradev',
-  ogUrl = ""
+  ogUrl = '',
 }) => {
   return (
     <Head>
@@ -26,7 +26,11 @@ const Seo = ({
       />
       <meta key='og_locale' property='og:locale' content='en_IE' />
       <meta key='og_site_name' property='og:site_name' content={siteName} />
-      <meta key='og_url' property='og:url' content={ogUrl || (canonical ?? DOMAIN)} />
+      <meta
+        key='og_url'
+        property='og:url'
+        content={ogUrl || (canonical ?? DOMAIN)}
+      />
       <meta key='og_site_name' property='og:site_name' content={siteName} />
       <meta
         name='google-site-verification'
@@ -37,34 +41,29 @@ const Seo = ({
       <link rel='alternate icon' href='/favicon.ico' />
 
       <meta
-        key='og_image:alt'
         property='og:image:alt'
         content={`${title} | ${siteName}`}
       />
 
-      <meta property='og:image' content={ogImage ? ogImage : DEFAULT_OG_IMAGE} />
-      <meta key='og_image:width' property='og:image:width' content='1200' />
-      <meta key='og_image:height' property='og:image:height' content='630' />
+      <meta
+        property='og:image'
+        content={ogImage ? ogImage : DEFAULT_OG_IMAGE}
+      />
+      <meta property='og:image:width' content='1200' />
+      <meta property='og:image:height' content='630' />
 
       <meta name='robots' content='index,follow' />
 
+      <meta name='twitter:card' content='summary_large_image' />
+
       <meta
-        key='twitter:card'
-        name='twitter:card'
+        name='twitter:image'
         content={ogImage ? ogImage : DEFAULT_OG_IMAGE}
       />
-      <meta key='twitter:site' name='twitter:site' content={twitterHandle} />
-      <meta
-        key='twitter:creator'
-        name='twitter:creator'
-        content={twitterHandle}
-      />
-      <meta key='twitter:title' property='twitter:title' content={title} />
-      <meta
-        key='twitter:description'
-        property='twitter:description'
-        content={description}
-      />
+      <meta name='twitter:site' content={twitterHandle} />
+      <meta name='twitter:creator' content={twitterHandle} />
+      <meta name='twitter:title' content={title} />
+      <meta name='twitter:description' content={description} />
 
       <link rel='canonical' href={ogUrl || (canonical ?? DOMAIN)} />
     </Head>
