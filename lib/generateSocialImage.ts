@@ -9,7 +9,7 @@ export default function generateSocialImage({
   underlayImageWidth = 580,
   underlayImageHeight = 630,
   underlayImage = '',
-  imageWidth = 1160,
+  imageWidth = 1200,
   imageHeight = 630,
   textAreaWidth = 600,
   textAreaHeight = 450,

@@ -42,7 +42,7 @@ const Seo = ({
         content={`${title} | ${siteName}`}
       />
 
-      <meta property='og:image' content={ogImage ?? DEFAULT_OG_IMAGE} />
+      <meta property='og:image' content={ogImage ? ogImage : DEFAULT_OG_IMAGE} />
       <meta key='og_image:width' property='og:image:width' content='1200' />
       <meta key='og_image:height' property='og:image:height' content='630' />
 
