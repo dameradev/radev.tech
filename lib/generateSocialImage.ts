@@ -6,7 +6,7 @@ export default function generateSocialImage({
   version = null,
   titleFont = 'arial',
   titleExtraConfig = '_bold',
-  underlayImageWidth = 580,
+  underlayImageWidth = 600,
   underlayImageHeight = 630,
   underlayImage = '',
   imageWidth = 1200,

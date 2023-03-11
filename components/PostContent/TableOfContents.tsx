@@ -11,20 +11,22 @@ const TableOfContent = ({ className }) => {
     setActiveId,
   });
 
+console.log(isActiveId)
   return (
     <nav
-      className={`lg:mt-32 mb-12 lg:fixed ${className} lg:w-[35rem] right-0 top-0 lg:border-r-2 mr-4 mt-10 md:mt-0`}
+      className={`lg:mt-32 mb-12 lg:fixed ${className} lg:w-[35rem] right-0 top-20 lg:border-r-2 mr-4 mt-10 md:mt-0`}
     >
       {headings.length ? <p className="text-xl mb-4">Table of contents</p> : ""}
       <ul className="sticky flex flex-col gap-2">
         {headings.map((heading, index) => (
           <li
             key={heading.id}
-            className={` ml-${heading.level === 3 ? "4" : "2"}   mr-0 pr-0 lg:${
-              isActiveId === heading.id ? "border-r-4" : ""
+            className={` ml-${heading.level === 3 ? "4" : "2"}   mr-0 pr-0  border-r-4 border-transparent lg:${
+              isActiveId === heading.id ? "border-r-4 border-white " : ""
             }`}
           >
             <a href={`#${heading.id}`}>
+            {console.log(heading.id)}
               {/* {heading.level === 2 ? index + 1 : `${index}.1` }.  */}
               {heading.text}
             </a>

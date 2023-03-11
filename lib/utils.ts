@@ -16,3 +16,8 @@ export const getContentBlocks = async ({ notion, page }) => {
   }
   return content; 
 };
+
+
+export function getArticlePublicUrl(slug: string) {
+  return `https://radev.tech/posts/${slug}`;
+}

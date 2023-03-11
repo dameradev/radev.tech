@@ -22,6 +22,7 @@ import { getTimeToRead } from '@/lib/timeToRead';
 import { getContentBlocks } from '@/lib/utils';
 import { BLOG_DATABASE_ID } from '@/lib/constants';
 import generateSocialImage from '@/lib/generateSocialImage';
+import { ShareArticle } from '@/components/ShareArticle';
 
 const Post = ({
   preview,
@@ -56,7 +57,13 @@ const Post = ({
 
   return (
     <Layout preview={preview}>
-      <Seo title={title} description={excerpt} ogType='article' ogUrl={`https://radev.tech/posts/${slug}`} ogImage={socialImageConf} />
+      <Seo
+        title={title}
+        description={excerpt}
+        ogType='article'
+        ogUrl={`https://radev.tech/posts/${slug}`}
+        ogImage={socialImageConf}
+      />
       <FadeIn>
         <Container className='grid grid-cols-8 relative p-0'>
           <div className='col-span-8 md:col-span-12 lg:col-span-5 md:mx-5 px-4 md:px-0 relative'>
@@ -68,6 +75,7 @@ const Post = ({
               date={publishDate}
               editDate={editDate}
             />
+            <ShareArticle title={title} slug={slug} />
             <PostContent content={content} />
             <Comments slug={slug} />
           </div>
