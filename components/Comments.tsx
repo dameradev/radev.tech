@@ -126,9 +126,9 @@ const Comments = ({ slug }) => {
           </form>
         </div>
         {/* list of comments */}
-        {comments?.length && (
+        {comments?.length ? (
           <p className='text-2xl text-center mt-10'>Comments</p>
-        )}
+        ) : <></>}
         <ul className='list-none'>
           {comments?.map((comment, index) => (
             <li

@@ -6,7 +6,7 @@ import { renderBlocks } from './RenderBlocks';
 const PostContent = ({ content, className = "" }) => {
   return (
     <>
-      <TableOfContent className="" />
+      
       {content.map((block) => (
         <div className={`post-content ${className}`}>
           {renderBlocks(block)}

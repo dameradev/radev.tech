@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import { GetStaticPaths } from 'next';
@@ -14,6 +14,8 @@ import Seo from '@/components/Seo';
 import PostHeader from '@/components/PostContent/PostHeader';
 import PostContent from '@/components/PostContent';
 import Comments from '@/components/Comments';
+import TableOfContent from '@/components/PostContent/TableOfContents';
+import ReactAndShare from '@/components/ReactAndShare';
 
 // UTILS
 import { supabaseClient } from '@/lib/hooks/useSupabase';
@@ -22,7 +24,6 @@ import { getTimeToRead } from '@/lib/timeToRead';
 import { getContentBlocks } from '@/lib/utils';
 import { BLOG_DATABASE_ID } from '@/lib/constants';
 import generateSocialImage from '@/lib/generateSocialImage';
-import { ShareArticle } from '@/components/ShareArticle';
 
 const Post = ({
   preview,
@@ -65,8 +66,9 @@ const Post = ({
         ogImage={socialImageConf}
       />
       <FadeIn>
-        <Container className='grid grid-cols-8 relative p-0'>
-          <div className='col-span-8 md:col-span-12 lg:col-span-5 md:mx-5 px-4 md:px-0 relative'>
+        <Container className='grid grid-cols-8 relative p-0 lg:!mx-10'>
+          <ReactAndShare slug={slug} title={title} className="hidden md:block" />
+          <div className='col-span-8 md:col-span-12 lg:col-span-6  px-4  md:px-0 relative md:ml-32'>
             <PostHeader
               title={title}
               coverImage={coverImage}
@@ -75,8 +77,9 @@ const Post = ({
               date={publishDate}
               editDate={editDate}
             />
-            <ShareArticle title={title} slug={slug} />
+            <TableOfContent className='' />
             <PostContent content={content} />
+            <ReactAndShare slug={slug} title={title} className="flex !flex-row justify-between " />
             <Comments slug={slug} />
           </div>
         </Container>

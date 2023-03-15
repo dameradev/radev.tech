@@ -13,20 +13,23 @@ export function ShareArticle({ slug, title }: Props) {
   const [isCopied, handleCopy] = useCopyToClipboard(1500);
   const pubilcUrl = getArticlePublicUrl(slug);
   return (
-    <div className='lg:mt-32 mb-12 lg:fixed right-4 top-0 flex items-center space-x-3 m-0 justify-center mt-10'>
-      <span>Share on social media</span>
+    <div className=' top-0 flex flex-col items-center gap-4 m-0 justify-center mt-2'>
+      {/* <span>Share on social media</span> */}
       <TwitterShareButton url={pubilcUrl} title={title} via={'dameradev'}>
-        <FaTwitter />
+        <FaTwitter className="w-5 h-5 fill-blue-400" />
       </TwitterShareButton>
-      <LinkedinShareButton title={title} url={pubilcUrl}>
-        <FaLinkedin />
+      <LinkedinShareButton  className="relative " title={title} url={pubilcUrl}>
+        <div  className='bg-white absolute w-5 h-5 top-1 left-1'/>
+        <FaLinkedin className="w-7 h-7  fill-blue-500 z-10 relative" />
+
+        
       </LinkedinShareButton>
       <button
-        className={`group ${isCopied ? 'text-secondary' : ''}`}
+        className={`group text-orange-400 ${isCopied ? '!text-secondary' : ''}`}
         onClick={() => handleCopy()}
       >
         <span className='sr-only'>Copy code</span>
-        <FaCopy />
+        <FaCopy className="w-5 h-5" />
       </button>
     </div>
   );
