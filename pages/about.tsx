@@ -18,7 +18,7 @@ const About = ({ posts, latestPost }) => {
             <article>
               <section className='my-10'>
                 <h2 className='text-4xl mb-4'>The Journey</h2>
-                <p className='leading-10'>
+                <p className='leading-[3rem] text-lg'>
                   Hello, world! I'm Damjan, a creative developer and curious
                   learner. My journey started back in my last year at the
                   university. As a Business major, I realized I wanted something
@@ -29,7 +29,7 @@ const About = ({ posts, latestPost }) => {
                   and the ability to bring ideas to life.
                 </p>
 
-                <p className='leading-10'>
+                <p className='leading-[3rem] text-lg'>
                   Over the years, I’ve honed my skills in HTML5, CSS3,
                   SCSS/SASS, and JavaScript, building responsive websites that
                   prioritize user experience. I've embraced the power of modern
@@ -40,7 +40,7 @@ const About = ({ posts, latestPost }) => {
               </section>
               <section className='my-10'>
                 <h2 className='text-4xl mb-4'>The Backend Expertise</h2>
-                <p className='leading-10'>
+                <p className='leading-[3rem] text-lg'>
                   But my skills don't end at the user interface. Recognizing the
                   importance of the complete web ecosystem, I immersed myself in
                   backend technologies, mastering Node.js, Prisma, and GraphQL.
@@ -54,7 +54,7 @@ const About = ({ posts, latestPost }) => {
 
               <section className='my-10'>
                 <h2 className='text-4xl mb-4'>The Freelancer</h2>
-                <p className='leading-10'>
+                <p className='leading-[3rem] text-lg'>
                   I took my skills to the digital marketplace, becoming a
                   freelancer on Upwork. Starting from the humble beginnings of
                   an $8/hour gig, I've now made my way to $50/hour contracts,
@@ -65,7 +65,7 @@ const About = ({ posts, latestPost }) => {
               </section>
               <section className='my-10'>
                 <h2 className='text-4xl mb-4'>The Mindful Coder</h2>
-                <p className='leading-10'>
+                <p className='leading-[3rem] text-lg'>
                   Beyond the codes and scripts, I'm an ardent practitioner of
                   mindfulness. I believe in the power of staying present, of
                   being in the moment. This practice has not only enriched my
@@ -76,7 +76,7 @@ const About = ({ posts, latestPost }) => {
               </section>
               <section className='my-10'>
                 <h2 className='text-4xl mb-4'>The Future</h2>
-                <p className='leading-10'>
+                <p className='leading-[3rem] text-lg'>
                   As technology evolves, so do I. My interest in generative AI
                   and its applications in the creative field is driving me
                   towards exploring new dimensions. I'm also excited about the
