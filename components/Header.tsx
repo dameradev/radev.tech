@@ -60,7 +60,7 @@ export default function Header() {
                   <Link href='/'>Home</Link>
                 </li>
                 <li className=''>
-                  <Link href='/contact'>Contact</Link>
+                  <Link href='/about'>About</Link>
                 </li>
                 <li className=''>
                   <Link href='/projects'>Projects</Link>

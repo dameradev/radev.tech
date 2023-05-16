@@ -12,7 +12,7 @@ const About = ({ posts, latestPost }) => {
   return (
     <Layout preview=''>
       <div className='container mx-auto'>
-        <div className='grid  grid-cols-1 md:grid-cols-[60%_1fr]   lg:grid-cols-[75%_1fr] gap-10'>
+        <div className='grid  grid-cols-1 md:grid-cols-[60%_1fr] lg:grid-cols-[75%_1fr] gap-10'>
           <div>
             <h1 className='text-5xl'>About Me</h1>
             <article>
@@ -101,7 +101,7 @@ const About = ({ posts, latestPost }) => {
             />
           </div>
 
-          <h3 className='mt-20  text-3xl text-secondary text-center col-span-2'>
+          <h3 className='mt-20  text-3xl text-secondary text-center md:col-span-2'>
             Welcome to my world. Let's build something amazing together.
             {/* <button className='btn'>Hire me</button> */}
           </h3>
