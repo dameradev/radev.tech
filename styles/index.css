@@ -128,3 +128,7 @@ pre[class*="language-"] {
 .container {
   width: unset !important;
 }
+
+.btn {
+  @apply text-sm bg-secondary p-3 leading-10 rounded-full;
+}

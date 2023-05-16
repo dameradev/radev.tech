@@ -23,12 +23,15 @@ export default function Header() {
             </li>
 
             <li className='mr-4'>
-              <Link href='/snippets'>Snippets</Link>
+              <Link href='/about'>About</Link>
             </li>
 
             <li className=''>
               <Link href='/projects'>Projects</Link>
             </li>
+            {/* <li className=''>
+              <Link href='/hire-me' className='btn'>Hire me</Link>
+            </li> */}
           </ul>
           <ThemeSwitch />
         </nav>
