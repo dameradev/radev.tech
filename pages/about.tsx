@@ -12,7 +12,7 @@ const About = ({ posts, latestPost }) => {
   return (
     <Layout preview=''>
       <div className='container mx-auto'>
-        <div className='grid  grid-cols-1 md:grid-cols-[60%_1fr] lg:grid-cols-[75%_1fr] gap-10'>
+        <div className='grid  grid-cols-1 md:grid-cols-[60%_1fr] lg:grid-cols-[75%_1fr] gapx-1 py-[2px] 0'>
           <div>
             <h1 className='text-5xl'>About Me</h1>
             <article>
@@ -22,20 +22,23 @@ const About = ({ posts, latestPost }) => {
                   Hello, world! I'm Damjan, a creative developer and curious
                   learner. My journey started back in my last year at the
                   university. As a Business major, I realized I wanted something
-                  different, something challenging yet fulfilling. The seeds of
-                  change were sown, and I embarked on a path towards becoming a
-                  web developer. I took a deep dive into coding, starting with
+                  different, something challenging yet something I would want to
+                  do every day. That’s when I embarked on a path toward becoming
+                  a web developer. I took a deep dive into coding, starting with
                   Ruby, and fell in love with the logic, the problem-solving,
                   and the ability to bring ideas to life.
                 </p>
 
                 <p className='leading-[3rem] text-lg'>
-                  Over the years, I’ve honed my skills in HTML5, CSS3,
-                  SCSS/SASS, and JavaScript, building responsive websites that
+                  Over the years, I’ve honed my skills in <span className='bg-red-800 ml-1 rounded-xl px-1 py-[2px]  text-white'>HTML5</span>,
+                  <span className='bg-purple-500 ml-1 rounded-xl px-1 py-[2px]  text-white'>CSS3</span>, <span className='bg-red-500 ml-1 rounded-xl px-1 py-[2px]  text-white'>SCSS/SASS</span>, and
+                  <span className='bg-yellow-600 ml-1 rounded-xl px-1 py-[2px]  text-white'>JavaScript</span>, building responsive websites that
                   prioritize user experience. I've embraced the power of modern
-                  technologies such as ReactJS (including React Hooks), Material
-                  UI, Tailwind CSS, Next.js, Gatsby.js, and GraphQL to create
-                  dynamic, engaging, and interactive digital experiences.
+                  technologies such as <span className='bg-blue-600 ml-1 rounded-xl px-1 py-[2px]  text-white'> ReactJS</span>,
+                  <span className='bg-blue-400 ml-1 rounded-xl px-1 py-[2px]  text-white'>Material UI</span>, <span className='bg-green-700 ml-1 rounded-xl px-1 py-[2px]  text-white'>Tailwind CSS</span>,
+                  <span className='bg-green-500 ml-1 rounded-xl px-1 py-[2px]  text-white'>Next.js</span>, <span className='bg-purple-700 ml-1 rounded-xl px-1 py-[2px]  text-white'>Gatsby.js</span>, and
+                  <span className='bg-red-700 ml-1 mr-1 rounded-xl px-1 py-[2px]  text-white'>GraphQL </span>to create dynamic, engaging, and
+                  interactive digital experiences.
                 </p>
               </section>
               <section className='my-10'>
@@ -44,11 +47,11 @@ const About = ({ posts, latestPost }) => {
                   But my skills don't end at the user interface. Recognizing the
                   importance of the complete web ecosystem, I immersed myself in
                   backend technologies, mastering Node.js, Prisma, and GraphQL.
-                  I've also built custom content management systems (CMS) that
-                  empower non-technical users to manage their website content
-                  with ease. I've worked with Shopify, Sanity, Strapi, Keystone,
-                  and Prismic, aiming to provide a smooth and efficient content
-                  management process for my clients.
+                  I’m also versatile in using CMSs, I've worked with{' '}
+                  <span className='bg-green-500 ml-1 rounded-xl px-1 py-[2px]  text-white'>Shopify</span>,<span className='bg-red-500 ml-1 rounded-xl px-1 py-[2px]  text-white'>Sanity</span>, <span className='bg-blue-500 ml-1 rounded-xl px-1 py-[2px]  text-white'>Strapi</span>,{' '}
+                  <span className='bg-blue-800 ml-1 rounded-xl px-1 py-[2px]  text-white'>Keystone</span>, and <span className='bg-yellow-800 ml-1 rounded-xl px-1 py-[2px]  text-white'>Prismic</span>, aiming to
+                  provide a smooth and efficient content management process for
+                  my clients.
                 </p>
               </section>
 
@@ -57,10 +60,12 @@ const About = ({ posts, latestPost }) => {
                 <p className='leading-[3rem] text-lg'>
                   I took my skills to the digital marketplace, becoming a
                   freelancer on Upwork. Starting from the humble beginnings of
-                  an $8/hour gig, I've now made my way to $50/hour contracts,
+                  an $8/hour gig, I've now made my way to $50+/hour contracts,
                   always learning and improving along the way. The freelance
                   life has allowed me the freedom to work from anywhere, at any
-                  time, and the joy of making a difference in diverse projects.
+                  time, and this has made my dream of traveling the world come
+                  true. I’m still embracing this lifestyle and prefer to work
+                  with clients as a contractor.
                 </p>
               </section>
               <section className='my-10'>
@@ -79,14 +84,12 @@ const About = ({ posts, latestPost }) => {
                 <p className='leading-[3rem] text-lg'>
                   As technology evolves, so do I. My interest in generative AI
                   and its applications in the creative field is driving me
-                  towards exploring new dimensions. I'm also excited about the
-                  potential of video as a medium to share knowledge and connect
-                  with others. In the end, I'm just a guy who loves to solve
-                  problems, enjoys the process of creation, and is excited about
-                  what technology can do to make our lives better. If you have a
-                  project you'd like to discuss or just want to chat about the
-                  latest in tech, feel free to get in touch. I'm always up for a
-                  good conversation.
+                  toward exploring new dimensions. In the end, I'm just a guy
+                  who loves to solve problems, enjoys the process of creation,
+                  and is excited about what technology can do to make our lives
+                  better. If you have a project you'd like to discuss or just
+                  want to chat about the latest in tech, feel free to get in
+                  touch. I'm always up for a good conversation.
                 </p>
               </section>
             </article>
