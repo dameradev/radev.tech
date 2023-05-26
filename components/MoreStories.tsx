@@ -5,8 +5,8 @@ import ProjectPreview from './ProjectPreview'
 const MoreStories = ({ posts, isProject = false, className }) => {
   return (
     <section>
-      <div className={`grid grid-cols-1 sm:grid-cols-2 mb-14 lg:grid-cols-3  sm:gap-x-6 lg:gap-x-12 gap-y-10  mt-4 ${className} ${isProject ? "md:grid-cols-1 lg:grid-cols-1 gap-y-20" : ""}`}>
-        {posts.map((post) => {
+      <div className={`grid grid-cols-1 md:grid-cols-2 mb-14 lg:grid-cols-3  sm:gap-x-6 lg:gap-x-12 gap-y-10  mt-4 ${className} ${isProject ? "md:grid-cols-1 lg:grid-cols-1 gap-y-20" : ""}`}>
+        {posts.map((post, index) => {
           const timeToRead = getTimeToRead(post.content)
           return !isProject ? (
             <PostPreview
@@ -18,7 +18,7 @@ const MoreStories = ({ posts, isProject = false, className }) => {
               excerpt={post.excerpt}
               timeToRead={timeToRead}
             />
-          ): <ProjectPreview post={post} />
+          ): <ProjectPreview post={post} index={index} />
         })}
       </div>
     </section>

@@ -14,7 +14,7 @@ const Projects = ({ preview, projects }) => {
   return (
     <Layout preview={preview}>
       <Container className="">
-        <h1 className="text-4xl md:text-5xl py-10 md:pt-10 md:pb-20 text-center">My portfolio of web apps and sites</h1>
+        <h1 className="text-4xl md:text-5xl py-10 md:pt-10 md:pb-20 text-center">Full Stack Development Portfolio</h1>
         <MoreStories className="" posts={projects} isProject={true} />
       </Container>
     </Layout>
