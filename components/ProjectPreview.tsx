@@ -17,7 +17,7 @@ import { GoDatabase } from 'react-icons/go';
 import { MdPayment } from 'react-icons/md';
 
 
-const techIcons = {
+export const techIcons = {
   "NEXT JS": <SiNextdotjs className="w-10 h-10" style={{ color: '#fff' }} />,
   "REACT JS": <FaReact className="w-10 h-10" style={{ color: '#61DAFB' }} />,
   "CSS-IN-JS": <FaCss3Alt className="w-10 h-10" style={{ color: '#264de4' }} />,
@@ -51,7 +51,7 @@ export default function ProjectPreview({ post, index }) {
   return (
     <article className=''>
       <Link
-        className={`bg-zinc-800 rounded-2xl  grid grid-cols-1 lg:grid-cols-2 min-h-[350px] gap-5 ${
+        className={`bg-accent-1 rounded-2xl  grid grid-cols-1 lg:grid-cols-2 min-h-[350px] gap-5 ${
           index % 2 === 1 ? 'xl:grid-cols-[30%, 1fr]' : 'xl:grid-cols-[1fr, 30%]'
         }`}
         href={`/projects/${slug}`}

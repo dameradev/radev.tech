@@ -172,7 +172,7 @@ export const getImageForPortfolio = async (id) => {
   const response: any = await notion.databases.query({
     database_id: IMAGES_DATABASE_ID
   })
-  return response.results.find(result => result.id === id).properties.image
+  return response.results.find(result => result.id === id)
 }
 
 export const getArticlePage = (data, slug) => {
