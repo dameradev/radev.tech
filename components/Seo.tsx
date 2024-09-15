@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-const DOMAIN = 'https://www.radev.tech';
+const DOMAIN = 'https://radev.tech';
 const DEFAULT_OG_IMAGE = '';
 
 const Seo = ({
