@@ -1,9 +1,0 @@
-{
-    "redirects": [
-      {
-        "source": "/(.*)",
-        "destination": "https://radev.tech/$1",
-        "statusCode": 301
-      }
-    ]
-  }
