@@ -1,12 +1,12 @@
 import Head from 'next/head';
 
-const DOMAIN = 'https://radev.tech';
+const DOMAIN = 'https://radev.dev';
 const DEFAULT_OG_IMAGE = '';
 
 const Seo = ({
-  title = "Radev's Digital Space ",
-  description = 'Damjan Radev is a freelance web-developer working on mostly on the front-end, writing about the web on his learning journey.',
-  siteName = 'Damjan Radev',
+  title = 'Radev.dev',
+  description = 'Radev.dev by VEB RADEV D.O.O.E.L. — web development, projects, and articles.',
+  siteName = 'Radev.dev',
   canonical = DOMAIN,
   ogImage = DEFAULT_OG_IMAGE,
   ogType = 'website',

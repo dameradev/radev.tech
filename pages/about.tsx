@@ -10,7 +10,7 @@ import Image from 'next/image';
 
 const About = ({ posts, latestPost }) => {
   return (
-    <Layout preview=''>
+    <Layout preview='' seo={{ title: 'About', description: 'About Radev.dev (VEB RADEV D.O.O.E.L.) — background, work, and ownership.', canonical: 'https://radev.dev/about' }}>
       <div className='container mx-auto'>
         <div className='grid  grid-cols-1 md:grid-cols-[60%_1fr] lg:grid-cols-[75%_1fr] gapx-1 py-[2px] 0'>
           <div>
@@ -39,6 +39,13 @@ const About = ({ posts, latestPost }) => {
                   <span className='bg-green-500 ml-1 rounded-xl px-1 py-[2px]  text-white'>Next.js</span>, <span className='bg-purple-700 ml-1 rounded-xl px-1 py-[2px]  text-white'>Gatsby.js</span>, and
                   <span className='bg-red-700 ml-1 mr-1 rounded-xl px-1 py-[2px]  text-white'>GraphQL </span>to create dynamic, engaging, and
                   interactive digital experiences.
+                </p>
+              </section>
+
+              <section className='my-10'>
+                <h2 className='text-4xl mb-4'>Ownership & Legal</h2>
+                <p className='leading-[3rem] text-lg'>
+                  Radev.dev (also known as <strong>DevSite Studio</strong>) is owned and operated by <strong>VEB RADEV D.O.O.E.L.</strong> (Kukush 6/A, 2000, Shtip, North Macedonia). For verification, our D-U-N-S Number is 499333411. Contact: info@radev.dev
                 </p>
               </section>
               <section className='my-10'>

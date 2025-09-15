@@ -17,7 +17,7 @@ export default function Footer() {
                 <Link href="/about">About</Link>
               </li>
               <li className="md:mr-4">
-                <Link href="/contact">Contact</Link>
+                <Link href="/contact">Contact / Imprint</Link>
               </li>
               <li className="md:mr-4">
                 <Link href="/snippets">Snippets</Link>
@@ -27,6 +27,12 @@ export default function Footer() {
               </li>
               <li className="">
                 <Link href="/instagram">Instagram Links</Link>
+              </li>
+              <li className="md:mr-4">
+                <Link href="/privacy">Privacy Policy</Link>
+              </li>
+              <li className="md:mr-4">
+                <Link href="/terms">Terms of Service</Link>
               </li>
             </ul>
 
@@ -59,14 +65,15 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="flex justify-between pb-4">
-          <p>© {new Date().getFullYear()} Damjan Radev</p>{" "}
-          <a
-            href="https://damjans-portfolio.vercel.app/"
-            className="text-secondary"
-          >
-            Previous Portfolio Website
-          </a>
+        <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-center justify-between pb-4 text-sm md:text-base">
+          <p className="text-center md:text-left">
+            © {new Date().getFullYear()} Radev.dev. A brand of <strong>VEB RADEV D.O.O.E.L.</strong>, Kukush 6/A, 2000, Shtip, North Macedonia. D-U-N-S: 499333411.
+          </p>
+          <div className="flex flex-wrap items-center gap-4">
+            <Link href="/privacy" className="underline">Privacy Policy</Link>
+            <Link href="/terms" className="underline">Terms of Service</Link>
+            <Link href="/contact" className="underline">Contact / Imprint</Link>
+          </div>
         </div>
         <a
           title="Google Analytics Alternative"

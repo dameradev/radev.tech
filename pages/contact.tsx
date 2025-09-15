@@ -3,6 +3,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 // COMPONENTS
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 import Container from "@/components/Container";
 
 // UTILS
@@ -19,18 +20,23 @@ const Contact = () => {
   } = useForm({ name: "", email: "", message: "" });
 
   return (
-    <Layout preview="">
+    <Layout preview="" seo={{ title: 'Contact / Imprint', description: 'Contact Radev.dev (VEB RADEV D.O.O.E.L.) — inquiries and imprint details.', canonical: 'https://radev.dev/contact' }}>
       <Container className="">
         <div className="sm:p-10 my-auto ">
           <section className="mx-auto max-w-screen-xl md:rounded-md md:border md:shadow-lg">
             <div className="grid grid-cols-4  lg:grid-cols-3">
               <div className="col-span-4 bg-gray-50 px-8 py-10  md:col-span-2 md:border-r md:px-10 md:py-12 lg:col-span-1">
-                <h2 className="mb-8 text-2xl font-black">Contact me</h2>
+                <h2 className="mb-4 text-2xl font-black">Contact / Imprint</h2>
+                <div className="mb-8 text-sm">
+                  <p className="font-semibold">VEB RADEV D.O.O.E.L.</p>
+                  <p>Kukush 6/A, 2000, Shtip, North Macedonia</p>
+                  <p>Email: <a className="underline" href="mailto:info@radev.dev">info@radev.dev</a></p>
+                </div>
                 <ul>
                   <li className="mb-6">
                     <a
                       className="flex items-center text-left"
-                      href="mailto:radevdevelopment@gmail.com"
+                      href="mailto:info@radev.dev"
                     >
                       <svg
                         className="shrink-0 mr-6 text-2xl "
@@ -49,7 +55,7 @@ const Contact = () => {
                       </svg>
                       <div>
                         <p className="cursor-pointer font-serif  md:text-lg">
-                          radevdevelopment@gmail.com
+                          info@radev.dev
                         </p>
                         <span className="block text-xs uppercase">email</span>
                       </div>
