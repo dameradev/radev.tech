@@ -17,7 +17,7 @@ const Hire = () => {
   const [errorMessage, setErrorMessage] = React.useState('');
 
   return (
-    <Layout preview={false}>
+    <Layout >
       <Container className='max-w-6xl'>
         <div className='text-xl'>
           <h1 className='text-3xl leading-[5rem]'>

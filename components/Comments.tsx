@@ -1,3 +1,4 @@
+"use client";
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -10,7 +11,7 @@ import { AVATARS } from '@/lib/data';
 import { UserContext } from '@/lib/userContext';
 
 const Comments = ({ slug }) => {
-  const commentsRef = useRef<HTMLDivElement>();
+  const commentsRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const userData = useContext(UserContext);
   const { data } = useSWR<{ comments: { text: string; name: string }[] }>(

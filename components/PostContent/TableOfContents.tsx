@@ -60,7 +60,7 @@ function useHeadings() {
 }
 
 function useScrollSpy({ activeId, setActiveId, ids, options }) {
-  const observer = useRef<IntersectionObserver>();
+  const observer = useRef<IntersectionObserver>(null);
   useEffect(() => {
     const elements = ids.map((id) => document.getElementById(id));
 
