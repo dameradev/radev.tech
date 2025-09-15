@@ -126,7 +126,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
     .select('view_count')
     .filter('slug', 'eq', slug);
 
-  const totalViews = response.data[0]?.view_count || 0;
+  const totalViews = response.data?.[0]?.view_count || 0;
 
   articleTitle = page.properties.Name.title[0].plain_text;
 
